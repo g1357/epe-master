@@ -1,0 +1,329 @@
+{
+    "name": "drupal/varbase_project",
+    "version": "11.0.6",
+    "description": "Project template for Varbase distribution.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/varbase",
+    "authors": [
+        {
+            "name": "Vardot",
+            "homepage": "https://github.com/vardot",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "http://drupal.org/project/issues/varbase",
+        "source": "http://cgit.drupalcode.org/varbase"
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "require": {
+        "composer/composer": "^2.9",
+        "composer/installers": "^2.3",
+        "cweagans/composer-patches": "~2.0",
+        "drupal/access_unpublished": "~1",
+        "drupal/ace_editor": "~2",
+        "drupal/admin_audit_trail": "~1",
+        "drupal/advanced_text_formatter": "~3",
+        "drupal/ai": "^1.3",
+        "drupal/ai_agent_modes": "~1.0.0",
+        "drupal/ai_agents": "^1.2",
+        "drupal/ai_context": "^1.0",
+        "drupal/ai_dashboard": "^1",
+        "drupal/ai_figma": "~1.0.0",
+        "drupal/ai_image_alt_text": "^1",
+        "drupal/ai_integration_eca": "~1",
+        "drupal/ai_provider_amazeeio": "^1.2.7",
+        "drupal/ai_provider_anthropic": "^1.1",
+        "drupal/ai_provider_openai": "^1.1",
+        "drupal/anchor_link": "~3",
+        "drupal/antibot": "~2",
+        "drupal/automatic_updates": "^4.1",
+        "drupal/autosave_form": "^1.10",
+        "drupal/better_exposed_filters": "~7",
+        "drupal/bpmn_io": "^3",
+        "drupal/canvas": "^1.6",
+        "drupal/canvas_override": "~1.0.0",
+        "drupal/captcha": "^2.0.7",
+        "drupal/ckeditor5_paste_filter": "~1",
+        "drupal/ckeditor5_plugin_pack": "~1.5.0",
+        "drupal/ckeditor_bidi": "~5",
+        "drupal/ckeditor_emoji": "~2",
+        "drupal/ckeditor_media_embed": "~2",
+        "drupal/ckeditor_media_resize": "~1.1.0",
+        "drupal/coffee": "~2",
+        "drupal/config_ignore": "~3",
+        "drupal/config_perms": "~2",
+        "drupal/config_update": "~2",
+        "drupal/consumers": "~1",
+        "drupal/content_lock": "~3",
+        "drupal/content_moderation_notifications": "~3",
+        "drupal/core": "~11.4.0",
+        "drupal/core-composer-scaffold": "~11.4",
+        "drupal/core-project-message": "~11.4",
+        "drupal/core-recipe-unpack": "~11.4",
+        "drupal/core-recommended": "~11.4",
+        "drupal/core-vendor-hardening": "~11.4",
+        "drupal/crop": "~2",
+        "drupal/dashboard": "^2.2",
+        "drupal/date_filter": "~1",
+        "drupal/devel": "~5",
+        "drupal/devel_entity_updates": "~5.0",
+        "drupal/diff": "~2",
+        "drupal/drimage_improved": "~1",
+        "drupal/dropzonejs": "~2",
+        "drupal/drupal_cms_helper": "~2",
+        "drupal/drupical": "^1",
+        "drupal/easy_breadcrumb": "^2.0.9",
+        "drupal/easy_email": "^3.0.2",
+        "drupal/easy_email_theme": "^1",
+        "drupal/easy_encryption": "^1.0",
+        "drupal/eca": "^3.0.8",
+        "drupal/eca_metatag": "~2",
+        "drupal/eca_vbo": "~2",
+        "drupal/eca_webform": "~2",
+        "drupal/edit_media_modal": "~2.1.0",
+        "drupal/editor_advanced_link": "~2.3.0",
+        "drupal/editoria11y": "^2.2",
+        "drupal/embed": "~1",
+        "drupal/entity": "~1",
+        "drupal/entity_browser": "~2",
+        "drupal/entity_clone": "~2",
+        "drupal/entity_embed": "~1",
+        "drupal/entity_usage": "~2",
+        "drupal/entityqueue": "~1",
+        "drupal/entityqueue_form_widget": "~2",
+        "drupal/extlink": "~2",
+        "drupal/fast_404": "~3.0",
+        "drupal/field_group": "~4",
+        "drupal/flood_control": "~3",
+        "drupal/focal_point": "^2.1",
+        "drupal/friendly_captcha_challenge": "^0.9",
+        "drupal/friendlycaptcha": "^1.1",
+        "drupal/gin": "~5",
+        "drupal/gin_everywhere": "~1",
+        "drupal/gin_login": "^2.1.4",
+        "drupal/gin_toolbar": "~3",
+        "drupal/gin_type_tray": "~1",
+        "drupal/google_tag": "^2.0.7",
+        "drupal/honeypot": "^2.1",
+        "drupal/imageapi_optimize": "~4.1.0",
+        "drupal/imagemagick": "~4",
+        "drupal/inline_entity_form": "~3",
+        "drupal/jsonapi_extras": "~3",
+        "drupal/key": "^1.18",
+        "drupal/klaro": "^3",
+        "drupal/length_indicator": "~1",
+        "drupal/linkit": "~7",
+        "drupal/login_emailusername": "^3",
+        "drupal/mailsystem": "^4",
+        "drupal/masquerade": "~2",
+        "drupal/maxlength": "~3",
+        "drupal/media_bulk_upload": "~3",
+        "drupal/media_file_delete": "^1",
+        "drupal/media_library_bulk_upload": "^1",
+        "drupal/media_library_edit": "~3",
+        "drupal/media_library_form_element": "~2.1.0",
+        "drupal/menu_admin_per_menu": "~1",
+        "drupal/menu_block": "~1",
+        "drupal/menu_link_attributes": "^1.5",
+        "drupal/menu_position": "~1",
+        "drupal/metatag": "~2",
+        "drupal/modeler": "~1.0",
+        "drupal/modeler_api": "^1",
+        "drupal/navigation_extra_tools": "^1.3",
+        "drupal/node_edit_protection": "~1.0",
+        "drupal/openapi": "~2",
+        "drupal/openapi_jsonapi": "~3",
+        "drupal/openapi_rest": "~2",
+        "drupal/openapi_ui_redoc": "~1",
+        "drupal/openapi_ui_swagger": "~1",
+        "drupal/password_policy": "~4",
+        "drupal/pathauto": "^1.13",
+        "drupal/pathologic": "~2",
+        "drupal/persistent_login": "~2.3.0",
+        "drupal/prevent_homepage_deletion": "~3",
+        "drupal/project_browser": "^2.1-beta3",
+        "drupal/rabbit_hole": "~2",
+        "drupal/recaptcha": "~3",
+        "drupal/recipe_installer_kit": "~1",
+        "drupal/redirect": "^1.10",
+        "drupal/reroute_email": "~2.3.0",
+        "drupal/restui": "~1",
+        "drupal/revision_log_default": "~1",
+        "drupal/roleassign": "~2",
+        "drupal/sam": "^1.2",
+        "drupal/scheduler": "^2.2",
+        "drupal/scheduler_content_moderation_integration": "^3.0.4",
+        "drupal/schema_metatag": "~3",
+        "drupal/sdc_devel": "~1",
+        "drupal/search_api": "^1.39",
+        "drupal/search_api_exclude": "^2",
+        "drupal/seckit": "~2",
+        "drupal/security_review": "~3",
+        "drupal/selective_better_exposed_filters": "~3",
+        "drupal/seo_checklist": "^5.2.1",
+        "drupal/simple_oauth": "~6",
+        "drupal/simple_sitemap": "^4.2.2",
+        "drupal/smart_trim": "~2",
+        "drupal/social_api": "~4.1.0",
+        "drupal/social_auth": "~4.2.0",
+        "drupal/social_auth_facebook": "~4",
+        "drupal/social_auth_google": "~4",
+        "drupal/social_auth_linkedin": "~4",
+        "drupal/stage_file_proxy": "~3.1.0",
+        "drupal/storybook": "~1.0",
+        "drupal/svg_image": "^3.1",
+        "drupal/symfony_mailer_lite": "^2.0.1",
+        "drupal/tagify": "^1.2",
+        "drupal/taxonomy_access_fix": "~4",
+        "drupal/taxonomy_manager": "~2",
+        "drupal/token": "^1.15",
+        "drupal/token_filter": "~2",
+        "drupal/token_or": "^2.2",
+        "drupal/trash": "^3.0.13",
+        "drupal/ui_icons": "~1",
+        "drupal/ultimate_cron": "~2",
+        "drupal/username_enumeration_prevention": "~1",
+        "drupal/userprotect": "~1",
+        "drupal/varbase_ai_figma": "~1.0.0",
+        "drupal/varbase_auth": "~11.0.0",
+        "drupal/varbase_components": "~4.0.0",
+        "drupal/varbase_media": "~11.0.0",
+        "drupal/varbase_recipes": "~1.0.0",
+        "drupal/vartheme_bs5": "~5.0.0",
+        "drupal/view_password": "^6",
+        "drupal/views_bulk_edit": "~3",
+        "drupal/views_bulk_operations": "~4",
+        "drupal/views_infinite_scroll": "~2",
+        "drupal/vmi": "~5.0.0",
+        "drupal/webform": ">=6.3.0.0-beta3, <6.4.0.0-dev",
+        "drupal/webform_views": "~5",
+        "drupal/webshare": "~2.0.0",
+        "drupal/yoast_seo": "^2.1",
+        "drush/drush": "~13",
+        "league/commonmark": "^2.4",
+        "vardot/varbase": "~11.0.0",
+        "vardot/varbase-patches": "~11.0.0"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "vardot/varbase-patches": true,
+            "vardot/drupal-core-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "drupal/core-recipe-unpack": true,
+            "drupal/core-vendor-hardening": true,
+            "oomphinc/composer-installers-extender": true,
+            "php-http/discovery": true,
+            "symfony/runtime": true
+        },
+        "bin-dir": "bin/",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            }
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "./drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "./recipes/{$name}": [
+                "type:drupal-recipe"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        },
+        "drupal-core-project-message": {
+            "include-keys": [
+                "homepage",
+                "support"
+            ],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                           </>",
+                "<bg=blue;fg=white>  Congratulations, you have installed the Varbase codebase </>",
+                "<bg=blue;fg=white>                                                           </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Install the site: https://www.drupal.org/docs/installing-drupal",
+                "  * Read the user guide: https://docs.varbase.vardot.com",
+                "  * Get support: https://www.vardot.com/en/form/get-support-varbase",
+                "  * Join Our Slack Team for Feedback and Support:",
+                "      http://slack.varbase.vardot.com"
+            ]
+        },
+        "drupal-core-vendor-hardening": {
+            "composer/composer": false
+        },
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true,
+        "composer-patches": {
+            "allowed-dependency-patches": [
+                "vardot/varbase-patches", "vardot/drupal-core-patches"
+            ],
+            "ignore-dependency-patches": [
+                "drupal/*",
+                "drupal/ai_context"
+            ]
+        },
+        "patches-ignore": {},
+        "patches": {}
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "@php -r \"@unlink('vendor/bin/composer');\""
+        ],
+        "drupal-libraries-sync": [
+            "@drupal-libraries-yarn-sync"
+        ],
+        "drupal-libraries-yarn-sync": [
+            "yarn install",
+            "node ./recipes/varbase_starter/scripts/drupal-libraries-sync.js"
+        ],
+        "drupal-libraries-npm-sync": [
+            "npm install",
+            "node ./recipes/varbase_starter/scripts/drupal-libraries-sync.js"
+        ],
+        "post-create-project-cmd": [
+            "@drupal-libraries-sync"
+        ]
+    }
+}

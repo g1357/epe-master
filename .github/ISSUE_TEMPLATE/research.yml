@@ -1,0 +1,34 @@
+name: Research task
+description: Capture a bounded Phase 1 investigation.
+title: "research: "
+labels:
+  - research
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: State the decision or uncertainty this task should resolve.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Required evidence
+      description: List primary sources, experiments, and outputs expected.
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Scope boundaries
+      description: Record what this task must not implement.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true
+

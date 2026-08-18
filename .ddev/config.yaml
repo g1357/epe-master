@@ -1,0 +1,44 @@
+name: ee-master
+type: drupal11
+docroot: web
+webserver_type: apache-fpm
+database:
+  type: mariadb
+  version: "11.8"
+use_dns_when_possible: true
+additional_fqdns:
+  - storybook.ee-master.ddev.site
+composer_version: "2"
+corepack_enable: true
+web_environment:
+  - "STORYBOOK_SERVER_RENDER_URL=https://${DDEV_PROJECT}.${DDEV_TLD}/storybook/stories/render"
+  - "DDEV_PRIMARY_URL=https://${DDEV_PROJECT}.${DDEV_TLD}"
+php_version: "8.4"
+nodejs_version: "20"
+dbimage_extra_packages: [sudo]
+webimage_extra_packages:
+  - php${DDEV_PHP_VERSION}-yaml
+  - xdg-utils
+  - pkg-config
+  - libpixman-1-dev
+  - libcairo2-dev
+  - libpango1.0-dev
+  - make
+web_extra_exposed_ports:
+  - name: storybook
+    container_port: 6006
+    http_port: 6007
+    https_port: 6006
+web_extra_daemons:
+  - name: storybook
+    command: "yarn storybook:ddev"
+    directory: /var/www/html
+hooks:
+  post-start:
+    - exec: yarn set version berry
+    # Re-enable the Storybook development local services (CORS, Twig debug) in
+    # settings.ddev.php. DDEV regenerates that file on every start and would
+    # otherwise drop the include added by `ddev init-storybook`, breaking
+    # cross-origin story rendering on the storybook.* subdomain. No-op until
+    # init-storybook has copied development.local.services.yml into place.
+    - exec: bash /var/www/html/.ddev/commands/web/storybook enable --boot

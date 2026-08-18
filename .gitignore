@@ -1,0 +1,49 @@
+# Composer and generated Drupal code.
+/vendor/
+/bin/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/profiles/varbase/
+/web/recipes/contrib/
+/recipes/
+/node_modules/
+/web/**/node_modules/
+
+# Drupal runtime data and secrets.
+/web/sites/*/settings.php
+/web/sites/*/settings.local.php
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/simpletest/
+/web/files/
+/auth.json
+/.env
+/.env.*
+!/.env.example
+/.easy_encryption
+
+# DDEV local and generated state.
+/.ddev/.dbimageBuild/
+/.ddev/.homeadditions/
+/.ddev/.webimageBuild/
+/.ddev/db_snapshots/
+/.ddev/.ddev-docker-compose-*.yaml
+/.ddev/config.performance.yaml
+
+# Yarn cache and generated tooling output.
+/.yarn/*
+/.pnp.*
+/tests/screenshots/
+/log/
+*.log
+
+# Editors and operating systems.
+/.idea/
+/.vscode/
+.DS_Store*
+Thumbs.db
+ehthumbs.db
+*.swp
+*.*~

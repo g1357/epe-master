@@ -1,0 +1,193 @@
+#!/bin/bash
+
+## Description: Full initialization for automated testing - installs Varbase if needed, applies optional recipes, adds testing users, and prepares the site
+## Usage: init-full-automated-testing
+## Example: ddev init-full-automated-testing
+## Aliases: varbase:init-full-automated-testing
+
+echo "=== Full automated testing initialization for Varbase ==="
+
+# ------------------------------------------------------------------
+# 0. Check and install Drupal if not already installed
+# ------------------------------------------------------------------
+echo ""
+echo "--- Checking if Drupal is installed ---"
+
+BOOTSTRAP=$(drush status --field=bootstrap 2>/dev/null)
+if [ "$BOOTSTRAP" != "Successful" ]; then
+  echo "  Drupal is not installed. Running full Varbase install..."
+  echo ""
+
+  drush site:install varbase --yes \
+    --account-name=webmaster \
+    --account-pass="dD.123123ddd" \
+    --account-mail="webmaster@vardot.com" \
+    --site-name="$DDEV_PROJECT" \
+    --no-interaction \
+    --debug \
+    -vvv
+
+  if [[ $? -ne 0 ]]; then
+    echo "  Error: Varbase installation failed."
+    exit 1
+  fi
+
+  echo ""
+  echo "  Rebuilding cache after install..."
+  drush cache:rebuild
+
+  # ------------------------------------------------------------------
+  # 1. Apply optional Varbase recipes
+  # ------------------------------------------------------------------
+  echo ""
+  echo "--- Applying optional Varbase recipes ---"
+
+  # Recipes are applied with core's `dr recipe` runner: Drush 13.x has no
+  # `recipe` command. A cache rebuild before each apply lets a recipe see the
+  # modules/hooks the previous one enabled (avoids stale-container fatals).
+  apply_recipe() {
+    drush cache:rebuild || true
+    php /var/www/html/bin/dr recipe "/var/www/html/recipes/$1" || true
+  }
+
+  echo ""
+  echo "  Applying recipe: varbase_users_base"
+  apply_recipe varbase_users_base
+
+  echo ""
+  echo "  Applying recipe: varbase_dev_base"
+  apply_recipe varbase_dev_base
+
+  echo ""
+  echo "  Applying recipe: varbase_i18n_base"
+  apply_recipe varbase_i18n_base
+
+  echo ""
+  echo "  Applying recipe: varbase_api_base"
+  apply_recipe varbase_api_base
+
+  echo ""
+  echo "  Applying recipe: varbase_auth_base"
+  apply_recipe varbase_auth_base
+
+  echo ""
+  echo "--- Enabling social auth modules ---"
+  drush pm:enable social_auth_facebook --yes
+  drush pm:enable social_auth_linkedin --yes
+
+  echo ""
+  echo "  Applying recipe: varbase_ai_base"
+  apply_recipe varbase_ai_base
+
+  echo ""
+  echo "  Applying recipe: varbase_ai_context"
+  apply_recipe varbase_ai_context
+
+  echo ""
+  echo "  Applying recipe: varbase_ai_safety"
+  apply_recipe varbase_ai_safety
+
+  echo ""
+  echo "--- Enabling AI observability/logging/automators (recipe config actions"
+  echo "    that need a live AI provider are skipped in unattended installs) ---"
+  drush pm:enable ai_logging ai_observability ai_automators --yes || true
+
+  echo ""
+  echo "--- Rebuilding cache after recipes ---"
+  drush cache:rebuild
+else
+  echo "  Drupal is already installed. Skipping site install."
+fi
+
+
+# ------------------------------------------------------------------
+# 2. Add testing users
+# ------------------------------------------------------------------
+echo ""
+echo "--- Adding testing users ---"
+
+current_path=$(pwd);
+
+# Include the Bash YAML library.
+source ${current_path}/.ddev/commands/web/libs/bash-yaml.sh || exit 1 ;
+
+# Load the list of default users for Varbase.
+eval $(parse_yaml ${current_path}/.ddev/commands/web/assets/varbase.users.yml);
+
+for user in ${users[@]}
+do
+  user_name="user_${user}_name";
+  user_mail="user_${user}_mail";
+  user_password="user_${user}_password";
+  user_role="user_${user}_role";
+
+  echo " ---------------------------------------------------------------- ";
+  echo "      User name: ${!user_name}";
+  echo "      User mail: ${!user_mail}";
+  echo "  User password: ${!user_password}";
+  echo "      User role: ${!user_role}";
+  echo " ================================================================= ";
+
+  drush user:create "${!user_name}" --mail="${!user_mail}" --password="${!user_password}" ;
+  if [ "${!user_role}" == '_none_' ] ; then
+    echo "   No user role for this user" ;
+  else
+    drush user:role:add "${!user_role}" "${!user_name}" ;
+  fi
+
+done
+
+# ------------------------------------------------------------------
+# 3. Prepare site for automated testing
+# ------------------------------------------------------------------
+echo ""
+echo "--- Disabling antibot module ---"
+drush pm:uninstall antibot --yes 2>/dev/null || echo "  Antibot module not found or already disabled"
+
+echo ""
+echo "--- Relaxing login flood limits for automated testing ---"
+# The varbase-e2e suite logs in many times in a row; the default flood
+# limits (ip_limit 5 / user_limit 4) trip "Too many failed login attempts"
+# and cascade-fail every login-dependent scenario. Raise the ceilings so the
+# suite starts from a clean slate.
+drush config:set user.flood ip_limit 1000000 --yes
+drush config:set user.flood user_limit 1000000 --yes
+
+echo ""
+echo "--- Disabling Honeypot time trap for automated testing ---"
+# Honeypot's time_limit rejects fast form submissions ("Please wait N seconds
+# and try again"), which breaks scripted form posts. Zero it out; the hidden
+# honeypot field protection stays in place.
+drush config:set honeypot.settings time_limit 0 --yes
+
+echo ""
+echo "--- Disabling the AI chatbot floating widget for automated testing ---"
+# The ai_chatbot (Deepchat) block floats over every page and intercepts
+# clicks on buttons/links near it (login submit, row "Edit" actions, etc.),
+# causing 30-45s actionability timeouts. Disable the block; the AI modules
+# and their admin pages stay fully installed.
+drush php:eval '$b=\Drupal::entityTypeManager()->getStorage("block")->load("ai_chatbot"); if($b){$b->disable()->save();}'
+
+echo ""
+echo "--- Disabling CSS/JS aggregation ---"
+drush config:set system.performance css.preprocess 0 --yes
+drush config:set system.performance js.preprocess 0 --yes
+
+echo ""
+echo "--- Setting verbose error logging ---"
+drush config:set system.logging error_level all --yes
+
+echo ""
+echo "--- Rebuilding cache ---"
+drush cache:rebuild
+
+
+echo ""
+echo "=== Full automated testing initialization complete ==="
+echo ""
+echo "Now run on the host:"
+echo "  ddev yarn install"
+echo "  ddev npx playwright install-deps"
+echo "  ddev npx playwright install"
+echo "  ddev yarn test:chromium"
+echo ""

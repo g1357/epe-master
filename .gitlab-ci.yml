@@ -1,0 +1,878 @@
+################################################################################
+# GitLab CI for the Varbase project template.
+#
+# Keeps drupalci's PHPCS / PHPStan / composer-lint validation jobs, adds
+# cspell / eslint / stylelint, and a pre-test -> test -> post-test browser flow
+# that builds Varbase, installs it with the `varbase` profile, applies the base
+# + AI recipes, seeds the per-role testing users and drives the whole site
+# through the browser. The heavy drupalci test jobs (phpunit / nightwatch /
+# upgrade status / deprecation) are disabled below.
+################################################################################
+
+include:
+  - local: '.gitlab-ci/php.yml'
+  - project: $_GITLAB_TEMPLATES_REPO
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      - "/includes/include.drupalci.main.yml"
+      - "/includes/include.drupalci.variables.yml"
+      - "/includes/include.drupalci.workflows.yml"
+
+# Pipeline stages. `build` / `validate` keep the drupalci jobs; the Varbase
+# browser flow runs as pre-test (install) -> test (run suite) -> post-test
+# (build reports).
+stages:
+  - build
+  - validate
+  - pre-test
+  - test
+  - post-test
+
+# = Path-based job gating (#3612699) ==========================================
+# Skip a job when the files it cares about did not change, but ALWAYS run the
+# full pipeline on the default branch, release branches and tags. Job-level
+# rules compose with the drupalci workflow: block, they do not override it.
+.run_on_release_refs: &run_on_release_refs
+  if: '$CI_COMMIT_TAG || $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  when: on_success
+
+# A project developer's own code lives in web/modules/custom,
+# web/themes/custom and web/recipes/custom. Those three paths gate (and are the
+# scope of) the PHPCS / PHPStan validation below, and are part of the
+# app-changes set that gates the heavy install + test chain, so "what triggers
+# a job" matches "what a developer edits".
+.varbase_app_changes: &varbase_app_changes
+  - "composer.json"
+  - "composer.lock"
+  - ".gitlab-ci.yml"
+  - ".gitlab-ci/**/*"
+  - "recipes/**/*"
+  - "config/**/*"
+  - "web/modules/custom/**/*"
+  - "web/themes/custom/**/*"
+  - "web/recipes/custom/**/*"
+  - "tests/**/*"
+  - "package.json"
+  - "yarn.lock"
+  - ".yarnrc.yml"
+  - "cucumber.js"
+  - "bin/**/*"
+
+variables:
+  # Drupal 11.4.0 released 2026-07-01; pinned templates ref $CORE_STABLE is still 11.3.
+  DRUPAL_CORE: "11.4.0"
+  IGNORE_PROJECT_DRUPAL_CORE_VERSION: "1"
+  # This line works with PHP 8.4 (locks are generated under 8.4); pin the
+  # drupalci job images accordingly (default for core 11.4 is PHP 8.3).
+  _TARGET_PHP: "8.4"
+  COMPOSER_FLAGS: "--no-strict-lock"
+  COMPOSER_MEMORY_LIMIT: "-1"
+  COMPOSER_ALLOW_SUPERUSER: 1
+  # Yarn 4 defaults to immutable installs and would refuse to create a
+  # lockfile in CI; allow it for every job.
+  YARN_ENABLE_IMMUTABLE_INSTALLS: "false"
+  # Cache locations (Composer packages, Yarn packages, Playwright browsers) so
+  # the build / install / test jobs reuse downloads instead of re-fetching.
+  COMPOSER_CACHE_DIR: "${CI_PROJECT_DIR}/.cache/composer"
+  YARN_CACHE_FOLDER: "${CI_PROJECT_DIR}/.cache/yarn"
+  PLAYWRIGHT_BROWSERS_PATH: "${CI_PROJECT_DIR}/.cache/ms-playwright"
+
+# Shared cache definition referenced by the build / install / test jobs.
+.varbase_cache: &varbase_cache
+  # Build cache populated by the Install Varbase job: the download caches PLUS
+  # the built output trees (vendor, node_modules, the web docroot incl. the
+  # drupal-libraries-sync output and installed files) and the ms-playwright
+  # browsers. The 15 parallel test jobs pull this (see .test_cache) so they skip
+  # composer/yarn/playwright entirely and only restore the DB dump (1s).
+  key: "varbase-build-$CI_COMMIT_REF_SLUG"
+  paths:
+    - .cache/composer
+    - .cache/yarn
+    - .cache/ms-playwright
+    - vendor
+    - node_modules
+    - web
+    - bin
+
+.test_cache: &test_cache
+  key: "varbase-build-$CI_COMMIT_REF_SLUG"
+  policy: pull
+  paths:
+    - .cache/composer
+    - .cache/yarn
+    - .cache/ms-playwright
+    - vendor
+    - node_modules
+    - web
+    - bin
+
+# Override composer job to build straight from this project's composer.json.
+#
+# drupalci's default composer job resolves against its own pinned package set
+# and only sees cweagans/composer-patches 1.7.3, which fails the project's
+# `~2.0` constraint. Clearing the cache and running a fresh `composer update`
+# against this composer.json resolves the documented set (composer-patches
+# 2.0.0 is a stable release) so the build matches composer.json exactly.
+composer:
+  cache: *varbase_cache
+  before_script:
+    - composer self-update
+    # Cached Composer VCS clones are owned by a different uid across runs;
+    # trust them so git does not reject with "detected dubious ownership".
+    - git config --global --add safe.directory '*'
+  script:
+    - composer validate --no-check-all --no-check-publish
+    # --prefer-dist pulls dist archives instead of cloning full .git histories.
+    # Dev packages (drupal/varbase, drupal/webshare, …) cloned as source carry
+    # large .git histories that blow the build artifact past the GitLab
+    # artifact-size limit (413 Request Entity Too Large). dist keeps the
+    # artifact small without changing the installed code.
+    #
+    # --ignore-platform-req=ext-pgsql: drupal/ai_provider_amazeeio >=1.3.2
+    # requires ext-pgsql, which the drupalci PHP 8.4 job image does not ship;
+    # the runtime/web images do. Composer-level ignore only - no code impact.
+    - composer update --with-all-dependencies --no-interaction --no-progress --optimize-autoloader --prefer-dist --ignore-platform-req=ext-pgsql
+  # A full Varbase build (web/ + vendor/) exceeds the GitLab artifact-size
+  # limit (413 Request Entity Too Large), so do NOT pass the build downstream.
+  # Publish only the resolved lock file; jobs that need the codebase run their
+  # own `composer install --prefer-dist` from this lock (see the functional job).
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - composer.json
+      - composer.lock
+
+# = Disable drupalci jobs that need the full composer build artifact =
+#
+# A full Varbase build is too large to publish as an artifact (413), so the
+# composer job only passes composer.lock. drupalci's composer-lint / phpcs /
+# phpstan expect the whole vendor/ + the composer status marker, so they cannot
+# run here. (`script` is overridden too so these stay valid even if a name is
+# absent.) Re-add self-contained PHPCS/PHPStan jobs if these checks are needed.
+composer-lint:
+  rules: [{ when: never }]
+  script: ["true"]
+phpcs:
+  rules: [{ when: never }]
+  script: ["true"]
+phpstan:
+  rules: [{ when: never }]
+  script: ["true"]
+phpunit:
+  rules: [{ when: never }]
+  script: ["true"]
+nightwatch:
+  rules: [{ when: never }]
+  script: ["true"]
+"upgrade status":
+  rules: [{ when: never }]
+  script: ["true"]
+"deprecation - composer":
+  rules: [{ when: never }]
+  script: ["true"]
+# drupalci also ships cspell / eslint / stylelint. We replace them with our own
+# self-contained, emoji-named jobs below (🔤 Cspell / 🟨 ESLint / 🎨 Stylelint),
+# so disable the drupalci originals to avoid duplicate jobs that would expect
+# the full build artifact.
+cspell:
+  rules: [{ when: never }]
+  script: ["true"]
+eslint:
+  rules: [{ when: never }]
+  script: ["true"]
+stylelint:
+  rules: [{ when: never }]
+  script: ["true"]
+
+# = Validate stage =
+
+"🔤 Cspell":
+  stage: validate
+  rules:
+    - <<: *run_on_release_refs
+    - changes:
+        - "**/*.php"
+        - "**/*.module"
+        - "**/*.inc"
+        - "**/*.install"
+        - "**/*.js"
+        - "**/*.css"
+        - "**/*.md"
+        - "**/*.yml"
+        - "**/*.txt"
+        - ".cspell.json"
+      when: on_success
+    # Its files did not change: keep the job LISTED as a manual (play button)
+    # so it never auto-runs on unrelated changes but stays visible and can be
+    # started on demand. allow_failure stays false so that when it IS run it
+    # must pass.
+    - when: manual
+      allow_failure: false
+  image: node:20
+  before_script:
+    - npm install -g cspell
+  script:
+    - cspell "**/*.{php,module,inc,install,test,profile,theme,js,css,md,yml,txt}" --no-progress || true
+  allow_failure: false
+
+# = YAML lint =
+#
+# Validates every YAML file in the project parses. Registers a catch-all
+# constructor so GitLab's custom `!reference` tags (and any other `!tags`) do
+# not fail the parse. Skips vendor / node_modules / web (contrib + core).
+"📐 YAML lint":
+  stage: validate
+  rules:
+    - <<: *run_on_release_refs
+    - changes:
+        - "**/*.yml"
+        - "**/*.yaml"
+      when: on_success
+    # Its files did not change: keep the job LISTED as a manual (play button)
+    # so it never auto-runs on unrelated changes but stays visible and can be
+    # started on demand. allow_failure stays false so that when it IS run it
+    # must pass.
+    - when: manual
+      allow_failure: false
+  image: python:3.12-slim
+  needs: []
+  before_script:
+    - pip install --no-cache-dir pyyaml
+  script:
+    - |
+      python - <<'PY'
+      import sys, yaml
+      from pathlib import Path
+
+      class Loader(yaml.SafeLoader):
+          pass
+      # Treat any unknown tag (e.g. GitLab CI's !reference) as a no-op so the
+      # file still parses for a pure syntax check.
+      Loader.add_multi_constructor('', lambda loader, suffix, node: None)
+
+      SKIP = ('vendor/', 'node_modules/', 'web/core/', 'web/modules/contrib/',
+              'web/themes/contrib/', 'web/profiles/contrib/', 'web/libraries/',
+              '.cache/')
+      errors = 0
+      count = 0
+      for path in sorted(Path('.').rglob('*.y*ml')):
+          rel = str(path).lstrip('./')
+          if any(s in rel for s in SKIP):
+              continue
+          count += 1
+          try:
+              with open(path) as fh:
+                  list(yaml.load_all(fh, Loader=Loader))
+          except yaml.YAMLError as e:
+              errors += 1
+              print(f"INVALID: {rel}\n  {e}")
+      print(f"Checked {count} YAML files, {errors} invalid.")
+      sys.exit(1 if errors else 0)
+      PY
+  allow_failure: false
+
+# Node 20+ required: varbase-e2e >= 2.0 declares engines.node ">=20".
+"🟨 ESLint":
+  stage: validate
+  rules:
+    - <<: *run_on_release_refs
+    - changes:
+        - "**/*.js"
+        - "**/*.yml"
+        - ".eslintrc.json"
+        - "package.json"
+        - "yarn.lock"
+      when: on_success
+    # Its files did not change: keep the job LISTED as a manual (play button)
+    # so it never auto-runs on unrelated changes but stays visible and can be
+    # started on demand. allow_failure stays false so that when it IS run it
+    # must pass.
+    - when: manual
+      allow_failure: false
+  image: node:20
+  # --mode=skip-build skips the package.json postinstall (drupal-libraries-sync,
+  # which needs a composer build); linting only needs the JS dev dependencies.
+  before_script:
+    - corepack enable
+    - yarn install --mode=skip-build
+  script:
+    - node --version
+    - yarn lint:js || true
+    - yarn lint:yaml || true
+  after_script:
+    - touch junit.xml _eslint.patch
+  allow_failure: false
+
+"🎨 Stylelint":
+  stage: validate
+  rules:
+    - <<: *run_on_release_refs
+    - changes:
+        - "**/*.css"
+        - ".stylelintrc.json"
+        - "package.json"
+        - "yarn.lock"
+      when: on_success
+    # Its files did not change: keep the job LISTED as a manual (play button)
+    # so it never auto-runs on unrelated changes but stays visible and can be
+    # started on demand. allow_failure stays false so that when it IS run it
+    # must pass.
+    - when: manual
+      allow_failure: false
+  image: node:20
+  before_script:
+    - corepack enable
+    - yarn install --mode=skip-build
+  script:
+    - yarn lint:css || true
+  after_script:
+    - echo '[]' > gl-codequality.json
+  allow_failure: false
+
+# = PHP_CodeSniffer (Drupal coding standards) =
+#
+# Self-contained PHPCS over the project's custom code (web/modules/custom +
+# web/themes/custom, per .phpcs.xml). The drupalci `phpcs` job is disabled above
+# because it needs the full composer build artifact; this one installs its own
+# drupal/coder so it runs without that artifact. Named with an emoji prefix to
+# sit alongside the project's other custom jobs and not collide with the
+# disabled drupalci `phpcs`.
+"🐘 PHPCS":
+  stage: validate
+  rules:
+    - <<: *run_on_release_refs
+    - changes:
+        - "web/modules/custom/**/*"
+        - "web/themes/custom/**/*"
+        - "web/recipes/custom/**/*"
+        - "**/*.php"
+        - "**/*.module"
+        - "**/*.inc"
+        - "**/*.install"
+        - "**/*.theme"
+        - "**/*.profile"
+        - ".phpcs.xml"
+      when: on_success
+    # Its files did not change: keep the job LISTED as a manual (play button)
+    # so it never auto-runs on unrelated changes but stays visible and can be
+    # started on demand. allow_failure stays false so that when it IS run it
+    # must pass.
+    - when: manual
+      allow_failure: false
+  image: php:8.4-cli
+  needs: []
+  before_script:
+    - apt-get update -y && apt-get install -y git unzip
+    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    # Composer 2.2+ blocks third-party plugins by default; allow the PHPCS
+    # standards installer before requiring it, or `composer global require`
+    # aborts ("contains a Composer plugin which is blocked by your allow-plugins").
+    - composer global config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+    - composer global require drupal/coder:^8.3 dealerdirect/phpcodesniffer-composer-installer --no-interaction
+    - export PATH="$(composer global config bin-dir --absolute 2>/dev/null):$PATH"
+  script:
+    # A project developer's custom code lives in web/modules/custom,
+    # web/themes/custom and web/recipes/custom. Create them so PHPCS has valid
+    # (possibly empty) targets instead of erroring on a missing path on a fresh
+    # template, then sniff all three the same way a developer would locally.
+    - mkdir -p web/modules/custom web/themes/custom web/recipes/custom
+    - phpcs --version
+    - phpcs --standard=.phpcs.xml -p web/modules/custom web/themes/custom web/recipes/custom
+  allow_failure: false
+
+# = PHPStan (static analysis) =
+#
+# Self-contained PHPStan over the recipes (phpstan.neon scopes
+# recipes/varbase_starter). The neon includes phar://phpstan.phar/..., so it
+# runs against the downloaded phpstan.phar in the project root. The disabled
+# drupalci `deprecation - composer` / `phpstan` jobs need the full build artifact.
+"🔬 PHPStan":
+  stage: validate
+  rules:
+    - <<: *run_on_release_refs
+    - changes:
+        - "web/modules/custom/**/*"
+        - "web/themes/custom/**/*"
+        - "web/recipes/custom/**/*"
+        - "**/*.php"
+        - "**/*.module"
+        - "**/*.inc"
+        - "**/*.install"
+        - "phpstan.neon"
+      when: on_success
+    # Its files did not change: keep the job LISTED as a manual (play button)
+    # so it never auto-runs on unrelated changes but stays visible and can be
+    # started on demand. allow_failure stays false so that when it IS run it
+    # must pass.
+    - when: manual
+      allow_failure: false
+  image: php:8.4-cli
+  needs: []
+  before_script:
+    - apt-get update -y && apt-get install -y curl
+    - curl -sSL https://github.com/phpstan/phpstan/releases/latest/download/phpstan.phar -o phpstan.phar
+    - chmod +x phpstan.phar
+  script:
+    # Analyse the recipes plus a developer's own custom code (web/modules/custom,
+    # web/themes/custom, web/recipes/custom) - the same scope they would run
+    # locally. Only analyse dirs that actually contain PHP (the template ships
+    # none yet); otherwise PHPStan errors with "No files found to analyse".
+    - |
+      SCOPE=""
+      for d in recipes/varbase_starter web/modules/custom web/themes/custom web/recipes/custom; do
+        if [ -d "$d" ] && find "$d" -name '*.php' | grep -q .; then
+          SCOPE="$SCOPE $d"
+        fi
+      done
+      if [ -n "$SCOPE" ]; then
+        php phpstan.phar analyse -c phpstan.neon --no-progress $SCOPE
+      else
+        echo "No PHP files in PHPStan scope (recipes + web/*/custom) - nothing to analyse."
+      fi
+  allow_failure: false
+
+# = Reusable before_script fragments (via !reference) =
+.fragments:
+  # Build the codebase in-job from the composer artifact's lock file (the
+  # composer job does not pass the full build - too large to artifact) and
+  # install ImageMagick (Varbase's image toolkit; the drupalci image lacks the
+  # identify/convert binaries -> error 127). drimage_improved emits WebP
+  # derivatives on the fly, so the WebP coder + libraries must be present and
+  # the ImageMagick security policy must allow reading/writing WEBP, otherwise
+  # derivative generation fails and the front-end pages log resource 404s.
+  prepare_code: &prepare_code
+    - apt-get update -y && apt-get install -y imagemagick webp libwebp7
+    - apt-get install -y libmagickcore-7.q16-10-extra || apt-get install -y libmagickcore-6.q16-6-extra || true
+    - sed -i 's/rights="none"\s*pattern="WEBP"/rights="read|write" pattern="WEBP"/I' /etc/ImageMagick-*/policy.xml 2>/dev/null || true
+    # The cached Composer VCS clones are owned by a different uid across jobs;
+    # tell git to trust them (otherwise "detected dubious ownership").
+    - git config --global --add safe.directory '*'
+    # A restored site dir is read-only (drush site:install sets sites/default to
+    # 555 / settings.php to 444); make it writable so composer scaffold + the
+    # next install steps can write there.
+    - chmod -R u+w $CI_PROJECT_DIR/$_WEB_ROOT/sites 2>/dev/null || true
+    # --ignore-platform-req=ext-pgsql: see the composer job note (amazeeio
+    # >=1.3.2 requires ext-pgsql; absent from the PHP 8.4 job image).
+    - composer install --no-interaction --no-progress --optimize-autoloader --prefer-dist --ignore-platform-req=ext-pgsql
+  web_db: &web_db
+    - mkdir -pv $CI_PROJECT_DIR/$_WEB_ROOT/sites/default/files
+    - mkdir -pv $CI_PROJECT_DIR/$_WEB_ROOT/sites/simpletest
+    - chmod -R 777 $CI_PROJECT_DIR/$_WEB_ROOT/sites/default/files
+    - chmod -R 777 $CI_PROJECT_DIR/$_WEB_ROOT/sites/simpletest
+    - rm -rf /var/www/html && ln -s $CI_PROJECT_DIR/$_WEB_ROOT /var/www/html
+    - chown -R www-data:www-data $CI_PROJECT_DIR
+    # Drupal's .htaccess rewrites missing /sites/default/files/styles/... requests
+    # to index.php so image styles (incl. drimage WebP derivatives) generate on
+    # the fly. That needs mod_rewrite plus AllowOverride All and FollowSymLinks
+    # on the symlinked docroot; without it those requests 404 instead of routing
+    # to Drupal.
+    - a2enmod rewrite headers
+    - printf '<Directory /var/www/html>\n  Options +FollowSymLinks\n  AllowOverride All\n  Require all granted\n</Directory>\n' > /etc/apache2/conf-available/drupal-docroot.conf
+    - a2enconf drupal-docroot
+    - service apache2 start
+    - export SIMPLETEST_DB=mysql://$MYSQL_USER:$MYSQL_PASSWORD@database/$MYSQL_DATABASE
+  # Rebuild caches and dump the DB for the next pre-test job in the chain.
+  dump_db: &dump_db
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT sql:dump --gzip --result-file=$CI_PROJECT_DIR/varbase-db.sql
+  node_playwright: &node_playwright
+    - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+    - apt-get install -y nodejs
+    - node --version && npm --version
+    - 'test -f .yarnrc.yml || echo "nodeLinker: node-modules" > .yarnrc.yml'
+    # Back up cucumber.js - varbase-e2e's postinstall can clobber it under yarn 4.
+    - cp cucumber.js .cucumber.js.bak
+    - corepack enable
+    # Full install runs the package.json postinstall (drupal-libraries-sync),
+    # syncing the front-end libraries into web/libraries - the recipes are
+    # present here from the composer artifact (CircleCI parity).
+    - yarn install
+    - cp .cucumber.js.bak cucumber.js && rm .cucumber.js.bak
+    - ./node_modules/.bin/playwright install --with-deps chromium
+
+  prepare_runtime_only: &prepare_runtime_only
+    - apt-get update -y && apt-get install -y imagemagick webp libwebp7
+    - apt-get install -y libmagickcore-7.q16-10-extra || apt-get install -y libmagickcore-6.q16-6-extra || true
+    - sed -i 's/rights="none"\s*pattern="WEBP"/rights="read|write" pattern="WEBP"/I' /etc/ImageMagick-*/policy.xml 2>/dev/null || true
+    - git config --global --add safe.directory '"'"'*'"'"'
+    - chmod -R u+w $CI_PROJECT_DIR/$_WEB_ROOT/sites 2>/dev/null || true
+    # Composer autoloader is a fast dump against the cached vendor/ (no resolve).
+    - composer dump-autoload --optimize --no-interaction || true
+    # Node runtime for cucumber-js (node_modules + browsers are cached).
+    - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+    - apt-get install -y nodejs
+    - node --version
+    # System libs Chromium needs (browsers themselves are cached). --dry-run
+    # would skip; run install so only the apt libs are added, browser present.
+    - ./node_modules/.bin/playwright install-deps chromium || true
+
+# = Install & prepare Varbase - single pre-test job =
+#
+# Builds the codebase, installs Varbase (`varbase` profile), applies the
+# top-level base + AI recipes (sub-recipes apply transitively), seeds the
+# per-role testing users and prepares the site for deterministic testing
+# (mirrors ddev init-full-automated-testing). Exports the installed site as
+# small artifacts (gzipped DB dump + settings.php + files) for the test job.
+"📦 Install Varbase":
+  extends: .testing-job-base
+  rules:
+    - <<: *run_on_release_refs
+    - changes: *varbase_app_changes
+      when: on_success
+    # Its files did not change: keep the job LISTED as a manual (play button)
+    # so it never auto-runs on unrelated changes but stays visible and can be
+    # started on demand. allow_failure stays false so that when it IS run it
+    # must pass.
+    - when: manual
+      allow_failure: false
+  stage: pre-test
+  needs: [composer]
+  timeout: 2h
+  cache: *varbase_cache
+  services:
+    - name: $_CONFIG_DOCKERHUB_ROOT/$_TARGET_DB_TYPE-$_TARGET_DB_VERSION:$_TARGET_DB_IMAGE_TAG
+      alias: database
+  variables:
+    DRUPAL_ADMIN_USERNAME: "webmaster"
+    DRUPAL_ADMIN_PASSWORD: "dD.123123ddd"
+  artifacts:
+    when: on_success
+    expire_in: 1 day
+    paths:
+      - varbase-db.sql.gz
+      - $_WEB_ROOT/sites/default/settings.php
+      - $_WEB_ROOT/sites/default/files
+      # easy_encryption private keys (default dir: project-root/.easy_encryption).
+      # The test job needs them to decrypt AI/API config stored by the recipes.
+      - .easy_encryption
+  before_script:
+    - !reference [.fragments, prepare_code]
+    - !reference [.fragments, web_db]
+    # Build the Node deps + browsers here too, so the test jobs inherit them
+    # from the cache and never run yarn / playwright themselves.
+    - !reference [.fragments, node_playwright]
+  script:
+    # = Install Varbase =
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT site:install varbase
+        --db-url=$SIMPLETEST_DB
+        --account-name=webmaster --account-pass=dD.123123ddd --account-mail=webmaster@vardot.com
+        --site-name="Varbase Test" --locale=en -y
+    # = Top-level base + AI recipes (sub-recipes apply transitively) =
+    # Drupal 11.4 recipes are applied with core's `dr recipe` runner: Drush 13.x
+    # has NO `recipe` command (it errors "Command 'recipe' is not defined"), so
+    # the previous `drush recipe` calls silently no-oped under `|| true` and the
+    # i18n / API / AI admin was never configured. `bin/dr` is the Composer-bin
+    # wrapper that sets the autoloader for the split web/ docroot. A cache
+    # rebuild BEFORE each apply is required so a recipe sees the modules/hooks
+    # the previous one enabled (else "Class ... does not exist" fatals).
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild || true
+    - $CI_PROJECT_DIR/bin/dr recipe $CI_PROJECT_DIR/recipes/varbase_dev_base || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild || true
+    - $CI_PROJECT_DIR/bin/dr recipe $CI_PROJECT_DIR/recipes/varbase_i18n_base || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild || true
+    - $CI_PROJECT_DIR/bin/dr recipe $CI_PROJECT_DIR/recipes/varbase_api_base || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild || true
+    - $CI_PROJECT_DIR/bin/dr recipe $CI_PROJECT_DIR/recipes/varbase_auth_base || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT pm:enable social_auth_facebook social_auth_linkedin -y || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild || true
+    - $CI_PROJECT_DIR/bin/dr recipe $CI_PROJECT_DIR/recipes/varbase_ai_base || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild || true
+    - $CI_PROJECT_DIR/bin/dr recipe $CI_PROJECT_DIR/recipes/varbase_ai_context || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild || true
+    - $CI_PROJECT_DIR/bin/dr recipe $CI_PROJECT_DIR/recipes/varbase_ai_safety || true
+    # The AI safety/taxonomy sub-recipes abort on config actions that need a live
+    # AI provider (API key / default chat model), which is unavailable in CI, so
+    # their observability/logging/automators modules never get enabled. Enable
+    # them explicitly so their admin pages exist (config actions are optional).
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT pm:enable ai_logging ai_observability ai_automators -y || true
+    # The AI editor-assistant recipe adds the ai_ckeditor "AI Assistant" button
+    # to the full_html toolbar. Rendering that plugin's settings subform on the
+    # text-format edit page performs a live AI-provider lookup, which hangs on
+    # the firewalled CI runner (no egress / no configured provider) and makes the
+    # page exceed the browser's navigation timeout. Strip the AI button/plugin
+    # from every editor (the ai_ckeditor module stays enabled) so the format
+    # config page loads; the AI feature itself needs a provider to be useful.
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT php:eval 'foreach(\Drupal::entityTypeManager()->getStorage("editor")->loadMultiple() as $e){$s=$e->getSettings();$c=false;if(!empty($s["toolbar"]["items"])&&is_array($s["toolbar"]["items"])){$n=array_values(array_filter($s["toolbar"]["items"],function($i){return stripos((string)$i,"ai_ckeditor")===false&&stripos((string)$i,"aickeditor")===false;}));if($n!==$s["toolbar"]["items"]){$s["toolbar"]["items"]=$n;$c=true;}}if(!empty($s["plugins"])&&is_array($s["plugins"])){foreach(array_keys($s["plugins"]) as $k){if(stripos($k,"ai_ckeditor")!==false){unset($s["plugins"][$k]);$c=true;}}}if($c){$e->setSettings($s);$e->save();}}' || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild || true
+    # = Seed the per-role testing users (registry mirrors cucumber.js users) =
+    - cd $CI_PROJECT_DIR/recipes/varbase_starter/scripts && bash add-testing-users.sh && cd $CI_PROJECT_DIR
+    # = Prepare Varbase site for deterministic testing =
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT pm:uninstall antibot -y || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT config:set user.flood ip_limit 1000000 -y
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT config:set user.flood user_limit 1000000 -y
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT config:set honeypot.settings time_limit 0 -y || true
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT php:eval '$b=\Drupal::entityTypeManager()->getStorage("block")->load("ai_chatbot"); if($b){$b->disable()->save();}' || true
+    # Keep CSS/JS aggregation ON: heavy admin pages (e.g. the CKEditor 5 + AI
+    # CKEditor text-format config at /admin/config/content/formats/manage/full_html)
+    # emit ~90 individual script tags with aggregation off, which exceeds the
+    # test browser's 30s domcontentloaded budget in CI. Aggregated (~9 files)
+    # they load fast and match production.
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT config:set system.performance css.preprocess 1 -y
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT config:set system.performance js.preprocess 1 -y
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT config:set system.logging error_level all -y
+    - !reference [.fragments, dump_db]
+  allow_failure: false
+
+# = Storybook build - own job (pre-test) =
+#
+# Tests the two Storybook commands developers rely on (mirrors what
+# `ddev storybook build` and `ddev yarn storybook:ddev` run): a static
+# `yarn storybook:build` and a booted `yarn storybook:dev` server, asserting
+# both produce/serve a non-empty story index. Self-contained: it builds the
+# codebase from the composer lock (so the vartheme_bs5 components + their
+# shipped *.stories.json are present) and needs no database or running Drupal -
+# the Server framework builds/serves the index client-side, no render backend.
+"📖 Storybook build":
+  extends: .testing-job-base
+  rules:
+    - <<: *run_on_release_refs
+    - changes:
+        - "web/modules/custom/**/*"
+        - "web/themes/custom/**/*"
+        - "web/recipes/custom/**/*"
+        - "web/themes/**/*"
+        - "**/*.stories.*"
+        - ".storybook/**/*"
+        - "package.json"
+        - "yarn.lock"
+        - "composer.lock"
+      when: on_success
+    # Its files did not change: keep the job LISTED as a manual (play button)
+    # so it never auto-runs on unrelated changes but stays visible and can be
+    # started on demand. allow_failure stays false so that when it IS run it
+    # must pass.
+    - when: manual
+      allow_failure: false
+  stage: pre-test
+  # Start only after Varbase is installed. This job builds its own codebase
+  # from the composer lock and needs no DB / running Drupal, so it pulls the
+  # composer.lock artifact but skips the heavy 📦 Install Varbase artifacts
+  # (artifacts: false) - the dependency is for ordering only.
+  needs:
+    - composer
+    - job: "📦 Install Varbase"
+      artifacts: false
+  timeout: 1h
+  cache: *varbase_cache
+  variables:
+    # Read by .storybook/middleware.js (STORYBOOK_SERVER_URL) and
+    # preview.ts (STORYBOOK_SERVER_RENDER_URL). Only embedded into the build;
+    # they do not need to be reachable for build/index to succeed.
+    STORYBOOK_SERVER_URL: "http://localhost"
+    STORYBOOK_SERVER_RENDER_URL: "http://localhost/storybook/stories/render"
+  artifacts:
+    when: always
+    paths:
+      - storybook/
+      - storybook-dev.log
+    expire_in: 7 days
+  before_script:
+    # Build the codebase from composer.lock (brings in web/themes/contrib/
+    # vartheme_bs5 with its shipped component stories). No web_db / Apache / DB.
+    - !reference [.fragments, prepare_code]
+    # Node.js 20 + yarn. --mode=skip-build skips the composer-bound postinstall
+    # (drupal-libraries-sync), which the static Storybook build does not need.
+    - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+    - apt-get install -y nodejs
+    - node --version && npm --version
+    - 'test -f .yarnrc.yml || echo "nodeLinker: node-modules" > .yarnrc.yml'
+    - corepack enable
+    - yarn install --mode=skip-build
+    # Chromium for the real-browser page check (Test 3). Playwright ships its
+    # own browser; --with-deps pulls the system libs the CI image lacks.
+    - ./node_modules/.bin/playwright install --with-deps chromium
+  script:
+    # Sanity: the component stories ship with the vartheme_bs5 theme (composer).
+    - 'test -d web/themes/contrib/vartheme_bs5/components || { echo "vartheme_bs5 components missing"; exit 1; }'
+    # = Test 1: static build (yarn storybook:build -> ./storybook) =
+    - yarn storybook:build
+    - 'test -f storybook/index.html || { echo "build produced no index.html"; exit 1; }'
+    - 'test -f storybook/index.json || { echo "build produced no index.json"; exit 1; }'
+    - |
+      BUILD_COUNT=$(grep -o '"id":' storybook/index.json | wc -l)
+      echo "Storybook build: ${BUILD_COUNT} entries in index.json"
+      test "${BUILD_COUNT}" -gt 0 || { echo "0 stories in built index.json"; exit 1; }
+    # = Test 2: dev server (yarn storybook:dev) boots and serves the index =
+    - yarn storybook:dev > storybook-dev.log 2>&1 &
+    - SB_PID=$!
+    - |
+      UP=0
+      for i in $(seq 1 60); do
+        if curl -sf http://127.0.0.1:6006/index.json | grep -q '"entries"'; then UP=1; break; fi
+        sleep 5
+      done
+      if [ "${UP}" != "1" ]; then echo "dev server did not come up on :6006"; tail -n 50 storybook-dev.log; kill "${SB_PID}" 2>/dev/null; exit 1; fi
+    - |
+      DEV_COUNT=$(curl -sf http://127.0.0.1:6006/index.json | grep -o '"id":' | wc -l)
+      echo "Storybook dev: ${DEV_COUNT} entries served on :6006"
+      test "${DEV_COUNT}" -gt 0 || { echo "dev server served 0 stories"; kill "${SB_PID}" 2>/dev/null; exit 1; }
+    # = Test 3: the Storybook PAGE renders in a real (headless) browser =
+    # Drives Chromium against the dev server and asserts a story renders inside
+    # the preview iframe. Uses the static "Welcome" story, so it passes without
+    # a running Drupal render backend.
+    - |
+      SB_URL=http://127.0.0.1:6006 node tests/storybook/check-storybook-page.mjs
+      RC=$?
+      kill "${SB_PID}" 2>/dev/null || true
+      test "${RC}" -eq 0 || { echo "Storybook page check failed"; tail -n 50 storybook-dev.log; exit 1; }
+  allow_failure: false
+
+# = Automated Functional Acceptance Testing (varbase-e2e) - one parallel job per feature folder =
+#
+# Each job restores the installed site from the 📦 Install Varbase artifacts and
+# runs ONE feature folder (FEATURES) writing its own JSON (CUCUMBER_JSON). The
+# `parallel: matrix` fans the folders out into independent, parallel jobs;
+# within a folder cucumber runs sequentially so setup -> consume scenarios keep
+# their order. 📊 Create reports merges every folder's JSON.
+"🧪 varbase-e2e":
+  extends: .testing-job-base
+  rules:
+    - <<: *run_on_release_refs
+    - changes: *varbase_app_changes
+      when: on_success
+    # Its files did not change: keep the job LISTED as a manual (play button)
+    # so it never auto-runs on unrelated changes but stays visible and can be
+    # started on demand. allow_failure stays false so that when it IS run it
+    # must pass.
+    - when: manual
+      allow_failure: false
+  stage: test
+  needs: [composer, "📦 Install Varbase"]
+  timeout: 2h
+  cache: *test_cache
+  parallel:
+    matrix:
+      # Suites that already fit one small job stay whole.
+      - SUITE:
+          - "02-user-management"
+          - "03-admin-pages"
+          - "05-content-pages"
+          - "06-content-blog"
+          - "07-content-contact"
+          - "08-content-homepage"
+          - "10-content-permissions"
+          - "11-content-workflow"
+          - "13-varbase-recipes"
+          - "14-ai"
+          - "15-quality"
+          - "17-search"
+      # The heaviest suites are split by feature-file globs so each parallel job
+      # stays short (they run concurrently, so more jobs do NOT add wall-clock -
+      # they lower it by shrinking the slowest job). SUITE names the report;
+      # FEATURES overrides the glob (cucumber.js reads process.env.FEATURES).
+      - SUITE: "01-website-base-requirements-a"
+        FEATURES: "tests/features/01-website-base-requirements/01-{00,01,02,03}-*.feature"
+      - SUITE: "01-website-base-requirements-b"
+        FEATURES: "tests/features/01-website-base-requirements/01-{04,05,06}-*.feature"
+      - SUITE: "01-website-base-requirements-c"
+        FEATURES: "tests/features/01-website-base-requirements/01-07-*.feature"
+      - SUITE: "04-admin-users-a"
+        FEATURES: "tests/features/04-admin-users/04-01-*.feature"
+      - SUITE: "04-admin-users-b"
+        FEATURES: "tests/features/04-admin-users/04-{02,03}-*.feature"
+      - SUITE: "09-drupal-canvas-a"
+        FEATURES: "tests/features/09-drupal-canvas/09-01-*.feature"
+      - SUITE: "09-drupal-canvas-b"
+        FEATURES: "tests/features/09-drupal-canvas/09-02-*.feature"
+      - SUITE: "09-drupal-canvas-c"
+        FEATURES: "tests/features/09-drupal-canvas/09-{03,04,05}-*.feature"
+      - SUITE: "09-drupal-canvas-d"
+        FEATURES: "tests/features/09-drupal-canvas/09-06-*.feature"
+      - SUITE: "12-content-access-and-lock-a"
+        FEATURES: "tests/features/12-content-access-and-lock/12-01-*.feature"
+      - SUITE: "12-content-access-and-lock-b"
+        FEATURES: "tests/features/12-content-access-and-lock/12-02-*.feature"
+  # Override the parent's services - we only need the database. Playwright
+  # bundles its own Chromium, so Selenium and chromedriver are not needed.
+  services:
+    - name: $_CONFIG_DOCKERHUB_ROOT/$_TARGET_DB_TYPE-$_TARGET_DB_VERSION:$_TARGET_DB_IMAGE_TAG
+      alias: database
+  variables:
+    DRUPAL_ADMIN_USERNAME: "webmaster"
+    DRUPAL_ADMIN_PASSWORD: "dD.123123ddd"
+    DRUPAL_TEST_BASE_URL: "http://localhost"
+    LAUNCH_URL: "http://localhost"
+    FORCE_COLOR: "1"
+    VARBASE_E2E_REPORT_DISABLE: "1"
+    FEATURES: "tests/features/$SUITE/**/*.feature"
+    CUCUMBER_JSON: "cucumber_report_$SUITE"
+  artifacts:
+    when: always
+    paths:
+      - tests/reports/
+      - tests/screenshots/
+      - tests/videos/
+    expire_in: 7 days
+  before_script:
+    # vendor/, node_modules/, web/ (incl. files + libraries) and the browsers
+    # arrive from the pull-only build cache - no composer/yarn/playwright build.
+    # Only the OS image libs, Apache and the Node runtime are set up, then the
+    # DB dump is restored (1s) and the suite runs.
+    - !reference [.fragments, prepare_runtime_only]
+    - !reference [.fragments, web_db]
+    - gunzip -c $CI_PROJECT_DIR/varbase-db.sql.gz | $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT sql:cli
+    - $CI_PROJECT_DIR/bin/drush --root=$CI_PROJECT_DIR/$_WEB_ROOT cache:rebuild
+  script:
+    # Run only this folder (FEATURES) -> its own JSON (CUCUMBER_JSON). Report
+    # generation is the separate create-reports job; disable varbase-e2e's auto
+    # HTML hook so it does not build a report from process.on('exit').
+    - VARBASE_E2E_REPORT_DISABLE=1 ./node_modules/.bin/cucumber-js --config cucumber.js --tags "not @wip"
+  allow_failure: false
+
+# = Create reports - own job =
+#
+# Merges the per-folder cucumber JSONs from every varbase-e2e Automated
+# matrix job (plus their screenshots / videos) into one HTML + PDF report. Runs
+# on a plain node image with varbase-e2e + a Chromium for the PDF - no Drupal.
+"📊 Create reports":
+  stage: post-test
+  rules:
+    # Auto-run in post-test whenever the test chain ran (release refs or the app
+    # changed), even if a test failed, so the full report + status is always
+    # published. Skipped only when no test ran (nothing to report).
+    - if: '$CI_COMMIT_TAG || $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      when: always
+    - changes: *varbase_app_changes
+      when: always
+    - when: never
+  image: node:20
+  # Always build the reports, even when a test job failed - so failures are
+  # captured. `dependencies` (not `needs`) pulls the artifacts from ALL matrix
+  # jobs of the test stage without gating on their success.
+  # DAG-schedule after the test matrix so the report is NOT held behind an
+  # un-played blocking-manual validate job (stage ordering). Runs when the
+  # whole varbase-e2e matrix passed.
+  needs:
+    - "🧪 varbase-e2e"
+  dependencies:
+    - "🧪 varbase-e2e"
+  cache: *varbase_cache
+  before_script:
+    - apt-get update -y && apt-get install -y jq
+    - npm install --no-save @vardot/varbase-e2e
+    # --with-deps installs Chromium's system libraries (libnspr4 etc.) which the
+    # plain node image lacks - needed for the PDF report's headless Chromium.
+    - ./node_modules/.bin/playwright install --with-deps chromium
+
+  # Runtime-only setup for the cached test jobs: OS image libs + git trust +
+  # Apache + Node runtime + Playwright system libs. NO composer install, NO
+  # yarn install, NO browser download - all of that arrives via the build cache.
+  script:
+    # Merge every folder's cucumber JSON array into one combined report.
+    - jq -s 'add' tests/reports/cucumber_report_*.json > tests/reports/cucumber_report.json
+    # Human-readable report name: varbase--{branch|tag}--automated-functional-testing-report--{date}--{time}
+    - export REPORT="varbase--${CI_COMMIT_REF_SLUG}--automated-functional-testing-report--$(date +%Y-%m-%d)--$(date +%H-%M)"
+    - node ./node_modules/@vardot/varbase-e2e/bin/generate-reports.js
+        --json tests/reports/cucumber_report.json
+        --out  "tests/reports/${REPORT}.html"
+        --format all
+        --pdf-out "tests/reports/${REPORT}.pdf"
+  artifacts:
+    when: always
+    paths:
+      - tests/reports/
+      - tests/screenshots/
+      - tests/videos/
+    expire_in: 30 days
+  allow_failure: false

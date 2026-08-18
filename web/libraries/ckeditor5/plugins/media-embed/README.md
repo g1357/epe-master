@@ -1,0 +1,34 @@
+CKEditor&nbsp;5 media embed feature
+========================================
+
+[![npm version](https://badge.fury.io/js/%40ckeditor%2Fckeditor5-media-embed.svg)](https://www.npmjs.com/package/@ckeditor/ckeditor5-media-embed)
+[![codecov](https://codecov.io/gh/ckeditor/ckeditor5/branch/master/graph/badge.svg)](https://codecov.io/gh/ckeditor/ckeditor5)
+[![CircleCI](https://circleci.com/gh/ckeditor/ckeditor5.svg?style=shield)](https://app.circleci.com/pipelines/github/ckeditor/ckeditor5?branch=master)
+
+This package implements the media embed feature for CKEditor&nbsp;5. You can use it to insert embeddable media such as YouTube or Vimeo videos and tweets into your rich text content.
+
+## Installation
+
+This plugin is part of the `ckeditor5` package. Install the whole package to use it.
+
+```bash
+npm install ckeditor5
+```
+
+## Create free account
+
+If you want to check full CKEditor&nbsp;5 capabilities, sign up for a [free non-commitment 14-day trial](https://portal.ckeditor.com/checkout?plan=free).
+
+## Demo
+
+Check out the [demo in the media embed feature guide](https://ckeditor.com/docs/ckeditor5/lts-v47/features/media-embed.html#demo).
+
+## Documentation
+
+See the [`@ckeditor/ckeditor5-media-embed` package](https://ckeditor.com/docs/ckeditor5/lts-v47/api/media-embed.html) page in [CKEditor&nbsp;5 documentation](https://ckeditor.com/docs/ckeditor5/lts-v47/).
+
+## License
+
+CKEditor&nbsp;5 Long Term Support Edition is licensed under a commercial license and is protected by copyright law.
+
+For more information, see: [https://ckeditor.com/pricing](https://ckeditor.com/pricing).

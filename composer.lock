@@ -3026,43 +3026,44 @@
         },
         {
             "name": "drupal/ai_integration_eca",
-            "version": "1.0.0-rc3",
+            "version": "1.0.0-rc4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai_integration_eca.git",
-                "reference": "1.0.0-rc3"
+                "reference": "1.0.0-rc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai_integration_eca-1.0.0-rc3.zip",
-                "reference": "1.0.0-rc3",
-                "shasum": "3396d9ccecd31636a69d4746d7d659e2e76e61a6"
+                "url": "https://ftp.drupal.org/files/projects/ai_integration_eca-1.0.0-rc4.zip",
+                "reference": "1.0.0-rc4",
+                "shasum": "fd9ce912fd2e4b017065865265f36a282b59a211"
             },
             "require": {
-                "drupal/ai": "^1.2",
-                "drupal/ai_agents": "^1.2",
+                "drupal/ai": "^1.4",
+                "drupal/ai_agents": "^1.3",
                 "drupal/core": "^10.3 || ^11",
-                "drupal/eca": "^2 || ^3",
-                "drupal/token": "^1.15"
+                "drupal/eca": "^2 || ^3"
             },
             "replace": {
                 "drupal/ai_eca": "*"
             },
             "require-dev": {
+                "drupal/ai": "^1.4",
                 "drupal/ai_agents": "*",
                 "drupal/ai_automators": "*",
+                "drupal/eca": "*",
                 "drupal/eca_content": "*",
                 "drupal/eca_ui": "*",
+                "drupal/modeler_api": "^1",
                 "drupal/schemata": "^1.0",
                 "drupal/schemata_json_schema": "*",
-                "drupal/token": "*",
                 "spatie/phpunit-snapshot-assertions": "^4.2 || ^5.1"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.0-rc3",
-                    "datestamp": "1765554443",
+                    "version": "1.0.0-rc4",
+                    "datestamp": "1786961650",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -3096,25 +3097,23 @@
         },
         {
             "name": "drupal/ai_provider_amazeeio",
-            "version": "1.4.1",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai_provider_amazeeio.git",
-                "reference": "1.4.1"
+                "reference": "1.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai_provider_amazeeio-1.4.1.zip",
-                "reference": "1.4.1",
-                "shasum": "2c5979834ffeaaef17e9257ea1d43a28985ff67a"
+                "url": "https://ftp.drupal.org/files/projects/ai_provider_amazeeio-1.3.1.zip",
+                "reference": "1.3.1",
+                "shasum": "46ac1776214c79674da9dfe120137bbaabb6efed"
             },
             "require": {
                 "drupal/ai": "^1.3",
                 "drupal/core": "^10.4 || ^11",
                 "drupal/key": "*",
-                "drupal/search_api": ">1.20",
-                "ext-pdo": "*",
-                "ext-pdo_pgsql": "*"
+                "drupal/search_api": ">1.20"
             },
             "require-dev": {
                 "drupal/config_ignore": "^3.0"
@@ -3122,8 +3121,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.4.1",
-                    "datestamp": "1786542114",
+                    "version": "1.3.1",
+                    "datestamp": "1779993035",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3321,6 +3320,88 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/ai_provider_openai"
             }
+        },
+        {
+            "name": "drupal/ai_recipe_guardrails_pii",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/ai_recipe_guardrails_pii.git",
+                "reference": "5867e5910e8022a0526f0e9c78731ef60b033259"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fai_recipe_guardrails_pii/repository/archive.zip?sha=5867e5910e8022a0526f0e9c78731ef60b033259",
+                "reference": "5867e5910e8022a0526f0e9c78731ef60b033259",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/ai": "^1.3",
+                "drupal/core": "^11.2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Dmitriiev",
+                    "homepage": "https://www.drupal.org/u/admitriiev"
+                },
+                {
+                    "name": "Christoph Breidert",
+                    "homepage": "https://www.drupal.org/u/breidert"
+                }
+            ],
+            "description": "AI Guardrails PII recipe for the Drupal AI module. Installs guardrails to detect and block PII such as email addresses, credit card numbers, IBANs, and phone numbers.",
+            "homepage": "https://www.drupal.org/project/ai_recipe_guardrails_pii",
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/ai_recipe_guardrails_pii",
+                "source": "https://git.drupalcode.org/project/ai_recipe_guardrails_pii/-/tree/1.0.0"
+            },
+            "time": "2026-03-18T19:28:41+00:00"
+        },
+        {
+            "name": "drupal/ai_recipe_guardrails_prompt_safety",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/ai_recipe_guardrails_prompt_safety.git",
+                "reference": "56d68a5bd9dd3742f6d23f7d9f04cfec026ee537"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fai_recipe_guardrails_prompt_safety/repository/archive.zip?sha=56d68a5bd9dd3742f6d23f7d9f04cfec026ee537",
+                "reference": "56d68a5bd9dd3742f6d23f7d9f04cfec026ee537",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/ai": "^1.3",
+                "drupal/core": "^11.2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Artem Dmitriiev",
+                    "homepage": "https://www.drupal.org/u/admitriiev"
+                },
+                {
+                    "name": "Christoph Breidert",
+                    "homepage": "https://www.drupal.org/u/breidert"
+                }
+            ],
+            "description": "AI Guardrails Prompt Safety recipe for the Drupal AI module. Installs guardrails to block injection attacks, XSS patterns, and liability-triggering topics such as legal advice, medical advice, and sensitive subjects.",
+            "homepage": "https://www.drupal.org/project/ai_recipe_guardrails_prompt_safety",
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/ai_recipe_guardrails_prompt_safety",
+                "source": "https://git.drupalcode.org/project/ai_recipe_guardrails_prompt_safety/-/tree/1.0.0"
+            },
+            "time": "2026-03-18T20:09:59+00:00"
         },
         {
             "name": "drupal/anchor_link",
@@ -5650,17 +5731,17 @@
         },
         {
             "name": "drupal/dashboard",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/dashboard.git",
-                "reference": "2.2.0"
+                "reference": "2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/dashboard-2.2.0.zip",
-                "reference": "2.2.0",
-                "shasum": "2c382d098f1e029c190fa204ad3f846fbc214184"
+                "url": "https://ftp.drupal.org/files/projects/dashboard-2.2.1.zip",
+                "reference": "2.2.1",
+                "shasum": "89f5b3587261c36e972a3569f2489bb5095552c8"
             },
             "require": {
                 "drupal/core": "^11.2"
@@ -5671,8 +5752,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.2.0",
-                    "datestamp": "1768063362",
+                    "version": "2.2.1",
+                    "datestamp": "1786974767",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6172,6 +6253,289 @@
             }
         },
         {
+            "name": "drupal/drupal_cms_accessibility_tools",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_accessibility_tools.git",
+                "reference": "46259d6c6745a36436778934e43586478fc2dc91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_accessibility_tools/repository/archive.zip?sha=46259d6c6745a36436778934e43586478fc2dc91",
+                "reference": "46259d6c6745a36436778934e43586478fc2dc91",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/drupal_cms_content_type_base": "^2",
+                "drupal/editoria11y": "^2.2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Adds automated checks to help ensure content conforms to web accessibility guidelines.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_accessibility_tools/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_admin_ui",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_admin_ui.git",
+                "reference": "855de14cfc15555a05441fb01c4f328dd50fd9fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_admin_ui/repository/archive.zip?sha=855de14cfc15555a05441fb01c4f328dd50fd9fc",
+                "reference": "855de14cfc15555a05441fb01c4f328dd50fd9fc",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/automatic_updates": "^4.1",
+                "drupal/coffee": "^2",
+                "drupal/core": "^11.3.10",
+                "drupal/dashboard": "^2.2",
+                "drupal/drupal_cms_helper": "^2",
+                "drupal/drupical": "^1",
+                "drupal/gin": "^5",
+                "drupal/gin_login": "^2.1.4",
+                "drupal/navigation_extra_tools": "^1.3",
+                "drupal/project_browser": "^2.1-beta3",
+                "drupal/sam": "^1.2",
+                "drupal/tagify": "^1.2",
+                "drupal/view_password": "^6"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Sets up a nice administrative theme and navigation.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_admin_ui/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_ai",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_ai.git",
+                "reference": "fc351daa850ca70560d7f633d7c5e298e7ae7293"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_ai/repository/archive.zip?sha=fc351daa850ca70560d7f633d7c5e298e7ae7293",
+                "reference": "fc351daa850ca70560d7f633d7c5e298e7ae7293",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/ai": "^1.2.6",
+                "drupal/ai_agents": "^1.2",
+                "drupal/ai_dashboard": "^1",
+                "drupal/ai_image_alt_text": "^1",
+                "drupal/ai_provider_amazeeio": "^1.2.7",
+                "drupal/ai_provider_anthropic": "^1.1",
+                "drupal/ai_provider_openai": "^1.1",
+                "drupal/canvas": "^1.2",
+                "drupal/core": "^11.3.10",
+                "drupal/drupal_cms_privacy_basic": "^2",
+                "drupal/easy_encryption": "^1",
+                "league/commonmark": "^2.4"
+            },
+            "conflict": {
+                "drupal/project_browser": "<2-alpha7"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Adds integration with AI services, such as alt text generation and a chat bot to assist with site building. Requires an API key from Open AI or Anthropic.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_ai/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_anti_spam",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_anti_spam.git",
+                "reference": "200dc130d727a862ed88163e623d7771dd461cae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_anti_spam/repository/archive.zip?sha=200dc130d727a862ed88163e623d7771dd461cae",
+                "reference": "200dc130d727a862ed88163e623d7771dd461cae",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/captcha": "^2.0.7",
+                "drupal/core": "^11.3.10",
+                "drupal/friendly_captcha_challenge": "^0.9",
+                "drupal/friendlycaptcha": "^1.1",
+                "drupal/honeypot": "^2.1"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Sets up anti-spam and anti-abuse functionality.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_anti_spam/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_authentication",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_authentication.git",
+                "reference": "0c3da4df3865b02acf9413691f2ea1f964912ae6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_authentication/repository/archive.zip?sha=0c3da4df3865b02acf9413691f2ea1f964912ae6",
+                "reference": "0c3da4df3865b02acf9413691f2ea1f964912ae6",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/bpmn_io": "^3",
+                "drupal/core": "^11.3.10",
+                "drupal/drupal_cms_helper": "^2",
+                "drupal/eca": "^3.0.1",
+                "drupal/login_emailusername": "^3",
+                "drupal/modeler_api": "^1",
+                "drupal/svg_image": "^3.1",
+                "drupal/token": "^1"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Sets up a site with useful authentication features.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_authentication/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_content_type_base",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_content_type_base.git",
+                "reference": "d39c310909a8b813cd7c3160734165b356f07516"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_content_type_base/repository/archive.zip?sha=d39c310909a8b813cd7c3160734165b356f07516",
+                "reference": "d39c310909a8b813cd7c3160734165b356f07516",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/autosave_form": "^1.10",
+                "drupal/bpmn_io": "^3",
+                "drupal/canvas": "^1.2",
+                "drupal/core": "^11.3.10",
+                "drupal/drupal_cms_helper": "^2",
+                "drupal/eca": "^3.0.8",
+                "drupal/linkit": "^7",
+                "drupal/modeler_api": "^1",
+                "drupal/pathauto": "^1.13",
+                "drupal/scheduler": "^2.2",
+                "drupal/scheduler_content_moderation_integration": "^3.0.4",
+                "drupal/tagify": "^1.2",
+                "drupal/token": "^1",
+                "drupal/trash": "^3.0.13"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Provides basic tools for creating content.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_content_type_base/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_forms",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_forms.git",
+                "reference": "bc76e4a888812011ee06a745afde07389cff02b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_forms/repository/archive.zip?sha=bc76e4a888812011ee06a745afde07389cff02b7",
+                "reference": "bc76e4a888812011ee06a745afde07389cff02b7",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^11.3.10",
+                "drupal/drupal_cms_anti_spam": "^2",
+                "drupal/drupal_cms_content_type_base": "^2",
+                "drupal/webform": "^6.3-beta3"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Adds a simple contact form, and tools for building forms.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_forms/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_google_analytics",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_google_analytics.git",
+                "reference": "866f11b4bbde2510c7e503051fbe0ccebc1bb1d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_google_analytics/repository/archive.zip?sha=866f11b4bbde2510c7e503051fbe0ccebc1bb1d3",
+                "reference": "866f11b4bbde2510c7e503051fbe0ccebc1bb1d3",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^11.3.10",
+                "drupal/drupal_cms_privacy_basic": "^2",
+                "drupal/google_tag": "^2.0.7"
+            },
+            "conflict": {
+                "drupal/project_browser": "<2-alpha7"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Adds tracking of website traffic using Google Analytics and Google Tag Manager. Requires a Google Tag Manager ID.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_google_analytics/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
             "name": "drupal/drupal_cms_helper",
             "version": "2.1.3",
             "source": {
@@ -6219,6 +6583,196 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/drupal_cms_helper"
             }
+        },
+        {
+            "name": "drupal/drupal_cms_media",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_media.git",
+                "reference": "3830588e14b982634c482f31bac93f338329710e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_media/repository/archive.zip?sha=3830588e14b982634c482f31bac93f338329710e",
+                "reference": "3830588e14b982634c482f31bac93f338329710e",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/bpmn_io": "^3",
+                "drupal/core": "^11.3.10",
+                "drupal/drupal_cms_helper": "^2",
+                "drupal/drupal_cms_privacy_basic": "^2",
+                "drupal/eca": "^3.0.4",
+                "drupal/focal_point": "^2",
+                "drupal/media_file_delete": "^1",
+                "drupal/media_library_bulk_upload": "^1",
+                "drupal/modeler_api": "^1",
+                "drupal/svg_image": "^3.1",
+                "drupal/token": "^1"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Sets up basic media types configuration including responsive image styles, view modes, focal point-based cropping and SVG images, video support, and file uploads.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_media/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_privacy_basic",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_privacy_basic.git",
+                "reference": "2733bcb1084ae9df3dcffd9a0d8669ee3d345ecb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_privacy_basic/repository/archive.zip?sha=2733bcb1084ae9df3dcffd9a0d8669ee3d345ecb",
+                "reference": "2733bcb1084ae9df3dcffd9a0d8669ee3d345ecb",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/bpmn_io": "^3",
+                "drupal/drupal_cms_content_type_base": "^2",
+                "drupal/eca": "^3.0.1",
+                "drupal/klaro": "^3",
+                "drupal/menu_link_attributes": "^1.5",
+                "drupal/modeler_api": "^1"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Adds basic privacy features such as consent management and remote content blocking.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_privacy_basic/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_search",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_search.git",
+                "reference": "6cbaa0cfe95e570804d2f08e8786be878ccf6334"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_search/repository/archive.zip?sha=6cbaa0cfe95e570804d2f08e8786be878ccf6334",
+                "reference": "6cbaa0cfe95e570804d2f08e8786be878ccf6334",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/canvas": "^1.2",
+                "drupal/eca": "^3.0.8",
+                "drupal/search_api": "^1.39",
+                "drupal/search_api_exclude": "^2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Adds a search to help visitors find content.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_search/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_seo_basic",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_seo_basic.git",
+                "reference": "54bc03feccae61a000fa8f35518146acf5c334fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_seo_basic/repository/archive.zip?sha=54bc03feccae61a000fa8f35518146acf5c334fb",
+                "reference": "54bc03feccae61a000fa8f35518146acf5c334fb",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^11.3.10",
+                "drupal/easy_breadcrumb": "^2.0.9",
+                "drupal/pathauto": "^1.13",
+                "drupal/redirect": "^1.10",
+                "drupal/token": "^1.15"
+            },
+            "suggest": {
+                "drupal/drupal_cms_accessibility_tools": "Adds automated checks to help ensure content conforms to web accessibility guidelines.",
+                "drupal/drupal_cms_google_analytics": "Adds website traffic tracking with Google Analytics.",
+                "drupal/drupal_cms_seo_tools": "Add additional SEO tools to help configure and manage meta tags, SEO analysis, sitemaps, with an SEO checklist and dashboard."
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Provides basic SEO best practices.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_seo_basic/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
+        },
+        {
+            "name": "drupal/drupal_cms_seo_tools",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/drupal_cms_seo_tools.git",
+                "reference": "4093aafdb6da70085879d3260ab942375287b1bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fdrupal_cms_seo_tools/repository/archive.zip?sha=4093aafdb6da70085879d3260ab942375287b1bd",
+                "reference": "4093aafdb6da70085879d3260ab942375287b1bd",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/bpmn_io": "^3",
+                "drupal/core": "^11.3.10",
+                "drupal/eca": "^3.0.5",
+                "drupal/field_group": "^3.6 || ^4",
+                "drupal/focal_point": "^2.1",
+                "drupal/metatag": "^2",
+                "drupal/modeler_api": "^1",
+                "drupal/seo_checklist": "^5.2.1",
+                "drupal/simple_sitemap": "^4.2.2",
+                "drupal/token_or": "^2.2",
+                "drupal/yoast_seo": "^2.1"
+            },
+            "suggest": {
+                "drupal/drupal_cms_accessibility_tools": "Adds automated checks to help ensure content conforms to web accessibility guidelines.",
+                "drupal/drupal_cms_google_analytics": "Adds tracking of website traffic using Google Analytics and Google Tag Manager."
+            },
+            "type": "drupal-recipe",
+            "extra": {
+                "drupal-scaffold": {
+                    "file-mapping": {
+                        "[web-root]/robots.txt": {
+                            "append": "robots.append.txt"
+                        }
+                    }
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Adds common search engine optimisation tools such as meta tags, XML sitemap, robots.txt management and more.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/drupal_cms_seo_tools/-/tree/2.1.3"
+            },
+            "time": "2026-06-01T22:35:21+00:00"
         },
         {
             "name": "drupal/drupical",
@@ -6434,6 +6988,112 @@
             }
         },
         {
+            "name": "drupal/easy_email_express",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/easy_email_express.git",
+                "reference": "aff24f73fe8b2e04cbb524a7887c035385ba8662"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Feasy_email_express/repository/archive.zip?sha=aff24f73fe8b2e04cbb524a7887c035385ba8662",
+                "reference": "aff24f73fe8b2e04cbb524a7887c035385ba8662",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "drupal/easy_email_standard": "^1.0.2",
+                "drupal/easy_email_types_core": "^1.0.3",
+                "drupal/easy_email_types_default": "^1.0.1"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Easy Email configuration that replaces all core emails with HTML formatted emails.",
+            "homepage": "https://www.drupal.org/project/easy_email_express",
+            "keywords": [
+                "drupal"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/easy_email_express",
+                "source": "https://git.drupalcode.org/project/easy_email_express"
+            },
+            "time": "2025-06-16T14:18:11+00:00"
+        },
+        {
+            "name": "drupal/easy_email_standard",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/easy_email_standard.git",
+                "reference": "e252ab7285864d7e3d63ee3e78d5c7a518f00a17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Feasy_email_standard/repository/archive.zip?sha=e252ab7285864d7e3d63ee3e78d5c7a518f00a17",
+                "reference": "e252ab7285864d7e3d63ee3e78d5c7a518f00a17",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "drupal/easy_email": "^3.0.2",
+                "drupal/easy_email_theme": "^1",
+                "drupal/mailsystem": "^4",
+                "drupal/symfony_mailer_lite": "^2.0.1"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Easy Email module and theme for sending HTML emails from Drupal.",
+            "homepage": "https://www.drupal.org/project/easy_email_standard",
+            "keywords": [
+                "drupal"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/easy_email_standard",
+                "source": "https://git.drupalcode.org/project/easy_email_standard"
+            },
+            "time": "2025-06-16T14:15:30+00:00"
+        },
+        {
+            "name": "drupal/easy_email_text_format",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/easy_email_text_format.git",
+                "reference": "d7a98a051dfa418cd185cf5afe98e9347c819bc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Feasy_email_text_format/repository/archive.zip?sha=d7a98a051dfa418cd185cf5afe98e9347c819bc1",
+                "reference": "d7a98a051dfa418cd185cf5afe98e9347c819bc1",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^11"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Text format and editor config for editing HTML body of Easy Email templates.",
+            "homepage": "https://www.drupal.org/project/easy_email_text_format",
+            "keywords": [
+                "drupal"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/easy_email_text_format",
+                "source": "https://git.drupalcode.org/project/easy_email_text_format"
+            },
+            "time": "2026-03-31T10:51:36+00:00"
+        },
+        {
             "name": "drupal/easy_email_theme",
             "version": "1.1.0",
             "source": {
@@ -6476,6 +7136,76 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/easy_email_theme"
             }
+        },
+        {
+            "name": "drupal/easy_email_types_core",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/easy_email_types_core.git",
+                "reference": "d8e41ba370031d8978e4dc30efaed9d91be1a75c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Feasy_email_types_core/repository/archive.zip?sha=d8e41ba370031d8978e4dc30efaed9d91be1a75c",
+                "reference": "d8e41ba370031d8978e4dc30efaed9d91be1a75c",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "drupal/easy_email": "^3.0.2",
+                "drupal/easy_email_text_format": "^1"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Easy Email templates that replicate and override the content of emails sent by Drupal core with HTML-formatted versions.",
+            "homepage": "https://www.drupal.org/project/easy_email_types_core",
+            "keywords": [
+                "drupal"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/easy_email_types_core",
+                "source": "https://git.drupalcode.org/project/easy_email_types_core"
+            },
+            "time": "2025-06-16T14:13:31+00:00"
+        },
+        {
+            "name": "drupal/easy_email_types_default",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/easy_email_types_default.git",
+                "reference": "7f981984cd1d1d9e6eddf4a914210d7ae3d490e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Feasy_email_types_default/repository/archive.zip?sha=7f981984cd1d1d9e6eddf4a914210d7ae3d490e2",
+                "reference": "7f981984cd1d1d9e6eddf4a914210d7ae3d490e2",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11",
+                "drupal/easy_email": "^3.0.2",
+                "drupal/easy_email_text_format": "^1.0.2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "A default Easy Email template configured to override all emails sent from the site.",
+            "homepage": "https://www.drupal.org/project/easy_email_types_default",
+            "keywords": [
+                "drupal"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/easy_email_types_default",
+                "source": "https://git.drupalcode.org/project/easy_email_types_default"
+            },
+            "time": "2025-06-16T14:10:36+00:00"
         },
         {
             "name": "drupal/easy_encryption",
@@ -6544,17 +7274,17 @@
         },
         {
             "name": "drupal/eca",
-            "version": "3.1.5",
+            "version": "3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/eca.git",
-                "reference": "3.1.5"
+                "reference": "3.1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/eca-3.1.5.zip",
-                "reference": "3.1.5",
-                "shasum": "56e2969e66e925160570e11d09548341f631fad6"
+                "url": "https://ftp.drupal.org/files/projects/eca-3.1.6.zip",
+                "reference": "3.1.6",
+                "shasum": "28550de9de10740144b30954bf9bdb302e0d89cc"
             },
             "require": {
                 "dragonmantank/cron-expression": "^3.1",
@@ -6573,8 +7303,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.1.5",
-                    "datestamp": "1786381321",
+                    "version": "3.1.6",
+                    "datestamp": "1786986861",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10076,17 +10806,17 @@
         },
         {
             "name": "drupal/modeler",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/modeler.git",
-                "reference": "1.0.4"
+                "reference": "1.0.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/modeler-1.0.4.zip",
-                "reference": "1.0.4",
-                "shasum": "2bb20bc1328d72462f8afd04141a2f3179f7e442"
+                "url": "https://ftp.drupal.org/files/projects/modeler-1.0.5.zip",
+                "reference": "1.0.5",
+                "shasum": "0bcf2912f1f6368961442f530896fe6fdcd62b97"
             },
             "require": {
                 "drupal/core": "^11.3 || ^12.0",
@@ -10096,8 +10826,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.4",
-                    "datestamp": "1783337230",
+                    "version": "1.0.5",
+                    "datestamp": "1786962944",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10131,17 +10861,17 @@
         },
         {
             "name": "drupal/modeler_api",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/modeler_api.git",
-                "reference": "1.1.3"
+                "reference": "1.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/modeler_api-1.1.3.zip",
-                "reference": "1.1.3",
-                "shasum": "f66fb69dc94a9404cf963fb58398b5203f3b3387"
+                "url": "https://ftp.drupal.org/files/projects/modeler_api-1.1.4.zip",
+                "reference": "1.1.4",
+                "shasum": "e33d844ba9ab523b7bf22078bdfe52dc2e7a3197"
             },
             "require": {
                 "drupal/core": "^11.3 || ^12.0",
@@ -10150,8 +10880,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.1.3",
-                    "datestamp": "1780496337",
+                    "version": "1.1.4",
+                    "datestamp": "1786962161",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -14106,6 +14836,236 @@
             }
         },
         {
+            "name": "drupal/varbase_admin_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_admin_base.git",
+                "reference": "350db033109ffe91d586bc4b2acc0899e67ed1ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_admin_base/repository/archive.zip?sha=350db033109ffe91d586bc4b2acc0899e67ed1ff",
+                "reference": "350db033109ffe91d586bc4b2acc0899e67ed1ff",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/admin_audit_trail": "~1",
+                "drupal/autosave_form": "~1",
+                "drupal/coffee": "~2",
+                "drupal/config_perms": "~2",
+                "drupal/core": "~11.4.0",
+                "drupal/eca": "~3",
+                "drupal/eca_vbo": "~2",
+                "drupal/entity_clone": "~2",
+                "drupal/gin": "~5",
+                "drupal/gin_everywhere": "~1",
+                "drupal/gin_login": "~2",
+                "drupal/gin_toolbar": "~3",
+                "drupal/gin_type_tray": "~1",
+                "drupal/length_indicator": "~1",
+                "drupal/masquerade": "~2",
+                "drupal/maxlength": "~3",
+                "drupal/menu_admin_per_menu": "~1",
+                "drupal/navigation_extra_tools": "~1",
+                "drupal/prevent_homepage_deletion": "~3",
+                "drupal/revision_log_default": "~1",
+                "drupal/roleassign": "~2",
+                "drupal/taxonomy_access_fix": "~4",
+                "drupal/taxonomy_manager": "~2",
+                "drupal/trash": "~3",
+                "drupal/ui_icons": "~1",
+                "drupal/userprotect": "~1",
+                "drupal/varbase_recipes": "~1.0.0",
+                "drupal/views_bulk_edit": "~3",
+                "drupal/views_bulk_operations": "~4"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage default installed modules, configs and permissions for Varbase admin experience.",
+            "keywords": [
+                "Varbase recipes",
+                "admin",
+                "administration",
+                "drupal recipe",
+                "drupal recipes",
+                "gin",
+                "navigation",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_admin_base",
+                "source": "http://cgit.drupalcode.org/varbase_admin_base"
+            },
+            "time": "2026-08-15T15:53:54+00:00"
+        },
+        {
+            "name": "drupal/varbase_ai_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_ai_base.git",
+                "reference": "258a1bfe7b0acc12e96885664cf8166f4617ae6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_ai_base/repository/archive.zip?sha=258a1bfe7b0acc12e96885664cf8166f4617ae6e",
+                "reference": "258a1bfe7b0acc12e96885664cf8166f4617ae6e",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/ai_integration_eca": "~1",
+                "drupal/core": "~11.4.0",
+                "drupal/drupal_cms_ai": "~2",
+                "drupal/eca": "~3",
+                "drupal/varbase_ai_context": "~1.0.0",
+                "drupal/varbase_ai_editor_assistant": "~2.0.0",
+                "drupal/varbase_ai_figma_base": "~1.0.0",
+                "drupal/varbase_ai_image_alt": "~2.0.0",
+                "drupal/varbase_ai_safety": "~1.0.0",
+                "drupal/varbase_ai_taxonomy_tagging": "~2.0.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A base recipe to install core AI modules and apply default Varbase AI configurations including OpenAI integration, image alt text generation, and CKEditor AI assistant.",
+            "keywords": [
+                "AI base",
+                "Drupal AI",
+                "Varbase recipes",
+                "ai",
+                "ai assistant",
+                "drupal recipe",
+                "drupal recipes",
+                "openai",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/varbase_ai_base/-/tree/1.0.0-rc1"
+            },
+            "time": "2026-08-15T16:14:45+00:00"
+        },
+        {
+            "name": "drupal/varbase_ai_context",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_ai_context.git",
+                "reference": "b8a5e75692b4cd02ba3f57cab5998b0b2679a8ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_ai_context/repository/archive.zip?sha=b8a5e75692b4cd02ba3f57cab5998b0b2679a8ed",
+                "reference": "b8a5e75692b4cd02ba3f57cab5998b0b2679a8ed",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/ai_context": "~1.0",
+                "drupal/core": "~11.4.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Pre-populates starter context items (Brand & Identity Guidelines, AI Editorial Rules, AI Safety Guardrails) for every Varbase site via the Context Control Center (CCC) module.",
+            "homepage": "https://www.drupal.org/project/varbase_ai_context",
+            "keywords": [
+                "AI Context",
+                "Context Control Center",
+                "Drupal AI",
+                "Varbase AI",
+                "Varbase recipes",
+                "ai",
+                "ccc",
+                "drupal recipe",
+                "drupal recipes",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_ai_context",
+                "source": "https://git.drupalcode.org/project/varbase_ai_context/-/tree/1.0.0-rc1"
+            },
+            "time": "2026-08-15T15:51:12+00:00"
+        },
+        {
+            "name": "drupal/varbase_ai_editor_assistant",
+            "version": "2.0.0-rc2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_ai_editor_assistant.git",
+                "reference": "0db86ae788d3df7b10fd1edec9d1e01871e099a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_ai_editor_assistant/repository/archive.zip?sha=0db86ae788d3df7b10fd1edec9d1e01871e099a7",
+                "reference": "0db86ae788d3df7b10fd1edec9d1e01871e099a7",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/drupal_cms_ai": "~2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to grant Varbase user roles the permissions needed for the AI-powered CKEditor 5 assistant, as provided by the Drupal CMS AI default recipe",
+            "keywords": [
+                "AI Editor",
+                "Text format",
+                "Varbase recipes",
+                "ai assistant",
+                "ckeditor 5",
+                "drupal recipe",
+                "drupal recipes",
+                "recipe",
+                "rich editor",
+                "varbase recipe"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/varbase_ai_editor_assistant/-/tree/2.0.0-rc2"
+            },
+            "time": "2026-08-16T14:03:03+00:00"
+        },
+        {
             "name": "drupal/varbase_ai_figma",
             "version": "1.0.0-rc1",
             "source": {
@@ -14191,6 +15151,255 @@
             }
         },
         {
+            "name": "drupal/varbase_ai_figma_base",
+            "version": "1.0.0-rc2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_ai_figma_base.git",
+                "reference": "71794f4e0aa2701c8712055d27ca7a9110838f7b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_ai_figma_base/repository/archive.zip?sha=71794f4e0aa2701c8712055d27ca7a9110838f7b",
+                "reference": "71794f4e0aa2701c8712055d27ca7a9110838f7b",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/ai": "^1.1",
+                "drupal/ai_agent_modes": "~1.0.0",
+                "drupal/ai_agents": "^1.1",
+                "drupal/ai_context": "^1.0",
+                "drupal/ai_figma": "~1.0.0",
+                "drupal/canvas": "^1.6",
+                "drupal/core": "~11.4.0",
+                "drupal/drupal_cms_ai": "~2",
+                "drupal/easy_encryption": "^1.0",
+                "drupal/key": "^1.18",
+                "drupal/varbase_ai_context": "~1.0.0",
+                "drupal/varbase_ai_figma": "~1.0.0"
+            },
+            "require-dev": {
+                "drupal/ai_provider_amazeeio": "^1.3",
+                "drupal/ai_simple_provider_installer": "^1.0@alpha"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Base recipe for Varbase AI Figma (vartheme_bs5 / Bootstrap 5.3) - applies Varbase AI Base, installs ai_figma + varbase_ai_figma, Context Control Center, and the targeted Figma AI Context items, and wires the Figma tools into the Drupal Canvas AI Orchestrator.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/varbase_ai_figma_base/-/tree/1.0.0-rc2"
+            },
+            "time": "2026-08-16T14:02:18+00:00"
+        },
+        {
+            "name": "drupal/varbase_ai_image_alt",
+            "version": "2.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_ai_image_alt.git",
+                "reference": "c31c260bf61521f48b43f37e31cbce1866366a2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_ai_image_alt/repository/archive.zip?sha=c31c260bf61521f48b43f37e31cbce1866366a2a",
+                "reference": "c31c260bf61521f48b43f37e31cbce1866366a2a",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/drupal_cms_ai": "~2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Grants Varbase user roles the permission to generate AI image alt text, provided by the Drupal CMS AI ecosystem.",
+            "keywords": [
+                "Varbase recipes",
+                "alt text",
+                "alternative text",
+                "drupal recipe",
+                "drupal recipes",
+                "image",
+                "media",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/varbase_ai_image_alt/-/tree/2.0.0-rc1"
+            },
+            "time": "2026-08-15T15:38:14+00:00"
+        },
+        {
+            "name": "drupal/varbase_ai_safety",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_ai_safety.git",
+                "reference": "a86bb7114339e49cfe643a5fda8ef6f488189335"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_ai_safety/repository/archive.zip?sha=a86bb7114339e49cfe643a5fda8ef6f488189335",
+                "reference": "a86bb7114339e49cfe643a5fda8ef6f488189335",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/ai": "~1",
+                "drupal/ai_recipe_guardrails_pii": "~1",
+                "drupal/ai_recipe_guardrails_prompt_safety": "~1",
+                "drupal/core": "~11.4.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Bundles the complete AI safety stack for Varbase: Prompt Safety Liability set, Prompt Safety Security set, PII Protection set, AI Logging with 90-day retention, and AI Observability.",
+            "homepage": "https://www.drupal.org/project/varbase_ai_safety",
+            "keywords": [
+                "AI Guardrails",
+                "AI Logging",
+                "AI Observability",
+                "AI Safety",
+                "Drupal AI",
+                "Prompt Safety",
+                "Varbase AI",
+                "Varbase recipes",
+                "ai",
+                "drupal recipe",
+                "drupal recipes",
+                "pii",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_ai_safety",
+                "source": "https://git.drupalcode.org/project/varbase_ai_safety/-/tree/1.0.0-rc1"
+            },
+            "time": "2026-08-15T15:50:36+00:00"
+        },
+        {
+            "name": "drupal/varbase_ai_taxonomy_tagging",
+            "version": "2.0.0-rc2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_ai_taxonomy_tagging.git",
+                "reference": "b7dc36276493ea6eff2a38350a70020f42a83122"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_ai_taxonomy_tagging/repository/archive.zip?sha=b7dc36276493ea6eff2a38350a70020f42a83122",
+                "reference": "b7dc36276493ea6eff2a38350a70020f42a83122",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/drupal_cms_ai": "~2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Enables AI-powered taxonomy tagging for content and grants Varbase editorial roles the required permissions to use AI tagging features provided by the Drupal CMS AI default recipe.",
+            "keywords": [
+                "Varbase recipes",
+                "drupal recipe",
+                "drupal recipes",
+                "recipe",
+                "tagging",
+                "tags",
+                "taxonomy",
+                "varbase recipe"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/varbase_ai_taxonomy_tagging/-/tree/2.0.0-rc2"
+            },
+            "time": "2026-08-16T14:02:38+00:00"
+        },
+        {
+            "name": "drupal/varbase_api_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_api_base.git",
+                "reference": "01d460b7e4dda798a70d8f7665f741d35bd9fe6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_api_base/repository/archive.zip?sha=01d460b7e4dda798a70d8f7665f741d35bd9fe6f",
+                "reference": "01d460b7e4dda798a70d8f7665f741d35bd9fe6f",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/consumers": "~1",
+                "drupal/core": "~11.4.0",
+                "drupal/jsonapi_extras": "~3",
+                "drupal/openapi": "~2",
+                "drupal/openapi_jsonapi": "~3",
+                "drupal/openapi_rest": "~2",
+                "drupal/openapi_ui_redoc": "~1",
+                "drupal/openapi_ui_swagger": "~1",
+                "drupal/restui": "~1",
+                "drupal/schema_metatag": "~3",
+                "drupal/simple_oauth": "~6"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to set up JSON:API with authentication, authorization, and OpenAPI documentation for easy content ingestion by other applications.",
+            "keywords": [
+                "JSON-API",
+                "REST API",
+                "Varbase recipes",
+                "api",
+                "drupal recipe",
+                "drupal recipes",
+                "openapi",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_api_base",
+                "source": "http://cgit.drupalcode.org/varbase_api_base"
+            },
+            "time": "2026-08-15T15:18:39+00:00"
+        },
+        {
             "name": "drupal/varbase_auth",
             "version": "11.0.0-beta1",
             "source": {
@@ -14252,6 +15461,102 @@
                 "source": "http://cgit.drupalcode.org/varbase_auth",
                 "issues": "https://www.drupal.org/project/issues/varbase_auth"
             }
+        },
+        {
+            "name": "drupal/varbase_auth_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_auth_base.git",
+                "reference": "7190d5c750f5803d2dc72119d1993fb1c1f0157c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_auth_base/repository/archive.zip?sha=7190d5c750f5803d2dc72119d1993fb1c1f0157c",
+                "reference": "7190d5c750f5803d2dc72119d1993fb1c1f0157c",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/social_api": "~4.1.0",
+                "drupal/social_auth": "~4.2.0",
+                "drupal/social_auth_facebook": "~4",
+                "drupal/social_auth_google": "~4",
+                "drupal/social_auth_linkedin": "~4",
+                "drupal/varbase_auth": "~11.0.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A base recipe to install and configure Varbase Social Single Sign-On with default social authentication modules and configurations.",
+            "keywords": [
+                "Social Login",
+                "Varbase recipes",
+                "auth",
+                "drupal recipe",
+                "drupal recipes",
+                "recipe",
+                "single sign-on",
+                "social auth",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_auth_base",
+                "source": "http://cgit.drupalcode.org/varbase_auth_base"
+            },
+            "time": "2026-08-15T15:52:34+00:00"
+        },
+        {
+            "name": "drupal/varbase_blog_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_blog_base.git",
+                "reference": "03ebbaf695fd4b66bf5c1226139c308b38a6f92f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_blog_base/repository/archive.zip?sha=03ebbaf695fd4b66bf5c1226139c308b38a6f92f",
+                "reference": "03ebbaf695fd4b66bf5c1226139c308b38a6f92f",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/selective_better_exposed_filters": "~3",
+                "drupal/varbase_components": "~4.0.0",
+                "drupal/varbase_content_base": "~1.0.0",
+                "drupal/varbase_media_base": "~1.0.0",
+                "drupal/varbase_seo_base": "~1.0.0",
+                "drupal/varbase_workflow_base": "~1.0.0",
+                "drupal/webshare": "~2.0.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to provide a blog post content type and listing page for Varbase. Build on top of the Varbase Content Base recipe with blog-specific features.",
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_blog_base",
+                "source": "http://cgit.drupalcode.org/varbase_blog_base"
+            },
+            "time": "2026-08-15T15:40:38+00:00"
         },
         {
             "name": "drupal/varbase_components",
@@ -14316,6 +15621,271 @@
             }
         },
         {
+            "name": "drupal/varbase_content_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_content_base.git",
+                "reference": "29ccab71772ef4bd0bbba6777ab1c851bb2390df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_content_base/repository/archive.zip?sha=29ccab71772ef4bd0bbba6777ab1c851bb2390df",
+                "reference": "29ccab71772ef4bd0bbba6777ab1c851bb2390df",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/advanced_text_formatter": "~3",
+                "drupal/better_exposed_filters": "~7",
+                "drupal/canvas_override": "~1.0.0",
+                "drupal/content_lock": "~3",
+                "drupal/core": "~11.4.0",
+                "drupal/date_filter": "~1",
+                "drupal/diff": "~2",
+                "drupal/eca": "~3",
+                "drupal/entity": "~1",
+                "drupal/entity_browser": "~2",
+                "drupal/entity_clone": "~2",
+                "drupal/entity_usage": "~2",
+                "drupal/entityqueue": "~1",
+                "drupal/entityqueue_form_widget": "~2",
+                "drupal/field_group": "~4",
+                "drupal/inline_entity_form": "~3",
+                "drupal/menu_block": "~1",
+                "drupal/menu_position": "~1",
+                "drupal/modeler": "~1.0",
+                "drupal/node_edit_protection": "~1.0",
+                "drupal/rabbit_hole": "~2",
+                "drupal/smart_trim": "~2",
+                "drupal/tagify": "~1.0",
+                "drupal/token": "~1",
+                "drupal/token_filter": "~2",
+                "drupal/varbase_components": "~4.0.0",
+                "drupal/views_infinite_scroll": "~2",
+                "drupal/vmi": "~5.0.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A foundational recipe for content structure and management in Varbase. Provides core content configuration including node types, taxonomy vocabularies, menu system, path aliases, and essential content-related modules.",
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_content_base",
+                "source": "http://cgit.drupalcode.org/varbase_content_base"
+            },
+            "time": "2026-08-15T15:41:04+00:00"
+        },
+        {
+            "name": "drupal/varbase_demo_content",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_demo_content.git",
+                "reference": "9e9b6ed6e10ed87107caa14eb0eda10cf756025f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_demo_content/repository/archive.zip?sha=9e9b6ed6e10ed87107caa14eb0eda10cf756025f",
+                "reference": "9e9b6ed6e10ed87107caa14eb0eda10cf756025f",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/varbase_media_assets": "~1.0.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides demo content for Varbase sites including a pre-configured sample pages. Gives new Varbase installations a working starting point that demonstrates key features and can be customized or replaced.",
+            "homepage": "https://www.drupal.org/project/varbase_demo_content",
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_demo_content",
+                "source": "https://git.drupalcode.org/project/varbase_demo_content"
+            },
+            "time": "2026-08-15T16:15:30+00:00"
+        },
+        {
+            "name": "drupal/varbase_dev_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_dev_base.git",
+                "reference": "2b754bd7b50b7335e857e7eaa1a7c3f36d86578c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_dev_base/repository/archive.zip?sha=2b754bd7b50b7335e857e7eaa1a7c3f36d86578c",
+                "reference": "2b754bd7b50b7335e857e7eaa1a7c3f36d86578c",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/config_ignore": "~3",
+                "drupal/config_update": "~2",
+                "drupal/core": "~11.4.0",
+                "drupal/devel": "~5",
+                "drupal/devel_entity_updates": "~5.0",
+                "drupal/reroute_email": "~2.3.0",
+                "drupal/sdc_devel": "~1",
+                "drupal/stage_file_proxy": "~3.1.0",
+                "drupal/storybook": "~1.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage default development modules and configurations. Development Environment Modules and Features, make sure to disable this feature in production.",
+            "keywords": [
+                "Varbase recipes",
+                "debug",
+                "devel",
+                "development",
+                "drupal recipe",
+                "drupal recipes",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_dev_base",
+                "source": "http://cgit.drupalcode.org/varbase_dev_base"
+            },
+            "time": "2026-08-15T15:17:36+00:00"
+        },
+        {
+            "name": "drupal/varbase_editor_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_editor_base.git",
+                "reference": "db0b8a8e3564277bf1d74eab36fb921cbd689384"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_editor_base/repository/archive.zip?sha=db0b8a8e3564277bf1d74eab36fb921cbd689384",
+                "reference": "db0b8a8e3564277bf1d74eab36fb921cbd689384",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/ace_editor": "~2",
+                "drupal/anchor_link": "~3",
+                "drupal/ckeditor5_paste_filter": "~1",
+                "drupal/ckeditor5_plugin_pack": "~1.5.0",
+                "drupal/ckeditor_bidi": "~5",
+                "drupal/ckeditor_emoji": "~2",
+                "drupal/ckeditor_media_embed": "~2",
+                "drupal/ckeditor_media_resize": "~1.1.0",
+                "drupal/core": "~11.4.0",
+                "drupal/edit_media_modal": "~2.1.0",
+                "drupal/editor_advanced_link": "~2.3.0",
+                "drupal/entity_embed": "~1",
+                "drupal/extlink": "~2",
+                "drupal/linkit": "~7",
+                "drupal/pathologic": "~2",
+                "drupal/token": "~1",
+                "drupal/token_filter": "~2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage default installed modules, configs and permissions for Varbase editor functionality including CKEditor 5 with rich text editing capabilities.",
+            "keywords": [
+                "CKEditor",
+                "Text format",
+                "Varbase recipes",
+                "drupal recipe",
+                "drupal recipes",
+                "editor",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_editor_base",
+                "source": "http://cgit.drupalcode.org/varbase_editor_base"
+            },
+            "time": "2026-08-15T15:53:20+00:00"
+        },
+        {
+            "name": "drupal/varbase_i18n_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_i18n_base.git",
+                "reference": "e330e916771b132319c55f06acbb4ab79a668354"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_i18n_base/repository/archive.zip?sha=e330e916771b132319c55f06acbb4ab79a668354",
+                "reference": "e330e916771b132319c55f06acbb4ab79a668354",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/eca": "~3"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage internationalization, languages, and translation support with default configurations and permissions for Varbase multilingual sites.",
+            "keywords": [
+                "Varbase recipes",
+                "drupal recipe",
+                "drupal recipes",
+                "i18n",
+                "internationalization",
+                "multilingual",
+                "recipe",
+                "translation",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_i18n_base",
+                "source": "http://cgit.drupalcode.org/varbase_i18n_base"
+            },
+            "time": "2026-08-15T15:16:57+00:00"
+        },
+        {
             "name": "drupal/varbase_media",
             "version": "11.0.0-beta1",
             "source": {
@@ -14373,6 +15943,200 @@
                 "source": "http://cgit.drupalcode.org/varbase_media",
                 "issues": "https://www.drupal.org/project/issues/varbase_media"
             }
+        },
+        {
+            "name": "drupal/varbase_media_assets",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_media_assets.git",
+                "reference": "ce163dc1832ea58e026b34bb3794e9434da0e1ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_media_assets/repository/archive.zip?sha=ce163dc1832ea58e026b34bb3794e9434da0e1ee",
+                "reference": "ce163dc1832ea58e026b34bb3794e9434da0e1ee",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage importing default demo media assets for Varbase Media Types.",
+            "keywords": [
+                "Demo Content",
+                "Varbase recipes",
+                "assets",
+                "drupal recipe",
+                "drupal recipes",
+                "media",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_media_assets",
+                "source": "http://cgit.drupalcode.org/varbase_media_assets"
+            },
+            "time": "2026-08-15T15:51:54+00:00"
+        },
+        {
+            "name": "drupal/varbase_media_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_media_base.git",
+                "reference": "ba95bb12b87a112f5e85c56a78f4a6fc55b45953"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_media_base/repository/archive.zip?sha=ba95bb12b87a112f5e85c56a78f4a6fc55b45953",
+                "reference": "ba95bb12b87a112f5e85c56a78f4a6fc55b45953",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/crop": "~2",
+                "drupal/drimage_improved": "~1",
+                "drupal/dropzonejs": "~2",
+                "drupal/embed": "~1",
+                "drupal/focal_point": "~2",
+                "drupal/media_bulk_upload": "~3",
+                "drupal/media_library_edit": "~3",
+                "drupal/media_library_form_element": "~2.1.0",
+                "drupal/varbase_media": "~11.0.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A base recipe to install core media modules and apply default Varbase media configurations including media library, focal point, and media types.",
+            "keywords": [
+                "Varbase recipes",
+                "drupal recipe",
+                "drupal recipes",
+                "focal point",
+                "media",
+                "media library",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_media_base",
+                "source": "http://cgit.drupalcode.org/varbase_media_base"
+            },
+            "time": "2026-08-15T15:56:45+00:00"
+        },
+        {
+            "name": "drupal/varbase_page_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_page_base.git",
+                "reference": "b0fd7fd0e181a4ed975d375c87becbbcb2d7d391"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_page_base/repository/archive.zip?sha=b0fd7fd0e181a4ed975d375c87becbbcb2d7d391",
+                "reference": "b0fd7fd0e181a4ed975d375c87becbbcb2d7d391",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/drupal_cms_content_type_base": "^2",
+                "drupal/varbase_content_base": "~1.0.0",
+                "drupal/varbase_media_base": "~1.0.0",
+                "drupal/varbase_seo_base": "~1.0.0",
+                "drupal/varbase_workflow_base": "~1.0.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to provide a Page content type for Varbase, with specific features including SEO fields, editorial workflow, and menu configuration.",
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_page_base",
+                "source": "http://cgit.drupalcode.org/varbase_page_base"
+            },
+            "time": "2026-08-15T16:16:03+00:00"
+        },
+        {
+            "name": "drupal/varbase_performance_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_performance_base.git",
+                "reference": "4a081fca2313a7e4ae45102e560eeac59e373651"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_performance_base/repository/archive.zip?sha=4a081fca2313a7e4ae45102e560eeac59e373651",
+                "reference": "4a081fca2313a7e4ae45102e560eeac59e373651",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/fast_404": "~3.0",
+                "drupal/imageapi_optimize": "~4.1.0",
+                "drupal/imagemagick": "~4",
+                "drupal/ultimate_cron": "~2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage default performance optimization modules, caching configurations, and speed enhancements for Varbase.",
+            "keywords": [
+                "ImageMagick",
+                "Varbase recipes",
+                "Webp",
+                "caching",
+                "drupal recipe",
+                "drupal recipes",
+                "image optimization",
+                "performance",
+                "recipe",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_performance_base",
+                "source": "http://cgit.drupalcode.org/varbase_performance_base"
+            },
+            "time": "2026-08-15T15:16:23+00:00"
         },
         {
             "name": "drupal/varbase_recipes",
@@ -14433,6 +16197,329 @@
                 "source": "https://www.drupal.org/project/varbase_recipes",
                 "issues": "https://www.drupal.org/project/issues/varbase_recipes"
             }
+        },
+        {
+            "name": "drupal/varbase_security_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_security_base.git",
+                "reference": "5e840ef61b7686d7033864a23db0057d3c3db540"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_security_base/repository/archive.zip?sha=5e840ef61b7686d7033864a23db0057d3c3db540",
+                "reference": "5e840ef61b7686d7033864a23db0057d3c3db540",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/antibot": "~2",
+                "drupal/captcha": "~2",
+                "drupal/core": "~11.4.0",
+                "drupal/flood_control": "~3",
+                "drupal/honeypot": "~2",
+                "drupal/password_policy": "~4",
+                "drupal/recaptcha": "~3",
+                "drupal/seckit": "~2",
+                "drupal/security_review": "~3",
+                "drupal/username_enumeration_prevention": "~1"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage default security configurations including password policy, username enumeration prevention, security kit, CAPTCHA, honeypot, antibot, and flood control.",
+            "keywords": [
+                "Honeypot",
+                "Varbase recipes",
+                "antibot",
+                "captcha",
+                "drupal recipe",
+                "drupal recipes",
+                "password policy",
+                "recipe",
+                "security",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_security_base",
+                "source": "http://cgit.drupalcode.org/varbase_security_base"
+            },
+            "time": "2026-08-15T15:15:30+00:00"
+        },
+        {
+            "name": "drupal/varbase_seo_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_seo_base.git",
+                "reference": "7797610de94eb55cf6cd7149de1492bb1dbc59ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_seo_base/repository/archive.zip?sha=7797610de94eb55cf6cd7149de1492bb1dbc59ad",
+                "reference": "7797610de94eb55cf6cd7149de1492bb1dbc59ad",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/eca_metatag": "~2",
+                "drupal/entity_clone": "~2",
+                "drupal/metatag": "~2",
+                "drupal/pathauto": "~1",
+                "drupal/redirect": "~1",
+                "drupal/schema_metatag": "~3",
+                "drupal/simple_sitemap": "~4",
+                "drupal/yoast_seo": "~2"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage default installed modules, configs and permissions for Varbase Search Engine Optimization (SEO) Core features and settings.",
+            "keywords": [
+                "Varbase recipes",
+                "drupal recipe",
+                "drupal recipes",
+                "metatag",
+                "recipe",
+                "search engine optimization",
+                "seo",
+                "varbase recipe",
+                "yoast"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_seo_base",
+                "source": "http://cgit.drupalcode.org/varbase_seo_base"
+            },
+            "time": "2026-08-15T15:56:05+00:00"
+        },
+        {
+            "name": "drupal/varbase_starter",
+            "version": "1.0.0-rc2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_starter.git",
+                "reference": "5efdac1f90d73654c3d24c50380ac573c256b423"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_starter/repository/archive.zip?sha=5efdac1f90d73654c3d24c50380ac573c256b423",
+                "reference": "5efdac1f90d73654c3d24c50380ac573c256b423",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "^11.4",
+                "drupal/drupal_cms_accessibility_tools": "~2",
+                "drupal/drupal_cms_admin_ui": "~2",
+                "drupal/drupal_cms_ai": "~2",
+                "drupal/drupal_cms_anti_spam": "~2",
+                "drupal/drupal_cms_authentication": "~2",
+                "drupal/drupal_cms_forms": "~2",
+                "drupal/drupal_cms_google_analytics": "~2",
+                "drupal/drupal_cms_helper": "~2",
+                "drupal/drupal_cms_media": "~2",
+                "drupal/drupal_cms_privacy_basic": "~2",
+                "drupal/drupal_cms_search": "~2",
+                "drupal/drupal_cms_seo_basic": "~2",
+                "drupal/drupal_cms_seo_tools": "~2",
+                "drupal/easy_email_express": "~1",
+                "drupal/recipe_installer_kit": "~1",
+                "drupal/varbase_admin_base": "~1.0.0",
+                "drupal/varbase_ai_base": "~1.0.0",
+                "drupal/varbase_api_base": "~1.0.0",
+                "drupal/varbase_auth_base": "~1.0.0",
+                "drupal/varbase_blog_base": "~1.0.0",
+                "drupal/varbase_content_base": "~1.0.0",
+                "drupal/varbase_demo_content": "~1.0.0",
+                "drupal/varbase_dev_base": "~1.0.0",
+                "drupal/varbase_editor_base": "~1.0.0",
+                "drupal/varbase_i18n_base": "~1.0.0",
+                "drupal/varbase_media_base": "~1.0.0",
+                "drupal/varbase_page_base": "~1.0.0",
+                "drupal/varbase_performance_base": "~1.0.0",
+                "drupal/varbase_security_base": "~1.0.0",
+                "drupal/varbase_seo_base": "~1.0.0",
+                "drupal/varbase_users_base": "~1.0.0",
+                "drupal/varbase_webform_base": "~1.0.0",
+                "drupal/varbase_workflow_base": "~1.0.0",
+                "drupal/vartheme_bs5": "~5.0.0",
+                "vardot/varbase-patches": "~11.0.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "A starter site template recipe for Varbase, providing a modern recipe-first approach to initializing Varbase sites.",
+            "support": {
+                "source": "https://git.drupalcode.org/project/varbase_starter/-/tree/1.0.0-rc2"
+            },
+            "time": "2026-08-17T01:00:55+00:00"
+        },
+        {
+            "name": "drupal/varbase_users_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_users_base.git",
+                "reference": "9ed45beebcc32586c28264ed1565405dbe0cebc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_users_base/repository/archive.zip?sha=9ed45beebcc32586c28264ed1565405dbe0cebc8",
+                "reference": "9ed45beebcc32586c28264ed1565405dbe0cebc8",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/persistent_login": "~2.3.0"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage default Varbase user roles and user management configurations, including role definitions, account settings, and the modules needed to support user management on the site.",
+            "keywords": [
+                "User management",
+                "Users",
+                "Varbase recipes",
+                "drupal recipe",
+                "drupal recipes",
+                "recipe",
+                "user roles",
+                "varbase recipe"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_users_base",
+                "source": "http://cgit.drupalcode.org/varbase_users_base"
+            },
+            "time": "2026-08-15T15:54:36+00:00"
+        },
+        {
+            "name": "drupal/varbase_webform_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_webform_base.git",
+                "reference": "e8c2dd44998d83cfeb8e646fd994b23fe45ad3ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_webform_base/repository/archive.zip?sha=e8c2dd44998d83cfeb8e646fd994b23fe45ad3ea",
+                "reference": "e8c2dd44998d83cfeb8e646fd994b23fe45ad3ea",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/core": "~11.4.0",
+                "drupal/eca": "~3",
+                "drupal/eca_webform": "~2",
+                "drupal/webform": "~6.3.0",
+                "drupal/webform_views": "~5"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage default installed webform modules, configurations, and permissions for Varbase webform experience.",
+            "keywords": [
+                "Forms",
+                "Varbase recipes",
+                "drupal recipe",
+                "drupal recipes",
+                "recipe",
+                "varbase recipe",
+                "web forms",
+                "webform"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_webform_base",
+                "source": "http://cgit.drupalcode.org/varbase_webform_base"
+            },
+            "time": "2026-08-15T15:39:23+00:00"
+        },
+        {
+            "name": "drupal/varbase_workflow_base",
+            "version": "1.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/varbase_workflow_base.git",
+                "reference": "8595ea59ca463ddb55736f8036f48c3f06c6ddca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://git.drupalcode.org/api/v4/projects/project%2Fvarbase_workflow_base/repository/archive.zip?sha=8595ea59ca463ddb55736f8036f48c3f06c6ddca",
+                "reference": "8595ea59ca463ddb55736f8036f48c3f06c6ddca",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/access_unpublished": "~1",
+                "drupal/admin_audit_trail": "~1",
+                "drupal/content_moderation_notifications": "~3",
+                "drupal/core": "~11.4.0",
+                "drupal/scheduler": "~2",
+                "drupal/scheduler_content_moderation_integration": "~3"
+            },
+            "type": "drupal-recipe",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A recipe to manage advanced editorial and publishing workflow with content moderation. Build on top of the basic Workflow integration in Drupal CMS.",
+            "keywords": [
+                "Editorial Workflow",
+                "Varbase recipes",
+                "content moderation",
+                "drupal recipe",
+                "drupal recipes",
+                "recipe",
+                "varbase recipe",
+                "workflow"
+            ],
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/varbase_workflow_base",
+                "source": "http://cgit.drupalcode.org/varbase_workflow_base"
+            },
+            "time": "2026-08-15T15:55:11+00:00"
         },
         {
             "name": "drupal/vartheme_bs5",
@@ -16300,16 +18387,16 @@
         },
         {
             "name": "laravel/prompts",
-            "version": "v0.3.22",
+            "version": "v0.3.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "02b89b39e8972a998db4d5d4ad4719239dd4aee4"
+                "reference": "b7b4c35e5bc47450f6b6238c6cc9c47ba19b2221"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/02b89b39e8972a998db4d5d4ad4719239dd4aee4",
-                "reference": "02b89b39e8972a998db4d5d4ad4719239dd4aee4",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/b7b4c35e5bc47450f6b6238c6cc9c47ba19b2221",
+                "reference": "b7b4c35e5bc47450f6b6238c6cc9c47ba19b2221",
                 "shasum": ""
             },
             "require": {
@@ -16353,9 +18440,9 @@
             "description": "Add beautiful and user-friendly forms to your command-line applications.",
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-                "source": "https://github.com/laravel/prompts/tree/v0.3.22"
+                "source": "https://github.com/laravel/prompts/tree/v0.3.23"
             },
-            "time": "2026-08-04T14:50:50+00:00"
+            "time": "2026-08-11T18:58:24+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -17649,16 +19736,16 @@
         },
         {
             "name": "nette/schema",
-            "version": "v1.3.5",
+            "version": "v1.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/schema.git",
-                "reference": "f0ab1a3cda782dbc5da270d28545236aa80c4002"
+                "reference": "c54350438cd6914616f790a49cb424605f421562"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/schema/zipball/f0ab1a3cda782dbc5da270d28545236aa80c4002",
-                "reference": "f0ab1a3cda782dbc5da270d28545236aa80c4002",
+                "url": "https://api.github.com/repos/nette/schema/zipball/c54350438cd6914616f790a49cb424605f421562",
+                "reference": "c54350438cd6914616f790a49cb424605f421562",
                 "shasum": ""
             },
             "require": {
@@ -17710,9 +19797,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/schema/issues",
-                "source": "https://github.com/nette/schema/tree/v1.3.5"
+                "source": "https://github.com/nette/schema/tree/v1.3.6"
             },
-            "time": "2026-02-23T03:47:12+00:00"
+            "time": "2026-08-16T21:58:41+00:00"
         },
         {
             "name": "nette/utils",
@@ -19830,16 +21917,16 @@
         },
         {
             "name": "swagger-api/swagger-ui",
-            "version": "v5.32.13",
+            "version": "v5.32.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swagger-api/swagger-ui.git",
-                "reference": "2a33d7805eb5fff693952cebb9203ee113ab4663"
+                "reference": "6e8ce248db64190e4113676aba996943c56f2491"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/2a33d7805eb5fff693952cebb9203ee113ab4663",
-                "reference": "2a33d7805eb5fff693952cebb9203ee113ab4663",
+                "url": "https://api.github.com/repos/swagger-api/swagger-ui/zipball/6e8ce248db64190e4113676aba996943c56f2491",
+                "reference": "6e8ce248db64190e4113676aba996943c56f2491",
                 "shasum": ""
             },
             "type": "library",
@@ -19885,9 +21972,9 @@
             ],
             "support": {
                 "issues": "https://github.com/swagger-api/swagger-ui/issues",
-                "source": "https://github.com/swagger-api/swagger-ui/tree/v5.32.13"
+                "source": "https://github.com/swagger-api/swagger-ui/tree/v5.32.14"
             },
-            "time": "2026-08-11T12:38:19+00:00"
+            "time": "2026-08-18T12:12:25+00:00"
         },
         {
             "name": "symfony/console",
@@ -23738,7 +25825,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "drupal/webform": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {},

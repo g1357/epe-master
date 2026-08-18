@@ -41,7 +41,7 @@ custom-кода.
 
 | Область | Вопросы первого исследования | Статус | Классификация | Evidence |
 | --- | --- | --- | --- | --- |
-| Page building / Canvas | Canvas pages, patterns, slots, редакторский UX, ограничения структуры | Не начато | Не определено | — |
+| Page building / Canvas | Canvas pages, patterns, slots, редакторский UX, ограничения структуры | Первый практический проход завершён | Varbase штатно | [Исследование Canvas](page-building-canvas-design-system.md) |
 | Content types | Типы, поля, revisions, display modes, Canvas versus node | Не начато | Не определено | — |
 | Media | Media types, library, bulk upload, focal point, responsive images, Drimage | Не начато | Не определено | — |
 | Views | Listings, exposed filters, reusable displays, multilingual filtering | Не начато | Не определено | — |
@@ -53,8 +53,8 @@ custom-кода.
 | SEO | Metatag, schema, sitemap, redirects, hreflang, robots, Yoast | Не начато | Не определено | — |
 | Forms | Webform recipes, spam protection, multilingual forms, mail delivery | Не начато | Не определено | — |
 | Comments | Core comments, moderation, notifications, anti-spam, необходимость функции | Не начато | Не определено | — |
-| Layout and theming | Vartheme BS5, SDC, UI Patterns, Storybook, upgrade-safe extension | Не начато | Не определено | — |
-| Reusable components | Canvas patterns, SDC components, governance and reuse | Не начато | Не определено | — |
+| Layout and theming | Vartheme BS5, SDC, UI Patterns, Storybook, upgrade-safe extension | Инвентаризация завершена, extension не исследован | Varbase штатно | [Исследование Canvas](page-building-canvas-design-system.md) |
+| Reusable components | Canvas patterns, SDC components, governance and reuse | Первый практический проход завершён | Varbase штатно | [Исследование Canvas](page-building-canvas-design-system.md) |
 | Recipes | Composition, idempotency, config ownership, uninstall/rollback | Не начато | Не определено | — |
 | API / integrations | JSON:API, OpenAPI, OAuth, consumers, data exposure | Не начато | Не определено | — |
 | Performance / cache | Drupal cache layers, BigPipe, images, cron, queues, baseline metrics | Не начато | Не определено | — |

@@ -45,18 +45,18 @@ custom-кода.
 | Content types | Типы, поля, revisions, display modes, Canvas versus node | Практический проход завершён | Drupal core + Varbase штатно | [Структурированный контент](02-structured-content.md) |
 | Media | Media types, library, bulk upload, focal point, responsive images, Drimage | Media entity/Library/embed/focal point проверены; pipeline требует исследования | Drupal core + Varbase штатно + входит contrib | [Структурированный контент](02-structured-content.md) |
 | Views | Listings, exposed filters, reusable displays, multilingual filtering | Asset catalog и reverse reference View проверены | Drupal core; входит contrib для улучшенного UX | [Структурированный контент](02-structured-content.md) |
-| Search | Search API baseline, indexing, Canvas/node coverage, путь к Solr | Readiness проверена: модули включены, активного индекса нет | Входит contrib | [Структурированный контент](02-structured-content.md) |
-| Taxonomy | Иерархии, management UI, multilingual terms, access | Словари, термины и references проверены; governance не исследован | Drupal core | [Структурированный контент](02-structured-content.md) |
-| Multilingual | RU/EN, content without translation, language negotiation, fallback | RU translation без обязательного перевода проверен; нужен field audit | Drupal core | [Структурированный контент](02-structured-content.md) |
-| Workflow / moderation | Draft/review/published, scheduling, notifications, per-language moderation | Revisions и существующий Varbase workflow проверены; scheduling не проверен | Drupal core + Varbase штатно | [Структурированный контент](02-structured-content.md) |
+| Search | Search API baseline, indexing, Canvas/node coverage, путь к Solr | Активный DB index покрывает nodes/Canvas/all languages; RU relevance не исследован | Входит contrib | [Мультиязычность](03-multilingual.md) |
+| Taxonomy | Иерархии, management UI, multilingual terms, access | RU translation term подтверждён; shared identity/hierarchy рекомендованы | Drupal core | [Мультиязычность](03-multilingual.md) |
+| Multilingual | RU/EN, content without translation, language negotiation, fallback | Практический проход завершён; single-language publication подтверждена, negotiation требует решения | Drupal core | [Мультиязычность](03-multilingual.md) |
+| Workflow / moderation | Draft/review/published, scheduling, notifications, per-language moderation | EN Published + RU Draft и независимые revisions подтверждены | Drupal core + Varbase штатно | [Мультиязычность](03-multilingual.md) |
 | Users / roles / permissions | Штатные роли, least privilege, delegation, audit | Не начато | Не определено | — |
-| SEO | Metatag, schema, sitemap, redirects, hreflang, robots, Yoast | Baseline fields/tools подтверждены; strategy и mappings не исследованы | Varbase штатно + входит contrib | [Структурированный контент](02-structured-content.md) |
+| SEO | Metatag, schema, sitemap, redirects, hreflang, robots, Yoast | Canonical/hreflang/OG/sitemap проверены; Schema mapping и redirect regression остаются | Varbase штатно + входит contrib | [Мультиязычность](03-multilingual.md) |
 | Forms | Webform recipes, spam protection, multilingual forms, mail delivery | Не начато | Не определено | — |
 | Comments | Core comments, moderation, notifications, anti-spam, необходимость функции | Не начато | Не определено | — |
 | Layout and theming | Vartheme BS5, SDC, UI Patterns, Storybook, upgrade-safe extension | Инвентаризация завершена, extension не исследован | Varbase штатно | [Исследование Canvas](page-building-canvas-design-system.md) |
 | Reusable components | Canvas patterns, SDC components, governance and reuse | Первый практический проход завершён | Varbase штатно | [Исследование Canvas](page-building-canvas-design-system.md) |
 | Recipes | Composition, idempotency, config ownership, uninstall/rollback | Не начато | Не определено | — |
-| API / integrations | JSON:API, OpenAPI, OAuth, consumers, data exposure | Readiness проверена: `/api`, default disabled, новые resources не exposed | Drupal core + входит contrib | [Структурированный контент](02-structured-content.md) |
+| API / integrations | JSON:API, OpenAPI, OAuth, consumers, data exposure | Language readiness проверена; `/api` default disabled, resources не exposed | Drupal core + входит contrib | [Мультиязычность](03-multilingual.md) |
 | Performance / cache | Drupal cache layers, BigPipe, images, cron, queues, baseline metrics | Не начато | Не определено | — |
 | Security | SecKit, password policy, permissions, dependency/patch risk, secrets | Не начато | Не определено | — |
 | Deployment | Composer build, config flow, Beget constraints, cron and releases | Не начато | Не определено | — |
@@ -68,9 +68,9 @@ custom-кода.
 оно влияет на content model, reusable components, multilingual, permissions и
 theming.
 
-Завершены первые проходы Page building и Structured content. Следующие области
-выбираются отдельным решением пользователя; этот документ не запускает новый
-этап автоматически.
+Завершены первые проходы Page building, Structured content и Multilingual.
+Следующие области выбираются отдельным решением пользователя; этот документ не
+запускает новый этап автоматически.
 
 ## Важное ограничение
 

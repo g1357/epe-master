@@ -1,0 +1,12 @@
+uuid: d1ed7132-bd81-4eb8-a3db-85a44b277f14
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+id: node.research_asset.full
+content_entity_type_id: node
+content_entity_type_bundle: research_asset
+content_entity_type_view_mode: full
+component_tree: {  }
+exposed_slots: {  }

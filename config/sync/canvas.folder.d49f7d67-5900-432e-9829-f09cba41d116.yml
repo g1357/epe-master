@@ -1,0 +1,21 @@
+uuid: d49f7d67-5900-432e-9829-f09cba41d116
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.sdc.vartheme_bs5.card-hero
+    - canvas.component.sdc.vartheme_bs5.cta
+    - canvas.component.sdc.vartheme_bs5.hero-blog
+    - canvas.component.sdc.vartheme_bs5.hero-side-by-side
+    - canvas.component.sdc.vartheme_bs5.hero-slide
+    - canvas.component.sdc.vartheme_bs5.hero-slider-container
+name: Hero
+configEntityTypeId: component
+weight: 0
+items:
+  - sdc.vartheme_bs5.card-hero
+  - sdc.vartheme_bs5.cta
+  - sdc.vartheme_bs5.hero-blog
+  - sdc.vartheme_bs5.hero-side-by-side
+  - sdc.vartheme_bs5.hero-slide
+  - sdc.vartheme_bs5.hero-slider-container

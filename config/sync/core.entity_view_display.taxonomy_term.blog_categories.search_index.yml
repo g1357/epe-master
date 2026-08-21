@@ -1,0 +1,25 @@
+uuid: 36fdcaf1-f4ef-4871-a3f4-c01a2e606493
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.search_index
+    - taxonomy.vocabulary.blog_categories
+  module:
+    - text
+_core:
+  default_config_hash: y4iNfJyj3nmsXOvjHqvDARsUwGAHcN1G-d-jvB2ECvk
+id: taxonomy_term.blog_categories.search_index
+targetEntityType: taxonomy_term
+bundle: blog_categories
+mode: search_index
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

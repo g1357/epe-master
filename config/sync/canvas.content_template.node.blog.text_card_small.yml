@@ -1,0 +1,41 @@
+uuid: 2cd932e5-941b-448d-93be-bfefcf8b313d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.text_card_small
+    - node.type.blog
+  module:
+    - node
+_core:
+  default_config_hash: cI7i9J1bVw1_vdJbcxTFYVKQL0I75FhH7yv0QkkZM_4
+id: node.blog.text_card_small
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: text_card_small
+component_tree:
+  '0:0bafa9aa-a5c0-427f-a6b8-2cd892847a2d':
+    uuid: 0bafa9aa-a5c0-427f-a6b8-2cd892847a2d
+    component_id: sdc.vartheme_bs5.card-text
+    component_version: e029fefa26d20f4f
+    inputs:
+      card_border: false
+      padded: false
+      corner_style: rounded-3
+      equal_height: true
+      stretched_link: true
+      link_url:
+        sourceType: host-entity-url
+        absolute: false
+  '0:content:0:cc0f53da-9677-45e4-ae70-d3c0a818a24a':
+    parent_uuid: 0bafa9aa-a5c0-427f-a6b8-2cd892847a2d
+    slot: content
+    uuid: cc0f53da-9677-45e4-ae70-d3c0a818a24a
+    component_id: sdc.vartheme_bs5.heading
+    component_version: 0889e2ce906c3164
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      level: 3
+exposed_slots: {  }

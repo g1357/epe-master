@@ -1,0 +1,7 @@
+verbose: true
+types:
+  node:
+    - '*'
+types_translation_lock: {  }
+form_op_lock: {  }
+timeout: 1800

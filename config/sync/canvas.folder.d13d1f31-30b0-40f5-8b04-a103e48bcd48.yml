@@ -1,0 +1,21 @@
+uuid: d13d1f31-30b0-40f5-8b04-a103e48bcd48
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.dashboard_site_status
+    - canvas.component.block.navigation_dashboard
+    - canvas.component.block.views_block.a11y_tools_editoria11y_results-block_a11y_alerts
+    - canvas.component.block.views_block.publishing_content-block_drafts
+    - canvas.component.block.views_block.publishing_content-block_scheduled
+    - canvas.component.block.views_block.recent_content-block_recent_content
+name: Dashboard
+configEntityTypeId: component
+weight: 0
+items:
+  - block.dashboard_site_status
+  - block.navigation_dashboard
+  - block.views_block.a11y_tools_editoria11y_results-block_a11y_alerts
+  - block.views_block.publishing_content-block_drafts
+  - block.views_block.publishing_content-block_scheduled
+  - block.views_block.recent_content-block_recent_content

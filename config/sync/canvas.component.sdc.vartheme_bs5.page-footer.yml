@@ -1,0 +1,16 @@
+uuid: 0b44d8f6-538c-49ef-ace7-0062fa0b5e00
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: 1_hM8GPIHoq0mMrpbKZL4U6XlMfHYkwgEo8HbWTidSw
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: Footer
+id: sdc.vartheme_bs5.page-footer
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:page-footer'

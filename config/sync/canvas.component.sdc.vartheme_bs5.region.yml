@@ -1,0 +1,16 @@
+uuid: ff0fb6e3-7743-4d8d-9a22-120356486d5d
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: YaybLKCz4hhrLFroJ_qKkHZyoU7rSn0I14EP0WZ_r_c
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: Region
+id: sdc.vartheme_bs5.region
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:region'

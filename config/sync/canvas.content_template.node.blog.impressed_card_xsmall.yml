@@ -1,0 +1,53 @@
+uuid: 82de364c-c96f-4649-87ef-3de169e2a1b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.impressed_card_xsmall
+    - field.field.media.image.field_media_image
+    - field.field.node.blog.field_featured_image
+    - image.style.canvas_parametrized_width
+    - media.type.image
+    - node.type.blog
+  module:
+    - file
+    - media
+    - node
+_core:
+  default_config_hash: u_d3YYyJHJC4_9f3J5m6LWa3uQCgsM2F9A7s2mT8rQM
+id: node.blog.impressed_card_xsmall
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: impressed_card_xsmall
+component_tree:
+  '0:content:0:75d1b88b-9b9f-4525-8fc0-3dde57e49f32':
+    parent_uuid: e74677f9-f0a2-4cea-9393-a003f327ea2c
+    slot: content
+    uuid: 75d1b88b-9b9f-4525-8fc0-3dde57e49f32
+    component_id: sdc.vartheme_bs5.heading
+    component_version: 0889e2ce906c3164
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      level: 3
+  '0:e74677f9-f0a2-4cea-9393-a003f327ea2c':
+    uuid: e74677f9-f0a2-4cea-9393-a003f327ea2c
+    component_id: sdc.vartheme_bs5.card-impressed
+    component_version: d4ef0abda2d86155
+    inputs:
+      media_position: top
+      media_image:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_featured_image␞␟entity␜␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}'
+      ratio: ratio-1x1
+      fit: object-fit-cover
+      card_border: false
+      corner_style: rounded-3
+      padded: false
+      equal_height: true
+      stretched_link: true
+      link_url:
+        sourceType: host-entity-url
+        absolute: false
+exposed_slots: {  }

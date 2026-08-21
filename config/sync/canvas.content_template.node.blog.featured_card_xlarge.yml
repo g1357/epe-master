@@ -1,0 +1,82 @@
+uuid: 98d1f8a6-7b0e-4d0f-9fe9-9c58c42041ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured_card_xlarge
+    - field.field.media.image.field_media_image
+    - field.field.node.blog.field_content
+    - field.field.node.blog.field_featured_image
+    - image.style.canvas_parametrized_width
+    - media.type.image
+    - node.type.blog
+  module:
+    - file
+    - media
+    - node
+_core:
+  default_config_hash: c9kICP8Te7jvPzA92veeafPrEnXFsXZn1P2Ou6BC_j0
+id: node.blog.featured_card_xlarge
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: featured_card_xlarge
+component_tree:
+  '0:7967e0b9-c9cc-421f-a11b-2be19fd12f6c':
+    uuid: 7967e0b9-c9cc-421f-a11b-2be19fd12f6c
+    component_id: sdc.vartheme_bs5.card-featured
+    component_version: 760a4a6c1117384e
+    inputs:
+      media_position: start
+      media_image:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_featured_image␞␟entity␜␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}'
+      ratio: ratio-21x9
+      fit: object-fit-cover
+      card_border: false
+      padded: false
+      corner_style: rounded-3
+      equal_height: true
+      stretched_link: true
+      link_url:
+        sourceType: host-entity-url
+        absolute: false
+      content_vertical_alignment: justify-content-center
+      columns_sm_size: '06_06'
+  '0:content:0:6670323d-8a39-4563-a676-79d262d191ac':
+    parent_uuid: 7967e0b9-c9cc-421f-a11b-2be19fd12f6c
+    slot: content
+    uuid: 6670323d-8a39-4563-a676-79d262d191ac
+    component_id: sdc.vartheme_bs5.heading
+    component_version: 0889e2ce906c3164
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      level: 3
+  '0:content:1:136b0346-4f82-4db6-9c93-d6480f98a475':
+    parent_uuid: 7967e0b9-c9cc-421f-a11b-2be19fd12f6c
+    slot: content
+    uuid: 136b0346-4f82-4db6-9c93-d6480f98a475
+    component_id: sdc.vartheme_bs5.rich-text
+    component_version: 82cd1f087fd469f4
+    inputs:
+      text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_content␞␟processed'
+      trim: true
+      trim_length: 120
+      trim_units: words
+      suffix: ' ...'
+      strip_html: true
+  '0:content:2:8f023d36-cc53-4fcc-bce8-b01a9bf053e2':
+    parent_uuid: 7967e0b9-c9cc-421f-a11b-2be19fd12f6c
+    slot: content
+    uuid: 8f023d36-cc53-4fcc-bce8-b01a9bf053e2
+    component_id: sdc.vartheme_bs5.date
+    component_version: 3eae6f5d223f6bda
+    inputs:
+      date:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝created␞␟value'
+        adapter: unix_to_date
+exposed_slots: {  }

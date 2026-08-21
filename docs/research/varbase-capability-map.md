@@ -48,19 +48,19 @@ custom-кода.
 | Search | Search API baseline, indexing, Canvas/node coverage, RU/EN relevance, filters и путь к Solr | Практический проход завершён: DB search работает, Canvas/node/draft boundary подтверждены; RU morphology, language filter, facets и tech tokens не готовы | Varbase штатно + входит contrib; дополнительный contrib для RU/Solr/facets | [Исследование поиска](04-search.md) |
 | Taxonomy | Иерархии, management UI, multilingual terms, access | RU translation term подтверждён; shared identity/hierarchy рекомендованы | Drupal core | [Мультиязычность](03-multilingual.md) |
 | Multilingual | RU/EN, content without translation, language negotiation, fallback | Практический проход завершён; single-language publication подтверждена, negotiation требует решения | Drupal core | [Мультиязычность](03-multilingual.md) |
-| Workflow / moderation | Draft/review/published, scheduling, notifications, per-language moderation | EN Published + RU Draft и независимые revisions подтверждены | Drupal core + Varbase штатно | [Мультиязычность](03-multilingual.md) |
-| Users / roles / permissions | Штатные роли, least privilege, delegation, audit | Не начато | Не определено | — |
-| SEO | Metatag, schema, sitemap, redirects, hreflang, robots, Yoast | Canonical/hreflang/OG/sitemap проверены; Schema mapping и redirect regression остаются | Varbase штатно + входит contrib | [Мультиязычность](03-multilingual.md) |
-| Forms | Webform recipes, spam protection, multilingual forms, mail delivery | Не начато | Не определено | — |
-| Comments | Core comments, moderation, notifications, anti-spam, необходимость функции | Не начато | Не определено | — |
+| Workflow / moderation | Draft/review/published, scheduling, notifications, per-language moderation | Полный EN цикл Draft → Review → Published → новая Draft → Published → Archived подтверждён; published revision остаётся live; EN Published + RU Draft подтверждено | Drupal core + Varbase штатно + входит contrib | [Роли, workflow и access](05-users-roles-workflow-access.md) |
+| Users / roles / permissions | Штатные роли, least privilege, delegation, audit | Практический проход завершён: штатные роли богаты, но author/publisher не разделены; Site Admin отделён от permissions/config | Varbase штатно; configuration для точного least privilege | [Роли, workflow и access](05-users-roles-workflow-access.md) |
+| SEO | Metatag, schema, sitemap, redirects, hreflang, robots, Yoast | Практический проход завершён: metadata и 301 проверены; JSON-LD не настроен, sitemap пока только Blog/Page, найден конфликт canonical homepage | Varbase штатно + входит contrib; включение `schema_service` требует согласования | [SEO, формы и feedback](06-seo-forms-feedback.md) |
+| Forms | Webform recipes, spam protection, multilingual forms, mail delivery | Contact и article feedback prototypes отправлены; submissions, Mailpit, translation, access, Canvas embedding и privacy boundary проверены | Varbase штатно + входит contrib | [SEO, формы и feedback](06-seo-forms-feedback.md) |
+| Comments | Core comments, moderation, notifications, anti-spam, необходимость функции | Core Comment выключен; private Webform feedback признан естественным v1, public comments отложены до community use case | Лучше скорректировать требование; Drupal core + входит contrib | [SEO, формы и feedback](06-seo-forms-feedback.md) |
 | Layout and theming | Vartheme BS5, SDC, UI Patterns, Storybook, upgrade-safe extension | Инвентаризация завершена, extension не исследован | Varbase штатно | [Исследование Canvas](page-building-canvas-design-system.md) |
 | Reusable components | Canvas patterns, SDC components, governance and reuse | Первый практический проход завершён | Varbase штатно | [Исследование Canvas](page-building-canvas-design-system.md) |
-| Recipes | Composition, idempotency, config ownership, uninstall/rollback | Не начато | Не определено | — |
-| API / integrations | JSON:API, OpenAPI, OAuth, consumers, data exposure | Language readiness проверена; `/api` default disabled, resources не exposed | Drupal core + входит contrib | [Мультиязычность](03-multilingual.md) |
-| Performance / cache | Drupal cache layers, BigPipe, images, cron, queues, baseline metrics | Не начато | Не определено | — |
-| Security | SecKit, password policy, permissions, dependency/patch risk, secrets | Не начато | Не определено | — |
-| Deployment | Composer build, config flow, Beget constraints, cron and releases | Не начато | Не определено | — |
-| Backup / restore | Database/files/config scope, DDEV restore, Beget recovery targets | Не начато | Не определено | — |
+| Recipes | Composition, idempotency, config ownership, uninstall/rollback | Практический проход завершён: 53 applied path entries, Varbase API/AI recipes разобраны; generic rollback и ongoing ownership отсутствуют, config management остаётся authoritative | Drupal core + Varbase штатно | [API, AI, Recipes и интеграции](07-api-ai-recipes-integrations.md) |
+| API / integrations | JSON:API, OpenAPI, OAuth, consumers, data exposure | Практический проход завершён: closed-by-default и read-only подтверждены; published/forward Draft access проверен; OpenAPI отражает enabled GET routes, но auth/multilingual contract неполон | Drupal core + Varbase штатно + входит contrib | [API, AI, Recipes и интеграции](07-api-ai-recipes-integrations.md) |
+| Performance / cache | Drupal cache layers, BigPipe, images, cron, queues, baseline metrics | Практический проход завершён: page/dynamic cache, aggregation, cron/queues и DDEV measurements подтверждены; Redis/CDN не нужны для baseline; image test не воспроизвёл 196 s | Drupal core + Varbase штатно + входит contrib; Hosting/configuration | [Production readiness и Beget](08-production-readiness-beget.md) |
+| Security | SecKit, password policy, permissions, dependency/patch risk, secrets | Роли/login/access и form abuse проверены; production status/settings/audit исследованы; Composer advisory, отсутствующие production secrets/settings и MFA требуют решения до launch | Varbase штатно + входит contrib; Hosting/configuration; дополнительный contrib для MFA при решении | [Роли, workflow и access](05-users-roles-workflow-access.md), [SEO, формы и feedback](06-seo-forms-feedback.md), [Production readiness](08-production-readiness-beget.md) |
+| Deployment | Composer build, config flow, Beget constraints, cron and releases | Практический проход завершён: shared-first квалификация, простой tag workflow и deploy order предложены; ignored config sync, failed import (orphaned Tour config), Canvas drift и две рассинхронизированные working copies — blockers | Drupal core + Composer + Hosting/configuration | [API, AI, Recipes и интеграции](07-api-ai-recipes-integrations.md), [Production readiness и Beget](08-production-readiness-beget.md) |
+| Backup / restore | Database/files/config scope, DDEV restore, Beget recovery targets | DB export → marker → import → cache rebuild → HTTP 200 подтверждён; files/config archive и checksums созданы вне Git; рекомендованы RPO 24 h / RTO 4–8 h | Drupal core + DDEV + Hosting/configuration | [Production readiness и Beget](08-production-readiness-beget.md) |
 
 ## Исследовательский backlog
 
@@ -68,10 +68,9 @@ custom-кода.
 оно влияет на content model, reusable components, multilingual, permissions и
 theming.
 
-Завершены первые проходы Page building, Structured content, Multilingual и
-Search.
-Следующие области выбираются отдельным решением пользователя; этот документ не
-запускает новый этап автоматически.
+Завершены восемь запланированных практических проходов исследовательской фазы.
+Следующего исследования нет: переход к реализации, production architecture или
+новым ADR возможен только по отдельному решению пользователя.
 
 ## Важное ограничение
 

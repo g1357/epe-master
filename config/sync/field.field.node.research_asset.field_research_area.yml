@@ -1,0 +1,23 @@
+uuid: a1dc92cc-9036-43c6-be6b-d02cfcd82e75
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_area
+    - node.type.research_asset
+id: node.research_asset.field_research_area
+field_name: field_research_area
+entity_type: node
+bundle: research_asset
+label: 'Research area'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0.0
+  max: null
+  prefix: ''
+  suffix: ' m²'
+field_type: decimal

@@ -1,0 +1,49 @@
+uuid: 77f2626a-2b76-4277-86f4-8d13b3ac0721
+langcode: en
+status: true
+dependencies:
+  theme:
+    - vartheme_bs5
+_core:
+  default_config_hash: 1xWp3eG_nXD_qKf0pb5BshYEJKm7ns0BdooIIJbk7os
+active_version: '5524813695409257'
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        id:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: anchor-id
+          expression: ℹ︎string␟value
+          derived_schema_metadata:
+            string_shape: {  }
+    fallback_metadata:
+      slot_definitions: {  }
+  0e83689ad8382f6c:
+    settings:
+      prop_field_definitions:
+        id:
+          required: true
+          field_type: string
+          field_storage_settings: null
+          field_instance_settings: null
+          field_widget: string_textfield
+          default_value:
+            -
+              value: anchor-id
+          expression: ℹ︎string␟value
+          derived_schema_metadata:
+            string_shape: {  }
+    fallback_metadata:
+      slot_definitions: {  }
+label: Anchor
+id: sdc.vartheme_bs5.anchor
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:anchor'

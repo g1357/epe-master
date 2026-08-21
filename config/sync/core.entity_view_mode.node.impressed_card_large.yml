@@ -1,0 +1,13 @@
+uuid: 94ed00e0-5ef1-4ffe-a657-09b01b68b6c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: xfUYP5YuO4giB3w2ZnHiaOioR3vnmEC3zfb-bv0B6CQ
+id: node.impressed_card_large
+label: 'Impressed card - large'
+description: null
+targetEntityType: node
+cache: true

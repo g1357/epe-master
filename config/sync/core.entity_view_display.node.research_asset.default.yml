@@ -1,0 +1,81 @@
+uuid: fa79e1b4-7bd3-4986-a9ae-ba9e3154f17e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.research_asset.field_canvas_layout
+    - field.field.node.research_asset.field_content
+    - field.field.node.research_asset.field_research_address
+    - field.field.node.research_asset.field_research_area
+    - field.field.node.research_asset.field_research_asset_status
+    - field.field.node.research_asset.field_research_images
+    - field.field.node.research_asset.field_seo_analysis
+    - field.field.node.research_asset.field_seo_description
+    - field.field.node.research_asset.field_seo_image
+    - field.field.node.research_asset.field_seo_title
+    - node.type.research_asset
+  module:
+    - canvas
+    - user
+id: node.research_asset.default
+targetEntityType: node
+bundle: research_asset
+mode: default
+content:
+  field_canvas_layout:
+    type: canvas_naive_render_sdc_tree
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: -2
+    region: content
+  field_research_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_research_area:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_research_asset_status:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_research_images:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content: true
+  field_seo_analysis: true
+  field_seo_description: true
+  field_seo_image: true
+  field_seo_title: true
+  langcode: true
+  search_api_excerpt: true

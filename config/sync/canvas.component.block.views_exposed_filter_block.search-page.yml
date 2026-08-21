@@ -1,0 +1,35 @@
+uuid: 29c7c4b3-488a-461b-995b-5a8f123ceeb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.search
+  module:
+    - views
+active_version: 435ec28df1ef5629
+versioned_properties:
+  active:
+    settings:
+      default_settings:
+        id: 'views_exposed_filter_block:search-page'
+        label: 'Exposed form: search-page'
+        label_display: '0'
+        provider: views
+        views_label: ''
+    fallback_metadata:
+      slot_definitions: null
+  f0ca33cbfe79a9ef:
+    settings:
+      default_settings:
+        id: 'views_exposed_filter_block:search-page'
+        label: 'Exposed form: search-page'
+        label_display: '0'
+        provider: views
+        views_label: ''
+    fallback_metadata:
+      slot_definitions: null
+label: 'Exposed form: search-page'
+id: block.views_exposed_filter_block.search-page
+provider: views
+source: block
+source_local_id: 'views_exposed_filter_block:search-page'

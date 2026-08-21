@@ -1,0 +1,20 @@
+uuid: 12152a8a-1428-46ac-a307-a9c31d3d39c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_pending_expire_sent
+field_name: field_pending_expire_sent
+entity_type: user
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: true
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

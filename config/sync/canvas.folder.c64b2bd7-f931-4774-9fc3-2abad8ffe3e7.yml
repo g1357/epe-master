@@ -1,0 +1,17 @@
+uuid: c64b2bd7-f931-4774-9fc3-2abad8ffe3e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.navigation_link
+    - canvas.component.block.navigation_shortcuts
+    - canvas.component.block.navigation_user
+    - canvas.component.sdc.vartheme_bs5.icon-toggle
+name: Navigation
+configEntityTypeId: component
+weight: 0
+items:
+  - block.navigation_link
+  - block.navigation_shortcuts
+  - block.navigation_user
+  - sdc.vartheme_bs5.icon-toggle

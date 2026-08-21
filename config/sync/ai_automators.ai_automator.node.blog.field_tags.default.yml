@@ -1,0 +1,34 @@
+uuid: afd49886-8d23-4e3c-ae07-a3c3f3f41a87
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.blog.field_tags
+id: node.blog.field_tags.default
+label: 'Tags Default'
+rule: llm_taxonomy
+input_mode: base
+weight: 100
+worker_type: direct
+entity_type: node
+bundle: blog
+field_name: field_tags
+edit_mode: false
+base_field: field_content
+prompt: "Based on the context text choose up to {{ max_amount }} keyword tags from the tag context that fits the text.\r\n\r\nTag options:\r\n{{ value_options_comma }}\r\n\r\nContext:\r\n{{ context }}"
+token: ''
+guardrail_set_id: null
+plugin_config:
+  automator_enabled: 1
+  automator_rule: llm_taxonomy
+  automator_mode: base
+  automator_base_field: field_content
+  automator_prompt: "Based on the context text choose up to {{ max_amount }} keyword tags from the tag context that fits the text.\r\n\r\nTag options:\r\n{{ value_options_comma }}\r\n\r\nContext:\r\n{{ context }}"
+  automator_token: ''
+  automator_edit_mode: 0
+  automator_label: 'Tags Default'
+  automator_weight: '100'
+  automator_worker_type: direct
+  automator_ai_provider: default_json
+  automator_clean_up: ''
+  automator_search_similar_tags: 0

@@ -1,0 +1,16 @@
+uuid: 6c9de883-3360-4c1e-a8ea-23e5fec94ca0
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: Mn3GjSh4DOyQMt5YUQYipuoLrZy93RxxBhYbZu4tQok
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: 'Views view summary'
+id: sdc.vartheme_bs5.views-view-summary
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:views-view-summary'

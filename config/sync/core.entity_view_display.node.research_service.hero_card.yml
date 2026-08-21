@@ -1,0 +1,72 @@
+uuid: ed48b1d4-6aa1-425b-a1a8-d87da518893c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.hero_card
+    - field.field.node.research_service.field_canvas_layout
+    - field.field.node.research_service.field_content
+    - field.field.node.research_service.field_description
+    - field.field.node.research_service.field_featured_image
+    - field.field.node.research_service.field_related_technical_articles
+    - field.field.node.research_service.field_research_service_category
+    - field.field.node.research_service.field_seo_analysis
+    - field.field.node.research_service.field_seo_description
+    - field.field.node.research_service.field_seo_image
+    - field.field.node.research_service.field_seo_title
+    - node.type.research_service
+  module:
+    - smart_trim
+    - user
+id: node.research_service.hero_card
+targetEntityType: node
+bundle: research_service
+mode: hero_card
+content:
+  field_description:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 300
+      trim_type: words
+      trim_suffix: ' ...'
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_featured_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: background_media
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_canvas_layout: true
+  field_content: true
+  field_related_technical_articles: true
+  field_research_service_category: true
+  field_seo_analysis: true
+  field_seo_description: true
+  field_seo_image: true
+  field_seo_title: true
+  langcode: true
+  search_api_excerpt: true

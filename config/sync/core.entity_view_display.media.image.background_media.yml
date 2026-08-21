@@ -1,0 +1,44 @@
+uuid: 01874b95-d961-4d38-931c-57bfaa7f2f53
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.background_media
+    - field.field.media.image.field_media_image
+    - media.type.image
+  module:
+    - drimage_improved
+_core:
+  default_config_hash: EGSQ4TyYVsWYU45EVDEFGmcvKXKLdC9pU54Mdc-0z6U
+id: media.image.background_media
+targetEntityType: media
+bundle: image
+mode: background_media
+content:
+  field_media_image:
+    type: drimage_improved
+    label: hidden
+    settings:
+      image_link: ''
+      image_handling: background
+      aspect_ratio:
+        width: '1'
+        height: '1'
+      background:
+        position: ''
+        size: cover
+        attachment: null
+      image_loading:
+        attribute: lazy
+      iwc:
+        image_style: null
+      image_style: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

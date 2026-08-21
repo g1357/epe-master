@@ -1,0 +1,16 @@
+uuid: 62ddfe58-72e3-4403-9a0e-9b347300d80e
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: B3J7LHCmBjh0XmMogM0BhCuekNmI2gyE8_WKmLsazKo
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: 'Views view grid'
+id: sdc.vartheme_bs5.views-view-grid
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:views-view-grid'

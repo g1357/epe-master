@@ -1,0 +1,74 @@
+uuid: 2fc4df12-8c36-4b70-8a6a-70e44bdee1e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.impressed_card_small
+    - field.field.node.research_technical_article.field_article_content
+    - field.field.node.research_technical_article.field_canvas_layout
+    - field.field.node.research_technical_article.field_content
+    - field.field.node.research_technical_article.field_description
+    - field.field.node.research_technical_article.field_featured_image
+    - field.field.node.research_technical_article.field_research_technologies
+    - field.field.node.research_technical_article.field_research_topics
+    - field.field.node.research_technical_article.field_seo_analysis
+    - field.field.node.research_technical_article.field_seo_description
+    - field.field.node.research_technical_article.field_seo_image
+    - field.field.node.research_technical_article.field_seo_title
+    - node.type.research_technical_article
+  module:
+    - smart_trim
+    - user
+id: node.research_technical_article.impressed_card_small
+targetEntityType: node
+bundle: research_technical_article
+mode: impressed_card_small
+content:
+  field_description:
+    type: smart_trim
+    label: hidden
+    settings:
+      trim_length: 20
+      trim_type: words
+      trim_suffix: ' ...'
+      wrap_output: false
+      wrap_class: trimmed
+      more:
+        display_link: false
+        target_blank: false
+        link_trim_only: false
+        class: more-link
+        text: More
+        aria_label: 'Read more about [node:title]'
+      summary_handler: full
+      trim_options:
+        text: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_featured_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: media_16_09
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_article_content: true
+  field_canvas_layout: true
+  field_content: true
+  field_research_technologies: true
+  field_research_topics: true
+  field_seo_analysis: true
+  field_seo_description: true
+  field_seo_image: true
+  field_seo_title: true
+  langcode: true
+  search_api_excerpt: true

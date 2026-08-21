@@ -1,0 +1,21 @@
+title: 'Исследование 06: контактная форма'
+elements: |
+  name:
+    '#title': Имя
+  email:
+    '#title': 'Электронная почта'
+  organization:
+    '#title': Организация
+  topic:
+    '#title': 'Тема обращения'
+    '#options':
+      service: Услуга
+      technical: 'Технический вопрос'
+      partnership: Партнёрство
+      other: Другое
+  message:
+    '#title': Сообщение
+  consent:
+    '#title': 'Я согласен на обработку переданных персональных данных для ответа на обращение.'
+settings:
+  confirmation_title: 'Спасибо за обращение'

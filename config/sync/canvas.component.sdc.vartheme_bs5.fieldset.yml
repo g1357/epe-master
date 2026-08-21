@@ -1,0 +1,16 @@
+uuid: cf14756c-f2f8-46b0-ba27-a86d40b96bd9
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: '--d7KdRTWoDPL5ZgNfLzJFUh5J70XzJu7KOHq4-_VRk'
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: Fieldset
+id: sdc.vartheme_bs5.fieldset
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:fieldset'

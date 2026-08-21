@@ -1,0 +1,40 @@
+uuid: 4ed465ac-c808-4082-a3eb-e5b3ff3d95e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.bulk_upload
+    - field.field.media.audio.field_media_audio_file
+    - media.type.audio
+  module:
+    - file
+_core:
+  default_config_hash: mocpMHfI3r6vqAThN0ceG-eD70zBIGiiyWxI4TelhKs
+id: media.audio.bulk_upload
+targetEntityType: media
+bundle: audio
+mode: bulk_upload
+content:
+  field_media_audio_file:
+    type: file_generic
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  name: true
+  path: true
+  publish_on: true
+  publish_state: true
+  uid: true
+  unpublish_on: true
+  unpublish_state: true

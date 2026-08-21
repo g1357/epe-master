@@ -1,0 +1,83 @@
+uuid: 65247b4d-0f16-4b32-9ec5-4f6673698a47
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.sdc.navigation.message
+    - canvas.component.sdc.navigation.title
+    - canvas.component.sdc.vartheme_bs5.column
+    - canvas.component.sdc.vartheme_bs5.container
+    - canvas.component.sdc.vartheme_bs5.details
+    - canvas.component.sdc.vartheme_bs5.dropdown-menu
+    - canvas.component.sdc.vartheme_bs5.field
+    - canvas.component.sdc.vartheme_bs5.fieldset
+    - canvas.component.sdc.vartheme_bs5.figure
+    - canvas.component.sdc.vartheme_bs5.form
+    - canvas.component.sdc.vartheme_bs5.form-element
+    - canvas.component.sdc.vartheme_bs5.form-element-radiocheckbox
+    - canvas.component.sdc.vartheme_bs5.html-code
+    - canvas.component.sdc.vartheme_bs5.input-checkbox
+    - canvas.component.sdc.vartheme_bs5.input-submit
+    - canvas.component.sdc.vartheme_bs5.links-dropbutton
+    - canvas.component.sdc.vartheme_bs5.list
+    - canvas.component.sdc.vartheme_bs5.local-tasks
+    - canvas.component.sdc.vartheme_bs5.navbar-brand
+    - canvas.component.sdc.vartheme_bs5.page
+    - canvas.component.sdc.vartheme_bs5.page-footer
+    - canvas.component.sdc.vartheme_bs5.plain-text
+    - canvas.component.sdc.vartheme_bs5.radios
+    - canvas.component.sdc.vartheme_bs5.region
+    - canvas.component.sdc.vartheme_bs5.rich-text
+    - canvas.component.sdc.vartheme_bs5.row
+    - canvas.component.sdc.vartheme_bs5.select
+    - canvas.component.sdc.vartheme_bs5.share
+    - canvas.component.sdc.vartheme_bs5.social-auth
+    - canvas.component.sdc.vartheme_bs5.tabs
+    - canvas.component.sdc.vartheme_bs5.user
+    - canvas.component.sdc.vartheme_bs5.views-view
+    - canvas.component.sdc.vartheme_bs5.views-view-grid
+    - canvas.component.sdc.vartheme_bs5.views-view-list
+    - canvas.component.sdc.vartheme_bs5.views-view-summary
+    - canvas.component.sdc.vartheme_bs5.views-view-unformatted
+    - canvas.component.sdc.webshare.share
+name: Other
+configEntityTypeId: component
+weight: 0
+items:
+  - sdc.navigation.message
+  - sdc.navigation.title
+  - sdc.vartheme_bs5.column
+  - sdc.vartheme_bs5.container
+  - sdc.vartheme_bs5.details
+  - sdc.vartheme_bs5.dropdown-menu
+  - sdc.vartheme_bs5.field
+  - sdc.vartheme_bs5.fieldset
+  - sdc.vartheme_bs5.figure
+  - sdc.vartheme_bs5.form
+  - sdc.vartheme_bs5.form-element
+  - sdc.vartheme_bs5.form-element-radiocheckbox
+  - sdc.vartheme_bs5.html-code
+  - sdc.vartheme_bs5.input-checkbox
+  - sdc.vartheme_bs5.input-submit
+  - sdc.vartheme_bs5.links-dropbutton
+  - sdc.vartheme_bs5.list
+  - sdc.vartheme_bs5.local-tasks
+  - sdc.vartheme_bs5.navbar-brand
+  - sdc.vartheme_bs5.page
+  - sdc.vartheme_bs5.page-footer
+  - sdc.vartheme_bs5.plain-text
+  - sdc.vartheme_bs5.radios
+  - sdc.vartheme_bs5.region
+  - sdc.vartheme_bs5.rich-text
+  - sdc.vartheme_bs5.row
+  - sdc.vartheme_bs5.select
+  - sdc.vartheme_bs5.share
+  - sdc.vartheme_bs5.social-auth
+  - sdc.vartheme_bs5.tabs
+  - sdc.vartheme_bs5.user
+  - sdc.vartheme_bs5.views-view
+  - sdc.vartheme_bs5.views-view-grid
+  - sdc.vartheme_bs5.views-view-list
+  - sdc.vartheme_bs5.views-view-summary
+  - sdc.vartheme_bs5.views-view-unformatted
+  - sdc.webshare.share

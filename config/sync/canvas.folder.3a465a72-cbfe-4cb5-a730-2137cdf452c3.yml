@@ -1,0 +1,33 @@
+uuid: 3a465a72-cbfe-4cb5-a730-2137cdf452c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.sdc.vartheme_bs5.anchor
+    - canvas.component.sdc.vartheme_bs5.badge
+    - canvas.component.sdc.vartheme_bs5.blockquote
+    - canvas.component.sdc.vartheme_bs5.button
+    - canvas.component.sdc.vartheme_bs5.date
+    - canvas.component.sdc.vartheme_bs5.heading
+    - canvas.component.sdc.vartheme_bs5.icon
+    - canvas.component.sdc.vartheme_bs5.image
+    - canvas.component.sdc.vartheme_bs5.media-banner
+    - canvas.component.sdc.vartheme_bs5.taxonomy
+    - canvas.component.sdc.vartheme_bs5.text
+    - canvas.component.sdc.vartheme_bs5.video
+name: Base
+configEntityTypeId: component
+weight: 0
+items:
+  - sdc.vartheme_bs5.anchor
+  - sdc.vartheme_bs5.badge
+  - sdc.vartheme_bs5.blockquote
+  - sdc.vartheme_bs5.button
+  - sdc.vartheme_bs5.date
+  - sdc.vartheme_bs5.heading
+  - sdc.vartheme_bs5.icon
+  - sdc.vartheme_bs5.image
+  - sdc.vartheme_bs5.media-banner
+  - sdc.vartheme_bs5.taxonomy
+  - sdc.vartheme_bs5.text
+  - sdc.vartheme_bs5.video

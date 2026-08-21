@@ -1,0 +1,80 @@
+label: Страницы
+display:
+  default:
+    display_title: 'По умолчанию'
+    display_options:
+      title: Страницы
+      fields:
+        edit_canvas_page:
+          label: Действия
+          text: изменить
+        title:
+          label: Заголовок
+          separator: ', '
+        status:
+          label: Статус
+          settings:
+            format_custom_false: 'Снято с публикации'
+            format_custom_true: Опубликовано
+          separator: ', '
+        owner:
+          label: Автор
+          separator: ', '
+        changed:
+          label: Обновлено
+          separator: ', '
+      exposed_form:
+        options:
+          submit_button: Применить
+          reset_button_label: Сбросить
+          exposed_sorts_label: 'Сортировать по'
+          sort_asc_label: 'По возрастанию'
+          sort_desc_label: 'По убыванию'
+      filters:
+        title:
+          expose:
+            label: Заголовок
+        status:
+          expose:
+            label: Опубликовано
+          group_info:
+            label: Опубликовано
+            group_items:
+              1:
+                title: Опубликовано
+              2:
+                title: 'Снято с публикации'
+  page_1:
+    display_title: Страница
+    display_options:
+      fields:
+        title:
+          label: Заголовок
+          separator: ', '
+        status:
+          label: Статус
+          settings:
+            format_custom_false: 'Снято с публикации'
+            format_custom_true: Опубликовано
+          separator: ', '
+        owner:
+          label: Автор
+          separator: ', '
+        changed:
+          label: Обновлено
+          separator: ', '
+        operations:
+          label: Операции
+      pager:
+        options:
+          tags:
+            next: 'Следующий ›'
+            previous: '‹ Предыдущий'
+            first: '« Первая'
+            last: 'Последняя »'
+          expose:
+            items_per_page_label: 'Элементов на страницу'
+            items_per_page_options_all_label: '- Все -'
+            offset_label: Пропустить
+      menu:
+        title: Страницы

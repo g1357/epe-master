@@ -1,0 +1,17 @@
+uuid: 2044567c-7f8b-431b-816a-dbb691bdf19d
+langcode: en
+status: true
+dependencies:
+  module:
+    - simple_sitemap
+title: 'Generate sitemaps'
+id: simple_sitemap_cron
+weight: 0
+module: simple_sitemap
+callback: 'simple_sitemap#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

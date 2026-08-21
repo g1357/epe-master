@@ -1,0 +1,53 @@
+uuid: 4717d9cc-b7b5-419e-99de-1c9127cb4e02
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.impressed_card_small
+    - field.field.media.image.field_media_image
+    - field.field.node.blog.field_featured_image
+    - image.style.canvas_parametrized_width
+    - media.type.image
+    - node.type.blog
+  module:
+    - file
+    - media
+    - node
+_core:
+  default_config_hash: dzMTqSN7tQfJ9_yzMN8LZZ7yD1GcuWVe54tX1KKx9TY
+id: node.blog.impressed_card_small
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: impressed_card_small
+component_tree:
+  '0:6a94ee03-0d3b-40b5-9448-17a4d9978d74':
+    uuid: 6a94ee03-0d3b-40b5-9448-17a4d9978d74
+    component_id: sdc.vartheme_bs5.card-impressed
+    component_version: d4ef0abda2d86155
+    inputs:
+      media_position: top
+      media_image:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_featured_image␞␟entity␜␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}'
+      ratio: ratio-16x9
+      fit: object-fit-cover
+      card_border: false
+      corner_style: rounded-3
+      padded: false
+      equal_height: true
+      stretched_link: true
+      link_url:
+        sourceType: host-entity-url
+        absolute: false
+  '0:content:0:1f53f146-64c0-4c2f-a9e3-e32f0097dac6':
+    parent_uuid: 6a94ee03-0d3b-40b5-9448-17a4d9978d74
+    slot: content
+    uuid: 1f53f146-64c0-4c2f-a9e3-e32f0097dac6
+    component_id: sdc.vartheme_bs5.heading
+    component_version: 0889e2ce906c3164
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      level: 3
+exposed_slots: {  }

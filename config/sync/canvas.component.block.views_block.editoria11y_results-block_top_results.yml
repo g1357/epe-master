@@ -1,0 +1,50 @@
+uuid: 0bb73ece-21cd-48c5-980e-1964e2c003b4
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.editoria11y_results
+  module:
+    - views
+active_version: f5c9944c35ff745c
+versioned_properties:
+  active:
+    settings:
+      default_settings:
+        id: 'views_block:editoria11y_results-block_top_results'
+        label: 'Editoria11y - Pages with the most alerts'
+        label_display: '0'
+        provider: views
+        views_label: ''
+        items_per_page: null
+        exposed: {  }
+    fallback_metadata:
+      slot_definitions: null
+  54aaaed2a1447700:
+    settings:
+      default_settings:
+        id: 'views_block:editoria11y_results-block_top_results'
+        label: 'Editoria11y - Pages with the most alerts'
+        label_display: '0'
+        provider: views
+        views_label: ''
+        items_per_page: null
+        exposed: {  }
+    fallback_metadata:
+      slot_definitions: null
+  7a3c689204401fd4:
+    settings:
+      default_settings:
+        id: 'views_block:editoria11y_results-block_top_results'
+        label: 'Editoria11y - Pages with the most alerts'
+        label_display: '0'
+        provider: views
+        views_label: ''
+        items_per_page: null
+    fallback_metadata:
+      slot_definitions: null
+label: 'Editoria11y - Pages with the most alerts'
+id: block.views_block.editoria11y_results-block_top_results
+provider: views
+source: block
+source_local_id: 'views_block:editoria11y_results-block_top_results'

@@ -1,0 +1,29 @@
+uuid: 8cbd335a-6b82-4dd1-883e-67e79590af21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_images
+    - media.type.image
+    - node.type.research_asset
+id: node.research_asset.field_research_images
+field_name: field_research_images
+entity_type: node
+bundle: research_asset
+label: 'Research images'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

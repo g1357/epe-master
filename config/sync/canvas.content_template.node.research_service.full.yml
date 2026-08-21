@@ -1,0 +1,12 @@
+uuid: 0e51903f-877f-4dac-8ed1-f173e710eb56
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+id: node.research_service.full
+content_entity_type_id: node
+content_entity_type_bundle: research_service
+content_entity_type_view_mode: full
+component_tree: {  }
+exposed_slots: {  }

@@ -1,0 +1,45 @@
+uuid: 869361fe-4696-4c37-b4b1-ae63ebc42749
+langcode: en
+status: false
+dependencies:
+  module:
+    - webshare
+active_version: dc6d95ad52029a7e
+versioned_properties:
+  active:
+    settings:
+      default_settings:
+        id: share
+        label: Share
+        label_display: '0'
+        provider: webshare
+        heading: Share
+        display_title: true
+        alignment: end
+        orientation: vertical
+        mobile_visibility: all
+        native_share: false
+        placement: rail-end
+    fallback_metadata:
+      slot_definitions: null
+  ec57cdd2ed827da8:
+    settings:
+      default_settings:
+        id: share
+        label: Share
+        label_display: '0'
+        provider: webshare
+        heading: Share
+        display_title: true
+        alignment: end
+        orientation: vertical
+        mobile_visibility: all
+        native_share: false
+        placement: rail-end
+    fallback_metadata:
+      slot_definitions: null
+label: Share
+id: block.share
+provider: webshare
+source: block
+source_local_id: share

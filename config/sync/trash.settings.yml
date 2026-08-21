@@ -1,0 +1,10 @@
+enabled_entity_types:
+  node: {  }
+  file: {  }
+  media: {  }
+  taxonomy_term: {  }
+  canvas_page: {  }
+auto_purge:
+  enabled: false
+  after: '30 days'
+compact_overview: false

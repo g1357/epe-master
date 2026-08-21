@@ -1,0 +1,11 @@
+uuid: 2fad33f7-34ef-40b6-bc66-1cd1127ce22a
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.share
+name: Webshare
+configEntityTypeId: component
+weight: 0
+items:
+  - block.share

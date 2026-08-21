@@ -1,0 +1,42 @@
+uuid: 72c28b40-8e10-4a4a-9091-2698c5f3f5cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.bulk_upload
+    - field.field.media.video.field_media_cover_image
+    - field.field.media.video.field_media_video_file
+    - media.type.video
+  module:
+    - file
+_core:
+  default_config_hash: Y9zvyR_cEnc_xfWypjodJvczXYktq-7pxjA2zm8ODCQ
+id: media.video.bulk_upload
+targetEntityType: media
+bundle: video
+mode: bulk_upload
+content:
+  field_media_video_file:
+    type: file_generic
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_cover_image: true
+  name: true
+  path: true
+  publish_on: true
+  publish_state: true
+  uid: true
+  unpublish_on: true
+  unpublish_state: true

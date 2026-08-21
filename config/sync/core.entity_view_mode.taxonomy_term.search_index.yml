@@ -1,0 +1,13 @@
+uuid: 07947169-9a4d-426a-ba92-821503247876
+langcode: en
+status: false
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: ugPgQt8fyW6oPp9UHPkDQu6DUdaQnNFP8ivYYyJLpS8
+id: taxonomy_term.search_index
+label: 'Search index'
+description: ''
+targetEntityType: taxonomy_term
+cache: true

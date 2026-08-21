@@ -1,0 +1,41 @@
+uuid: f534f96a-642f-499a-a2c1-1a0090d65f21
+langcode: en
+status: false
+dependencies:
+  module:
+    - project_browser
+active_version: f77934c7b35edf36
+versioned_properties:
+  active:
+    settings:
+      default_settings:
+        id: 'project_browser_block:varbase_recipes'
+        label: 'Varbase recipes'
+        label_display: '0'
+        provider: project_browser
+        paginate: true
+        page_sizes: '12, 24, 36, 48'
+        sort_options: null
+        default_sort: null
+        filters: null
+    fallback_metadata:
+      slot_definitions: null
+  8d8513b7879c1c6d:
+    settings:
+      default_settings:
+        id: 'project_browser_block:varbase_recipes'
+        label: 'Varbase recipes'
+        label_display: '0'
+        provider: project_browser
+        paginate: true
+        page_sizes: '12, 24, 36, 48'
+        sort_options: null
+        default_sort: null
+        filters: null
+    fallback_metadata:
+      slot_definitions: null
+label: 'Varbase recipes'
+id: block.project_browser_block.varbase_recipes
+provider: project_browser
+source: block
+source_local_id: 'project_browser_block:varbase_recipes'

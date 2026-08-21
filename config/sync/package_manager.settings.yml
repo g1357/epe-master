@@ -1,0 +1,13 @@
+additional_trusted_composer_plugins:
+  - vardot/varbase
+  - drupal/varbase_starter
+  - composer/installers
+  - cweagans/composer-patches
+  - oomphinc/composer-installers-extender
+  - drupal/core-composer-scaffold
+  - drupal/core-project-message
+  - dealerdirect/phpcodesniffer-composer-installer
+  - phpstan/extension-installer
+  - php-http/discovery
+  - tbachert/spi
+include_unknown_files_in_project_root: false

@@ -1,0 +1,16 @@
+uuid: a0d6382e-0290-40f5-ac6b-9db784c615cc
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: T0PIq5twS0dYPbNCPviTp6Ueqx9Z2uQ8al84vxnKKww
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: Radios
+id: sdc.vartheme_bs5.radios
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:radios'

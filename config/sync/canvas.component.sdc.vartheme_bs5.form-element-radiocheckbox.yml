@@ -1,0 +1,16 @@
+uuid: 7db78489-653e-420d-9cae-bf17b8f2a32d
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: HL_cE9ZiZS1TecFbUsO7yEGHEg3BDPk5zSCkAbXdGR8
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: 'Form Element Radio Checkbox'
+id: sdc.vartheme_bs5.form-element-radiocheckbox
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:form-element-radiocheckbox'

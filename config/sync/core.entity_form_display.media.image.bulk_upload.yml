@@ -1,0 +1,44 @@
+uuid: 8364d427-0f01-437a-a27c-c9c4f70347a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.bulk_upload
+    - field.field.media.image.field_media_image
+    - image.style.field_preview
+    - media.type.image
+  module:
+    - focal_point
+_core:
+  default_config_hash: HMn9KF_bxbvfjn0RfI-yJC47hYXCjunt_spuT133A78
+id: media.image.bulk_upload
+targetEntityType: media
+bundle: image
+mode: bulk_upload
+content:
+  field_media_image:
+    type: image_focal_point
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: field_preview
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  name: true
+  path: true
+  publish_on: true
+  publish_state: true
+  uid: true
+  unpublish_on: true
+  unpublish_state: true

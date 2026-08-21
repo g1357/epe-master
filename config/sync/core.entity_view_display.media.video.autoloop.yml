@@ -1,0 +1,40 @@
+uuid: c3aea7e3-41eb-4c9a-aaa3-98d6fa32df87
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.autoloop
+    - field.field.media.video.field_media_cover_image
+    - field.field.media.video.field_media_video_file
+    - media.type.video
+  module:
+    - file
+_core:
+  default_config_hash: egmIh1jonBVxBLu9pJsm3e26MglDegNQzBj3wx_7Asg
+id: media.video.autoloop
+targetEntityType: media
+bundle: video
+mode: autoloop
+content:
+  field_media_video_file:
+    type: file_video
+    label: hidden
+    settings:
+      controls: false
+      autoplay: true
+      loop: true
+      multiple_file_display_type: tags
+      muted: false
+      playsinline: true
+      width: 1600
+      height: 900
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_cover_image: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

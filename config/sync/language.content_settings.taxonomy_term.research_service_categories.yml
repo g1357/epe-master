@@ -1,0 +1,16 @@
+uuid: d7b5b8bd-c15d-4ace-81d7-729ae1161c8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.research_service_categories
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.research_service_categories
+target_entity_type_id: taxonomy_term
+target_bundle: research_service_categories
+default_langcode: site_default
+language_alterable: true

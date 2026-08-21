@@ -1,0 +1,18 @@
+uuid: 366bc467-3557-4d63-9e6a-9a1db1298fef
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.research_service
+id: node.research_service.title
+field_name: title
+entity_type: node
+bundle: research_service
+label: 'Service name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

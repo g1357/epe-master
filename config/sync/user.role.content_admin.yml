@@ -1,0 +1,228 @@
+uuid: 94eab4d1-80fc-4073-b0e4-23c9ab92e4b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - dashboard.dashboard.welcome
+    - filter.format.canvas_html_inline
+    - filter.format.content_format
+    - filter.format.full_html
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.svg_image
+    - media.type.video
+    - node.type.blog
+    - node.type.page
+    - taxonomy.vocabulary.blog_categories
+    - taxonomy.vocabulary.tags
+    - workflows.workflow.basic_editorial
+    - workflows.workflow.varbase_editorial_workflow
+  module:
+    - admin_audit_trail
+    - ai_ckeditor
+    - ai_image_alt_text
+    - antibot
+    - canvas
+    - coffee
+    - content_lock
+    - content_moderation
+    - content_translation
+    - contextual
+    - dashboard
+    - dropzonejs
+    - editoria11y
+    - entity_clone
+    - entityqueue
+    - file
+    - filter
+    - help
+    - media
+    - media_bulk_upload
+    - media_library_bulk_upload
+    - menu_admin_per_menu
+    - menu_link_attributes
+    - navigation
+    - navigation_extra_tools
+    - node
+    - path
+    - redirect
+    - scheduler
+    - system
+    - taxonomy
+    - taxonomy_access_fix
+    - taxonomy_manager
+    - toolbar
+    - trash
+    - views_bulk_edit
+    - webform
+    - yoast_seo
+_core:
+  default_config_hash: R76ERW8iwX62yl61tLZOkOM72XLsXsd-qRGPKbgdJxk
+id: content_admin
+label: 'Content Admin'
+weight: 3
+is_admin: false
+permissions:
+  - 'access admin audit trail'
+  - 'access administration pages'
+  - 'access coffee'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access help pages'
+  - 'access media overview'
+  - 'access navigation'
+  - 'access navigation extra tools cache flushing'
+  - 'access navigation extra tools cron'
+  - 'access site in maintenance mode'
+  - 'access site reports'
+  - 'access taxonomy manager list'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access trash'
+  - 'access webform overview'
+  - 'access webform submission user'
+  - 'administer folders'
+  - 'administer footer menu items'
+  - 'administer main menu items'
+  - 'administer menu'
+  - 'administer patterns'
+  - 'administer redirects'
+  - 'administer taxonomy'
+  - 'administer webform overview'
+  - 'break content lock'
+  - 'clone block entity'
+  - 'clone menu_link_content entity'
+  - 'clone node entity'
+  - 'clone taxonomy_term entity'
+  - 'clone taxonomy_vocabulary entity'
+  - 'clone user entity'
+  - 'create any term'
+  - 'create audio media'
+  - 'create blog content'
+  - 'create canvas_page'
+  - 'create content translations'
+  - 'create document media'
+  - 'create image media'
+  - 'create media'
+  - 'create page content'
+  - 'create remote_video media'
+  - 'create svg_image media'
+  - 'create terms in blog_categories'
+  - 'create terms in tags'
+  - 'create url aliases'
+  - 'create video media'
+  - 'create webform'
+  - 'delete any audio media'
+  - 'delete any blog content'
+  - 'delete any image media'
+  - 'delete any page content'
+  - 'delete any remote_video media'
+  - 'delete any term'
+  - 'delete any video media'
+  - 'delete blog revisions'
+  - 'delete content translations'
+  - 'delete own blog content'
+  - 'delete own files'
+  - 'delete own page content'
+  - 'delete page revisions'
+  - 'delete terms in blog_categories'
+  - 'delete terms in tags'
+  - 'dropzone upload files'
+  - 'edit any audio media'
+  - 'edit any blog content'
+  - 'edit any document media'
+  - 'edit any image media'
+  - 'edit any page content'
+  - 'edit any remote_video media'
+  - 'edit any svg_image media'
+  - 'edit any video media'
+  - 'edit any webform'
+  - 'edit canvas_page'
+  - 'edit own audio media'
+  - 'edit own blog content'
+  - 'edit own document media'
+  - 'edit own image media'
+  - 'edit own page content'
+  - 'edit own remote_video media'
+  - 'edit own svg_image media'
+  - 'edit own video media'
+  - 'edit own webform'
+  - 'edit terms in blog_categories'
+  - 'edit terms in tags'
+  - 'generate ai alt tags'
+  - 'manipulate all entityqueues'
+  - 'mark as hidden in editoria11y'
+  - 'publish auto-saves'
+  - 'reorder terms in any vocabulary'
+  - 'reorder terms in blog_categories'
+  - 'reset any vocabulary'
+  - 'restore file entities'
+  - 'restore media entities'
+  - 'restore node entities'
+  - 'restore taxonomy_term entities'
+  - 'revert all revisions'
+  - 'revert blog revisions'
+  - 'revert page revisions'
+  - 'schedule publishing of nodes'
+  - 'select any term'
+  - 'select any unpublished term'
+  - 'select terms in blog_categories'
+  - 'select terms in tags'
+  - 'select unpublished terms in blog_categories'
+  - 'select unpublished terms in tags'
+  - 'skip antibot'
+  - 'translate any entity'
+  - 'update any term'
+  - 'update content translations'
+  - 'use ai ckeditor'
+  - 'use basic_editorial transition create_new_draft'
+  - 'use basic_editorial transition publish'
+  - 'use basic_editorial transition unpublish'
+  - 'use media audio bulk upload form'
+  - 'use media document bulk upload form'
+  - 'use media image bulk upload form'
+  - 'use media remote_video bulk upload form'
+  - 'use media svg_image bulk upload form'
+  - 'use media video bulk upload form'
+  - 'use media_bulk_upload bulk upload form'
+  - 'use menu link attributes'
+  - 'use text format canvas_html_inline'
+  - 'use text format content_format'
+  - 'use text format full_html'
+  - 'use varbase_editorial_workflow transition archive'
+  - 'use varbase_editorial_workflow transition archived_published'
+  - 'use varbase_editorial_workflow transition create_new_draft'
+  - 'use varbase_editorial_workflow transition publish'
+  - 'use varbase_editorial_workflow transition review'
+  - 'use views bulk edit'
+  - 'use yoast seo'
+  - 'view all revisions'
+  - 'view any term'
+  - 'view any term name'
+  - 'view any unpublished content'
+  - 'view any unpublished term'
+  - 'view any unpublished term name'
+  - 'view any vocabulary name'
+  - 'view blog revisions'
+  - 'view deleted entities'
+  - 'view editoria11y checker'
+  - 'view latest version'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view page revisions'
+  - 'view scheduled content'
+  - 'view term names in blog_categories'
+  - 'view term names in tags'
+  - 'view terms in blog_categories'
+  - 'view terms in tags'
+  - 'view the administration theme'
+  - 'view unpublished term names in blog_categories'
+  - 'view unpublished term names in tags'
+  - 'view unpublished terms in blog_categories'
+  - 'view unpublished terms in tags'
+  - 'view vocabulary labels'
+  - 'view vocabulary name of blog_categories'
+  - 'view vocabulary name of tags'
+  - 'view welcome dashboard'

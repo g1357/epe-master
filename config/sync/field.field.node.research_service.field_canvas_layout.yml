@@ -1,0 +1,21 @@
+uuid: 4d7f1860-c480-4685-9b89-58a57c60d56f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_canvas_layout
+    - node.type.research_service
+  module:
+    - canvas
+id: node.research_service.field_canvas_layout
+field_name: field_canvas_layout
+entity_type: node
+bundle: research_service
+label: 'Canvas Layout'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: component_tree

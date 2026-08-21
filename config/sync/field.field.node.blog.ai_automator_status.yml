@@ -1,0 +1,23 @@
+uuid: cab0159f-d444-4c32-b4d8-24ac189d0af4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.ai_automator_status
+    - node.type.blog
+  module:
+    - options
+id: node.blog.ai_automator_status
+field_name: ai_automator_status
+entity_type: node
+bundle: blog
+label: 'AI Automator Status'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: pending
+default_value_callback: ''
+settings: {  }
+field_type: list_string

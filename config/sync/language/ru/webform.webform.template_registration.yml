@@ -1,0 +1,6 @@
+title: Регистрация
+settings:
+  confirmation_message: 'Спасибо за регистрацию'
+handlers:
+  email_notification:
+    label: 'Уведомление по электронной почте'

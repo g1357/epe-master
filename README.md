@@ -7,8 +7,14 @@ Drupal 11 и Varbase 11.
 
 ## Статус
 
-Фаза 1: исследование чистой платформы Varbase 11. Бизнес-функциональность,
-собственные модули и собственная тема пока не разрабатываются.
+Исследовательская фаза Varbase 11 завершена: выполнены восемь практических
+исследований Canvas, structured content, multilingual, search, access/workflow,
+SEO/forms, API/AI/Recipes и production readiness.
+
+E+E Master v1 Requirements & Architecture Review завершён на уровне
+рекомендаций; значимые owner-dependent решения перечислены отдельно и ещё не
+считаются принятыми. Реализация E+E Master v1 **не начата**: production content
+types, theme, permissions, search/API и runtime configuration не создавались.
 
 Текущий baseline:
 
@@ -51,9 +57,13 @@ ddev install-varbase full
 ## Документация
 
 - [Архитектура](docs/architecture/README.md)
+- [E+E Master v1 architecture](docs/architecture/epe-master-v1-architecture.md)
+- [ADR backlog](docs/architecture/adr-backlog.md)
 - [ADR-0001: Varbase 11 и platform first](docs/adr/ADR-0001-varbase-11-platform-first.md)
 - [Локальная разработка](docs/development/local-environment.md)
 - [Принципы и требования](docs/requirements/project-principles.md)
+- [E+E Master v1 requirements](docs/requirements/epe-master-v1-requirements.md)
+- [Future backlog](docs/requirements/epe-master-future-backlog.md)
 - [Карта возможностей Varbase](docs/research/varbase-capability-map.md)
 - [План исследования](docs/research/plan.md)
 

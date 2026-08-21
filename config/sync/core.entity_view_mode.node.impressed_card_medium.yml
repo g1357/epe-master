@@ -1,0 +1,13 @@
+uuid: c125fe69-4a74-4065-9d11-69b22d843f7d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: Apg_wyTqduY5Sufq84TyJ6mvUeCUvG7WzxOPZKlOXGQ
+id: node.impressed_card_medium
+label: 'Impressed card - medium'
+description: null
+targetEntityType: node
+cache: true

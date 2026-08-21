@@ -1,0 +1,64 @@
+name: Implementation baseline
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  composer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: gd, intl, mbstring, pdo_mysql, sodium
+          coverage: none
+      - uses: ramsey/composer-install@v3
+        with:
+          dependency-versions: locked
+          composer-options: --no-dev --optimize-autoloader
+      - run: composer validate --no-check-publish --check-lock
+      - run: composer audit --locked --abandoned=report
+      - run: composer check-platform-reqs --no-dev
+
+  drupal:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: drupal
+          MYSQL_USER: drupal
+          MYSQL_PASSWORD: drupal
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -udrupal -pdrupal"
+          --health-interval=10s --health-timeout=5s --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: gd, intl, mbstring, pdo_mysql, sodium
+          coverage: none
+      - uses: ramsey/composer-install@v3
+        with:
+          dependency-versions: locked
+      - name: Install Drupal from exported configuration
+        run: >-
+          bin/drush site:install
+          --existing-config
+          --db-url=mysql://drupal:drupal@127.0.0.1:3306/drupal
+          --yes
+      - run: bin/drush updatedb --yes
+      - run: bin/drush config:import --yes
+      - run: bin/drush config:status --state=Only-in-DB,Different,Only-in-sync-dir --format=list | tee /tmp/config-status && test ! -s /tmp/config-status
+      - run: bin/drush status --fields=bootstrap,db-status --format=list
+      - run: bin/drush cache:rebuild

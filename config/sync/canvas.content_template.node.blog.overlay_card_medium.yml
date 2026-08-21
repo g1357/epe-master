@@ -1,0 +1,67 @@
+uuid: 7631ee25-5900-4eda-8c88-1e3b8d2930e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.overlay_card_medium
+    - field.field.media.image.field_media_image
+    - field.field.node.blog.field_featured_image
+    - image.style.canvas_parametrized_width
+    - media.type.image
+    - node.type.blog
+  module:
+    - file
+    - media
+    - node
+_core:
+  default_config_hash: lnCcSBCExUEQXZ407cLJAk2CViOoV2tVpblRSs9-W0s
+id: node.blog.overlay_card_medium
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: overlay_card_medium
+component_tree:
+  '0:07fdc43f-fcd5-4618-92f9-04ff48726f96':
+    uuid: 07fdc43f-fcd5-4618-92f9-04ff48726f96
+    component_id: sdc.vartheme_bs5.card-overlay
+    component_version: 5ad047b80b93d7d0
+    inputs:
+      media_image:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_featured_image␞␟entity␜␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}'
+      ratio: ratio-16x9
+      fit: object-fit-cover
+      padded: false
+      box_shadow: shadow-none
+      overlay_color: bg-dark
+      overlay_opacity: bg-opacity-50
+      equal_height: true
+      h_align: text-start
+      v_align: align-items-end
+      stretched_link: true
+      link_url:
+        sourceType: host-entity-url
+        absolute: false
+  '0:content:0:829ce981-ffd4-4465-9409-bb447da6afa6':
+    parent_uuid: 07fdc43f-fcd5-4618-92f9-04ff48726f96
+    slot: content
+    uuid: 829ce981-ffd4-4465-9409-bb447da6afa6
+    component_id: sdc.vartheme_bs5.heading
+    component_version: 0889e2ce906c3164
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      level: 3
+  '0:content:1:c23b5265-5f3b-4351-b728-69e2bf6c35ee':
+    parent_uuid: 07fdc43f-fcd5-4618-92f9-04ff48726f96
+    slot: content
+    uuid: c23b5265-5f3b-4351-b728-69e2bf6c35ee
+    component_id: sdc.vartheme_bs5.date
+    component_version: 3eae6f5d223f6bda
+    inputs:
+      date:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝created␞␟value'
+        adapter: unix_to_date
+      text_color: text-white
+exposed_slots: {  }

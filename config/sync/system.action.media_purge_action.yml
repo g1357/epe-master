@@ -1,0 +1,12 @@
+uuid: 9d9e6130-8f24-4aba-bbde-ba4b705411b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - trash
+id: media_purge_action
+label: 'Permanently delete media item'
+type: media
+plugin: 'entity:purge_action:media'
+configuration: {  }

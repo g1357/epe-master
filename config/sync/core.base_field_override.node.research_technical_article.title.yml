@@ -1,0 +1,18 @@
+uuid: f1b4e95d-1212-4007-ba78-50cc0591a7da
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.research_technical_article
+id: node.research_technical_article.title
+field_name: title
+entity_type: node
+bundle: research_technical_article
+label: 'Article title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,49 @@
+uuid: acd10d15-0c40-485c-a255-4c5ff99cee93
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_16_09
+    - field.field.media.remote_video.field_media_cover_image
+    - field.field.media.remote_video.field_media_oembed_video
+    - field.field.media.remote_video.field_provider
+    - media.type.remote_video
+  module:
+    - drimage_improved
+_core:
+  default_config_hash: 8i5uBaXK4I-EKwlwpKdt9nvi1QhXE1M4S62mMPbOASg
+id: media.remote_video.media_16_09
+targetEntityType: media
+bundle: remote_video
+mode: media_16_09
+content:
+  thumbnail:
+    type: drimage_improved
+    label: hidden
+    settings:
+      image_link: ''
+      image_handling: aspect_ratio
+      aspect_ratio:
+        width: '16'
+        height: '9'
+      background:
+        position: ''
+        attachment: null
+        size: null
+      image_loading:
+        attribute: lazy
+      iwc:
+        image_style: null
+      image_style: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  feeds_item: true
+  field_media_cover_image: true
+  field_media_oembed_video: true
+  field_provider: true
+  name: true
+  search_api_excerpt: true
+  uid: true

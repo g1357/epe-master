@@ -1,0 +1,74 @@
+uuid: 24bc2b48-890c-465a-9a8b-3c1096569baa
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.sdc.vartheme_bs5.card-text
+    - canvas.component.sdc.vartheme_bs5.date
+    - canvas.component.sdc.vartheme_bs5.heading
+    - canvas.component.sdc.vartheme_bs5.rich-text
+    - core.entity_view_mode.node.text_card_large
+    - field.field.node.blog.field_content
+    - node.type.blog
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: qh5N4zHEbpeeAobpA0eqZU6pisLPZhfaLBRGJstpS9U
+id: node.blog.text_card_large
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: text_card_large
+component_tree:
+  '0:content:0:089c6da8-7af5-4d46-9cab-4eeecc00fa6a':
+    parent_uuid: dd4d34db-f694-450d-a445-ebe535861880
+    slot: content
+    uuid: 089c6da8-7af5-4d46-9cab-4eeecc00fa6a
+    component_id: sdc.vartheme_bs5.heading
+    component_version: 0889e2ce906c3164
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      level: 3
+  '0:content:1:3f66abba-d5a0-4c2c-8da2-85ad873e7fe5':
+    parent_uuid: dd4d34db-f694-450d-a445-ebe535861880
+    slot: content
+    uuid: 3f66abba-d5a0-4c2c-8da2-85ad873e7fe5
+    component_id: sdc.vartheme_bs5.rich-text
+    component_version: 82cd1f087fd469f4
+    inputs:
+      text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_content␞␟processed'
+      trim: true
+      trim_length: 40
+      trim_units: words
+      suffix: ' ...'
+      strip_html: true
+  '0:content:2:c36f8822-d5b3-4dd0-959d-a953684d3b6e':
+    parent_uuid: dd4d34db-f694-450d-a445-ebe535861880
+    slot: content
+    uuid: c36f8822-d5b3-4dd0-959d-a953684d3b6e
+    component_id: sdc.vartheme_bs5.date
+    component_version: 3eae6f5d223f6bda
+    inputs:
+      date:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝created␞␟value'
+        adapter: unix_to_date
+  '0:dd4d34db-f694-450d-a445-ebe535861880':
+    uuid: dd4d34db-f694-450d-a445-ebe535861880
+    component_id: sdc.vartheme_bs5.card-text
+    component_version: e029fefa26d20f4f
+    inputs:
+      card_border: false
+      padded: false
+      box_shadow: shadow-none
+      corner_style: rounded-3
+      equal_height: true
+      stretched_link: true
+      link_url:
+        sourceType: host-entity-url
+        absolute: false
+exposed_slots: {  }

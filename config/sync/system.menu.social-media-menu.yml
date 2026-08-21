@@ -1,0 +1,10 @@
+uuid: 21da2c58-51c8-4c2d-89cc-4487403bc7e6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: hZJu-5YGQFrQG8H97z9c4W5CzWzdZlDMcpBOhhFdWPg
+id: social-media-menu
+label: 'Social media menu'
+description: 'Shows a list of social media links, which are related the public social network accounts'
+locked: false

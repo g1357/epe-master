@@ -1,0 +1,95 @@
+uuid: 90d8956b-f7b3-44ab-a739-3732abb467f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.system_branding_block
+    - canvas.component.block.system_menu_block.main
+    - canvas.component.block.views_exposed_filter_block.search-block_1
+    - canvas.component.sdc.vartheme_bs5.group
+    - canvas.component.sdc.vartheme_bs5.icon-toggle
+    - canvas.component.sdc.vartheme_bs5.section
+  module:
+    - options
+  theme:
+    - vartheme_bs5
+_core:
+  default_config_hash: pWInPzxrAQgzPFN2AFO2C5s4ut3vn3YqZw6cJmbXIVA
+id: vartheme_bs5.header
+region: header
+theme: vartheme_bs5
+component_tree:
+  '0:baa39131-18c3-466a-95ea-15034b6fb94a':
+    uuid: baa39131-18c3-466a-95ea-15034b6fb94a
+    component_id: sdc.vartheme_bs5.section
+    component_version: 4171719f53c41b9d
+    inputs:
+      bg_edge2edge: true
+      container_type: container
+      background_color: none
+      text_color: auto
+      columns: 25-75
+      gutter: 'gx-3 gy-3'
+      padding_block_start: pt-3
+      padding_block_end: pb-3
+      section_header: false
+      section_footer: false
+  '0:col_1:0:589cc59f-4a7b-42c2-b285-8fd7b65e6439':
+    parent_uuid: baa39131-18c3-466a-95ea-15034b6fb94a
+    slot: col_1
+    uuid: 589cc59f-4a7b-42c2-b285-8fd7b65e6439
+    component_id: block.system_branding_block
+    component_version: 7d528e00f56b3abf
+    inputs:
+      label: 'Site branding'
+      label_display: '0'
+      use_site_logo: true
+      use_site_name: false
+      use_site_slogan: false
+  '0:col_2:0:b7d6ef10-663c-4e98-9e2d-982dc7573a4c':
+    parent_uuid: baa39131-18c3-466a-95ea-15034b6fb94a
+    slot: col_2
+    uuid: b7d6ef10-663c-4e98-9e2d-982dc7573a4c
+    component_id: sdc.vartheme_bs5.group
+    component_version: aef7f7b22127c944
+    inputs:
+      direction: horizontal
+      gap: gap-3
+      wrap: wrap
+      align_items: align-items-center
+      justify_content: justify-content-end
+  '0:col_2:0:content:0:d5f18bf8-f056-4581-a814-029b8c567d0b':
+    parent_uuid: b7d6ef10-663c-4e98-9e2d-982dc7573a4c
+    slot: content
+    uuid: d5f18bf8-f056-4581-a814-029b8c567d0b
+    component_id: block.system_menu_block.main
+    component_version: 322535c0078cf59c
+    inputs:
+      label: 'Main navigation'
+      label_display: '0'
+      level: 1
+      depth: 3
+      expand_all_items: true
+  '0:col_2:0:content:1:afd25b14-039e-464e-8c0c-4ca7eeeeae9c':
+    parent_uuid: b7d6ef10-663c-4e98-9e2d-982dc7573a4c
+    slot: content
+    uuid: afd25b14-039e-464e-8c0c-4ca7eeeeae9c
+    component_id: sdc.vartheme_bs5.icon-toggle
+    component_version: c42c2d3c773c4f6c
+    inputs:
+      icon: search
+      label: Search
+      open_label: 'Close search'
+      placement: end
+      expand_in_editor: true
+      panel: bar
+  '0:col_2:0:content:1:content:0:64cc6d33-c24c-45be-a52b-1deb85fcab0b':
+    parent_uuid: afd25b14-039e-464e-8c0c-4ca7eeeeae9c
+    slot: content
+    uuid: 64cc6d33-c24c-45be-a52b-1deb85fcab0b
+    component_id: block.views_exposed_filter_block.search-block_1
+    component_version: abd3c7419d413cec
+    inputs:
+      label: Search
+      label_display: '0'
+      views_label: ''

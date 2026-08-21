@@ -1,0 +1,22 @@
+uuid: 86184e9e-abb4-454e-97ac-8738c40ce95f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.research_asset
+  module:
+    - text
+id: node.research_asset.field_content
+field_name: field_content
+entity_type: node
+bundle: research_asset
+label: Content
+description: 'The content of this page.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,13 @@
+uuid: 44b0ee0a-d5db-458c-8678-f97710f9944c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: GTHpaqprW7ePFYWy1twNAhUSHDpnip8334srZPdgLJc
+id: node.hero_card
+label: 'Hero card'
+description: null
+targetEntityType: node
+cache: true

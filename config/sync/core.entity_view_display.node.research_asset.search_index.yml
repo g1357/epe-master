@@ -1,0 +1,49 @@
+uuid: 15b8986c-6131-455f-a944-04983b3d56cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.research_asset.field_canvas_layout
+    - field.field.node.research_asset.field_content
+    - field.field.node.research_asset.field_research_address
+    - field.field.node.research_asset.field_research_area
+    - field.field.node.research_asset.field_research_asset_status
+    - field.field.node.research_asset.field_research_images
+    - field.field.node.research_asset.field_seo_analysis
+    - field.field.node.research_asset.field_seo_description
+    - field.field.node.research_asset.field_seo_image
+    - field.field.node.research_asset.field_seo_title
+    - node.type.research_asset
+  module:
+    - text
+    - user
+id: node.research_asset.search_index
+targetEntityType: node
+bundle: research_asset
+mode: search_index
+content:
+  field_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_canvas_layout: true
+  field_research_address: true
+  field_research_area: true
+  field_research_asset_status: true
+  field_research_images: true
+  field_seo_analysis: true
+  field_seo_description: true
+  field_seo_image: true
+  field_seo_title: true
+  langcode: true
+  search_api_excerpt: true

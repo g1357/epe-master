@@ -45,7 +45,7 @@ custom-кода.
 | Content types | Типы, поля, revisions, display modes, Canvas versus node | Практический проход завершён | Drupal core + Varbase штатно | [Структурированный контент](02-structured-content.md) |
 | Media | Media types, library, bulk upload, focal point, responsive images, Drimage | Media entity/Library/embed/focal point проверены; pipeline требует исследования | Drupal core + Varbase штатно + входит contrib | [Структурированный контент](02-structured-content.md) |
 | Views | Listings, exposed filters, reusable displays, multilingual filtering | Asset catalog и reverse reference View проверены | Drupal core; входит contrib для улучшенного UX | [Структурированный контент](02-structured-content.md) |
-| Search | Search API baseline, indexing, Canvas/node coverage, путь к Solr | Активный DB index покрывает nodes/Canvas/all languages; RU relevance не исследован | Входит contrib | [Мультиязычность](03-multilingual.md) |
+| Search | Search API baseline, indexing, Canvas/node coverage, RU/EN relevance, filters и путь к Solr | Практический проход завершён: DB search работает, Canvas/node/draft boundary подтверждены; RU morphology, language filter, facets и tech tokens не готовы | Varbase штатно + входит contrib; дополнительный contrib для RU/Solr/facets | [Исследование поиска](04-search.md) |
 | Taxonomy | Иерархии, management UI, multilingual terms, access | RU translation term подтверждён; shared identity/hierarchy рекомендованы | Drupal core | [Мультиязычность](03-multilingual.md) |
 | Multilingual | RU/EN, content without translation, language negotiation, fallback | Практический проход завершён; single-language publication подтверждена, negotiation требует решения | Drupal core | [Мультиязычность](03-multilingual.md) |
 | Workflow / moderation | Draft/review/published, scheduling, notifications, per-language moderation | EN Published + RU Draft и независимые revisions подтверждены | Drupal core + Varbase штатно | [Мультиязычность](03-multilingual.md) |
@@ -68,7 +68,8 @@ custom-кода.
 оно влияет на content model, reusable components, multilingual, permissions и
 theming.
 
-Завершены первые проходы Page building, Structured content и Multilingual.
+Завершены первые проходы Page building, Structured content, Multilingual и
+Search.
 Следующие области выбираются отдельным решением пользователя; этот документ не
 запускает новый этап автоматически.
 

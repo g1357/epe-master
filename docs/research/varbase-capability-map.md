@@ -57,10 +57,10 @@ custom-кода.
 | Reusable components | Canvas patterns, SDC components, governance and reuse | Первый практический проход завершён | Varbase штатно | [Исследование Canvas](page-building-canvas-design-system.md) |
 | Recipes | Composition, idempotency, config ownership, uninstall/rollback | Практический проход завершён: 53 applied path entries, Varbase API/AI recipes разобраны; generic rollback и ongoing ownership отсутствуют, config management остаётся authoritative | Drupal core + Varbase штатно | [API, AI, Recipes и интеграции](07-api-ai-recipes-integrations.md) |
 | API / integrations | JSON:API, OpenAPI, OAuth, consumers, data exposure | Практический проход завершён: closed-by-default и read-only подтверждены; published/forward Draft access проверен; OpenAPI отражает enabled GET routes, но auth/multilingual contract неполон | Drupal core + Varbase штатно + входит contrib | [API, AI, Recipes и интеграции](07-api-ai-recipes-integrations.md) |
-| Performance / cache | Drupal cache layers, BigPipe, images, cron, queues, baseline metrics | Не начато | Не определено | — |
-| Security | SecKit, password policy, permissions, dependency/patch risk, secrets | Роли/login/access и form abuse проверены; Antibot работает, CAPTCHA доступна, Webform rate limits/retention не настроены, MFA отсутствует | Varbase штатно + входит contrib; дополнительный contrib для MFA при решении | [Роли, workflow и access](05-users-roles-workflow-access.md), [SEO, формы и feedback](06-seo-forms-feedback.md) |
-| Deployment | Composer build, config flow, Beget constraints, cron and releases | Recipe/config ownership boundary исследован; полный deployment/Beget проход не начат | Drupal core + Composer; остальное не определено | [API, AI, Recipes и интеграции](07-api-ai-recipes-integrations.md) |
-| Backup / restore | Database/files/config scope, DDEV restore, Beget recovery targets | Не начато | Не определено | — |
+| Performance / cache | Drupal cache layers, BigPipe, images, cron, queues, baseline metrics | Практический проход завершён: page/dynamic cache, aggregation, cron/queues и DDEV measurements подтверждены; Redis/CDN не нужны для baseline; image test не воспроизвёл 196 s | Drupal core + Varbase штатно + входит contrib; Hosting/configuration | [Production readiness и Beget](08-production-readiness-beget.md) |
+| Security | SecKit, password policy, permissions, dependency/patch risk, secrets | Роли/login/access и form abuse проверены; production status/settings/audit исследованы; Composer advisory, отсутствующие production secrets/settings и MFA требуют решения до launch | Varbase штатно + входит contrib; Hosting/configuration; дополнительный contrib для MFA при решении | [Роли, workflow и access](05-users-roles-workflow-access.md), [SEO, формы и feedback](06-seo-forms-feedback.md), [Production readiness](08-production-readiness-beget.md) |
+| Deployment | Composer build, config flow, Beget constraints, cron and releases | Практический проход завершён: shared-first квалификация, простой tag workflow и deploy order предложены; ignored config sync, failed import (orphaned Tour config), Canvas drift и две рассинхронизированные working copies — blockers | Drupal core + Composer + Hosting/configuration | [API, AI, Recipes и интеграции](07-api-ai-recipes-integrations.md), [Production readiness и Beget](08-production-readiness-beget.md) |
+| Backup / restore | Database/files/config scope, DDEV restore, Beget recovery targets | DB export → marker → import → cache rebuild → HTTP 200 подтверждён; files/config archive и checksums созданы вне Git; рекомендованы RPO 24 h / RTO 4–8 h | Drupal core + DDEV + Hosting/configuration | [Production readiness и Beget](08-production-readiness-beget.md) |
 
 ## Исследовательский backlog
 
@@ -68,10 +68,9 @@ custom-кода.
 оно влияет на content model, reusable components, multilingual, permissions и
 theming.
 
-Завершены первые проходы Page building, Structured content, Multilingual и
-Search.
-Следующие области выбираются отдельным решением пользователя; этот документ не
-запускает новый этап автоматически.
+Завершены восемь запланированных практических проходов исследовательской фазы.
+Следующего исследования нет: переход к реализации, production architecture или
+новым ADR возможен только по отдельному решению пользователя.
 
 ## Важное ограничение
 

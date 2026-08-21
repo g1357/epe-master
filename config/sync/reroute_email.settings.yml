@@ -1,0 +1,7 @@
+enable: false
+roles: {  }
+allowed: ''
+description: true
+message: true
+mailkeys: ''
+mailkeys_skip: ''

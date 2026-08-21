@@ -1,0 +1,50 @@
+uuid: 11e7c170-95b9-40d0-a948-efea7b139207
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured_card_small
+    - field.field.node.research_service.field_canvas_layout
+    - field.field.node.research_service.field_content
+    - field.field.node.research_service.field_description
+    - field.field.node.research_service.field_featured_image
+    - field.field.node.research_service.field_related_technical_articles
+    - field.field.node.research_service.field_research_service_category
+    - field.field.node.research_service.field_seo_analysis
+    - field.field.node.research_service.field_seo_description
+    - field.field.node.research_service.field_seo_image
+    - field.field.node.research_service.field_seo_title
+    - node.type.research_service
+  module:
+    - user
+id: node.research_service.featured_card_small
+targetEntityType: node
+bundle: research_service
+mode: featured_card_small
+content:
+  field_featured_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: media_16_09
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_canvas_layout: true
+  field_content: true
+  field_description: true
+  field_related_technical_articles: true
+  field_research_service_category: true
+  field_seo_analysis: true
+  field_seo_description: true
+  field_seo_image: true
+  field_seo_title: true
+  langcode: true
+  search_api_excerpt: true

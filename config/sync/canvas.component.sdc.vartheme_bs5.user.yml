@@ -1,0 +1,16 @@
+uuid: 8cac5569-ad98-4772-8010-6bb6e6dcd253
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: 2gcEnmWt60K-omJQ_MCli131ileLGUlu6lEwd11nJCU
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: User
+id: sdc.vartheme_bs5.user
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:user'

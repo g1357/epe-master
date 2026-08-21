@@ -1,0 +1,13 @@
+uuid: 314aa412-b842-4632-8c8c-bfae5eac1005
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: f9FDalROxRDgyASNKJH33X1x1X5YR439XrtlRjdSKaw
+id: node.featured_card_medium
+label: 'Featured card - medium'
+description: null
+targetEntityType: node
+cache: true

@@ -1,0 +1,31 @@
+uuid: 20fcd8f1-deb8-457b-bad5-8aee89d7edbc
+langcode: en
+status: true
+dependencies:
+  module:
+    - field
+_core:
+  default_config_hash: qT6_9l0UnSmWMui2Km45A3BpChlvEDPRHtpuZqYvlMI
+title: 'Purges deleted Field API data'
+id: field_cron
+weight: 0
+module: field
+callback: field_cron
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '*/30+@ * * * *'
+launcher:
+  id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
+logger:
+  id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

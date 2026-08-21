@@ -1,0 +1,5 @@
+settings:
+  confirmation_title: Спасибо
+handlers:
+  email_notification:
+    label: 'Уведомления по email'

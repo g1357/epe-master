@@ -1,0 +1,22 @@
+uuid: 5fc35840-2de9-4059-bfa7-62330e3c8c13
+langcode: en
+status: true
+dependencies: {  }
+name: drimage_improved_focal_2520_0
+label: drimage_improved_focal_2520_0
+effects:
+  bd30edeb-505d-4a62-9d84-ec8276e7edd0:
+    uuid: bd30edeb-505d-4a62-9d84-ec8276e7edd0
+    id: image_convert
+    weight: 0
+    data:
+      extension: webp
+  cd4c9385-b16c-4e1e-a4c9-53cac5822295:
+    uuid: cd4c9385-b16c-4e1e-a4c9-53cac5822295
+    id: image_scale
+    weight: 2
+    data:
+      width: 2520
+      height: null
+      upscale: false
+pipeline: __default__

@@ -1,0 +1,16 @@
+uuid: 86f8f800-d4c4-4bec-990a-324ae7e7fb3c
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: S8_Ud_08IScmT-XwzxSA_AnVeOBljPhSc32Fsy-35Ac
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: 'Views View List'
+id: sdc.vartheme_bs5.views-view-list
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:views-view-list'

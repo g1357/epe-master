@@ -1,0 +1,45 @@
+uuid: aa2f7799-0af8-46e9-8a6b-0060f2395d81
+langcode: en
+status: true
+dependencies:
+  theme:
+    - vartheme_bs5
+_core:
+  default_config_hash: WzpanArA0dyQPcX1yz2f-V1YXsGxC0dqvLn9wd1Ancw
+active_version: 1570c5ddfb282be7
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        content:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+          derived_schema_metadata:
+            string_shape: {  }
+    fallback_metadata:
+      slot_definitions: {  }
+  f5bf595f6ce8fc36:
+    settings:
+      prop_field_definitions:
+        content:
+          required: false
+          field_type: string
+          field_storage_settings: null
+          field_instance_settings: null
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+          derived_schema_metadata:
+            string_shape: {  }
+    fallback_metadata:
+      slot_definitions: {  }
+label: 'Dropdown menu'
+id: sdc.vartheme_bs5.dropdown-menu
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:dropdown-menu'

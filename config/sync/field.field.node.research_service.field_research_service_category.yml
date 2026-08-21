@@ -1,0 +1,29 @@
+uuid: 72f2c2a5-513d-4112-a2e3-1f4704c1f8d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_service_category
+    - node.type.research_service
+    - taxonomy.vocabulary.research_service_categories
+id: node.research_service.field_research_service_category
+field_name: field_research_service_category
+entity_type: node
+bundle: research_service
+label: 'Research service category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: eca
+  handler_settings:
+    target_bundles:
+      research_service_categories: research_service_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: entity_reference

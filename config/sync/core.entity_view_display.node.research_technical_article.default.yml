@@ -1,0 +1,71 @@
+uuid: fd20cb3c-7464-4eec-8d60-8453b08f0e29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.research_technical_article.field_article_content
+    - field.field.node.research_technical_article.field_canvas_layout
+    - field.field.node.research_technical_article.field_content
+    - field.field.node.research_technical_article.field_description
+    - field.field.node.research_technical_article.field_featured_image
+    - field.field.node.research_technical_article.field_research_technologies
+    - field.field.node.research_technical_article.field_research_topics
+    - field.field.node.research_technical_article.field_seo_analysis
+    - field.field.node.research_technical_article.field_seo_description
+    - field.field.node.research_technical_article.field_seo_image
+    - field.field.node.research_technical_article.field_seo_title
+    - node.type.research_technical_article
+  module:
+    - canvas
+    - text
+    - user
+id: node.research_technical_article.default
+targetEntityType: node
+bundle: research_technical_article
+mode: default
+content:
+  field_article_content:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_canvas_layout:
+    type: canvas_naive_render_sdc_tree
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: -2
+    region: content
+  field_research_technologies:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_research_topics:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content: true
+  field_description: true
+  field_featured_image: true
+  field_seo_analysis: true
+  field_seo_description: true
+  field_seo_image: true
+  field_seo_title: true
+  langcode: true
+  search_api_excerpt: true

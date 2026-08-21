@@ -14,9 +14,8 @@ acceptance criteria, privacy/security оценки и эксплуатацион
 | Пункт | Trigger | Первый штатный путь |
 | --- | --- | --- |
 | Search quality iteration | накоплен corpus и golden queries | Search API processors/View/structured fields |
-| MFA | административный production access | зрелый Drupal 11 contrib после отдельного выбора |
 | Translation freshness process | регулярные RU/EN обновления | workflow/report/training; ECA только при сложности |
-| Webform retention/anti-spam tuning | реальный volume и legal policy | Webform limits/purge/configuration |
+| Webform retention/anti-spam tuning | legal review 180 дней или реальный volume | Webform limits/purge/configuration |
 | First update staging clone | первый core/Varbase update | restore production backup во временную среду |
 | Production performance review | появились реальные traffic/cache metrics | core caches и hosting tuning |
 

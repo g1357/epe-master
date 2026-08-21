@@ -1,6 +1,6 @@
 # E+E Master v1: требования к публичному запуску
 
-- Статус: Architecture review complete; owner approvals pending
+- Статус: Approved implementation baseline
 - Дата: 2026-08-21
 - Реализация: не начата
 - Источник истины: восемь документов `docs/research/` и capability map
@@ -54,7 +54,7 @@ v1 не является порталом, community, личным кабине�
 | Questions/corrections | Adjust to Varbase | Приватный Webform, не public Comment |
 | Public comments | Defer | Нет подтверждённого community use case; spam/moderation cost |
 | Workflow | Keep as-is | Draft → In review → Published → Archived подтверждён |
-| Author/publisher split | Requires later decision | Baseline роли publish; split делается configuration-only |
+| Author/publisher split | Adjust to Varbase | Без обязательного four-eyes на launch; trusted Content editor может Publish |
 | Registration | Defer | Нет полезного кабинета/закрытого контента; лишняя attack surface |
 | Разграниченный доступ | Defer | Нет Member/Internal published-content use case |
 | Личный кабинет | Defer | Не определены данные, действия и business value |
@@ -73,7 +73,7 @@ v1 не является порталом, community, личным кабине�
 - Главная, О компании, Управление активами, Консалтинг, Статьи, Объекты,
   Контакты, Search, Privacy/legal pages;
 - понятное представление четырёх consulting competencies;
-- Technical Article, Asset и утверждённый способ представления Services;
+- Technical Article, Service и Asset как отдельные Content Types;
 - RU default и EN optional translations;
 - Image/Document/Remote Video media policy;
 - Search API DB с current-language выдачей;
@@ -90,7 +90,7 @@ v1 не является порталом, community, личным кабине�
 - улучшение редакторского руководства и переводческого контроля;
 - измеренная Webform retention/anti-spam настройка;
 - временный staging restore перед первым update;
-- MFA, если владелец явно не включит её в launch scope;
+- MFA для Site Admin / Super Admin до production;
 - оценка постоянного staging после появления регулярных обновлений.
 
 ### Future backlog
@@ -142,7 +142,7 @@ entities добавляются только если опубликовано �
 CKEditor v1: headings, tables, links, quotes, embedded Media и semantic code
 blocks. Syntax highlighting и automatic TOC отложены.
 
-### 6.2 Service — условно нужен
+### 6.2 Service — обязателен в v1
 
 Назначение: повторяемое структурированное предложение компании, связанное со
 статьями. Не использовать как замену каждой маркетинговой Canvas Page.
@@ -153,14 +153,13 @@ blocks. Syntax highlighting и automatic TOC отложены.
 | RU/EN | text/SEO/alias translatable; category/articles/Media shared |
 | Revisions/moderation | обязательны, общий workflow |
 | SEO | Schema Service после включения установленного plugin; bundle defaults |
-| Search | индексировать только если Service entities утверждены |
+| Search | индексировать опубликованные Service entities |
 | Display | общий Canvas Content Template; marketing landing может ссылаться на entities |
-| Sitemap | включить при наличии production Services |
+| Sitemap | включить опубликованные production Services |
 | API | disabled в v1 |
 
-Owner должен подтвердить: есть ли на launch серия отдельных услуг, которой
-нужны listing, related Articles и одинаковый lifecycle. Если нет — **не создавать
-Service в v1**, использовать Canvas Pages.
+Owner подтвердил отдельный Service Content Type в v1. Canvas Pages остаются
+механизмом уникальных marketing landings и могут ссылаться на Service entities.
 
 ### 6.3 Asset — обязателен
 
@@ -207,12 +206,10 @@ Trigger пересмотра: регулярная новостная лента
 | --- | --- | --- | --- | --- |
 | Topics | Да | максимум 2 уровня после реальной потребности | shared term identity/tree, translated name/description | Content Admin; editor выбирает existing terms |
 | Technologies | Да для технических статей | flat | shared identity, translated label | Content Admin; controlled vocabulary; tech tokens сохранять явно |
-| Service Categories | Только если Service CT утверждён | flat на v1 | shared identity, translated label | Content Admin |
-| Asset Status | Да, если больше одного состояния | flat controlled enum | shared business state, translated label | Content Admin/Site Admin, editors не создают terms ad hoc |
+| Service Categories | Да | flat на v1 | shared identity, translated label | Content Admin |
 
-Если Asset Status имеет 2–4 неизменяемых значения и не требует editorial term
-management, Options field проще taxonomy. Owner/content owner выбирает после
-утверждения статусов. Не создавать отдельные RU/EN terms.
+Asset Status — фиксированный Options enum, не Taxonomy. Значение shared между
+переводами, labels переводятся через configuration translation.
 
 ## 8. Media v1
 
@@ -249,8 +246,9 @@ responsive styles, WebP и lazy loading; AVIF не обещать до pipeline 
   поддерживаемой нормой;
 - self canonical; hreflang только между опубликованными переводами.
 
-Unresolved: точный language-switcher UX при отсутствии перевода и
-редакционный процесс пометки устаревшего перевода.
+Если перевода текущей страницы нет, language switcher ведёт на главную
+выбранного языка. Устаревшие переводы отслеживаются вручную редакционным
+процессом v1.
 
 ## 10. Search v1
 
@@ -284,9 +282,8 @@ autocomplete/spellcheck, неудовлетворительный p95/relevance 
 роль, не business access tier. UID 1 — break-glass, не ежедневный аккаунт.
 
 Workflow: **Draft → In review → Published → Archived**. Revisions и revision log
-обязательны. Split author/publisher для v1 требует owner approval: если review
-обязателен, убрать Publish/Archive у Content editor и оставить Content admin;
-новая workflow-система/custom не нужны.
+обязательны. На launch нет обязательного four-eyes: trusted Content editor
+может Publish. Позднейшее разделение author/publisher остаётся configuration-only.
 
 Registration остаётся `admin_only`; personal cabinet отсутствует. Registration
 пересматривается только при наличии хотя бы одного утверждённого сценария:
@@ -301,8 +298,9 @@ Registration остаётся `admin_only`; personal cabinet отсутству�
 
 ### Webform Contact
 
-Имя, email, тема, сообщение, consent; anonymous access; reusable Webform Block
-на Canvas Contact page. Domain From, visitor email только Reply-To.
+Name, email и organization optional; message и consent required; anonymous
+access; reusable Webform Block на Canvas Contact page. Domain From, visitor
+email только Reply-To.
 
 ### Private Article Feedback
 
@@ -318,8 +316,8 @@ Anti-spam minimum: Antibot + Honeypot; per-IP/total Webform limits после
 реальных volume expectations; FriendlyCaptcha только при abuse; не включать
 несколько CAPTCHA одновременно. Attachments выключены в v1.
 
-Privacy retention и хранение IP требуют owner/legal decision; 180 дней — лишь
-исследовательский ориентир, не утверждённая политика.
+IP не хранится, если anti-abuse не докажет необходимость. Retention baseline —
+180 дней, предварительно и до отдельной legal review.
 
 ## 13. SEO acceptance policy
 

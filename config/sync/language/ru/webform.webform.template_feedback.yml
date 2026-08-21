@@ -1,0 +1,8 @@
+title: 'Обратная связь'
+settings:
+  confirmation_message: 'Спасибо за ваш отзыв.'
+handlers:
+  email_confirmation:
+    label: 'Подтверждение почтой'
+  email_notification:
+    label: 'Уведомления по email'

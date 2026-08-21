@@ -1,0 +1,20 @@
+uuid: 8fee6f96-91e2-4f69-b202-de66d1e6c8a0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_research_technologies
+field_name: field_research_technologies
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

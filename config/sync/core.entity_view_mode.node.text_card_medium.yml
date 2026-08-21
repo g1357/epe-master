@@ -1,0 +1,13 @@
+uuid: df2b7496-3b35-4115-aa73-b26a19be7b5c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: vyReGGkhihB39dwKZoaXm9GLozRRAOWCgQpIg1HUysM
+id: node.text_card_medium
+label: 'Text card - medium'
+description: null
+targetEntityType: node
+cache: true

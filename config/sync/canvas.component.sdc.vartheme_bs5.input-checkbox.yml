@@ -1,0 +1,41 @@
+uuid: 24890fbb-4a5a-4d5b-8809-b7aee30e5a3d
+langcode: en
+status: false
+dependencies:
+  theme:
+    - vartheme_bs5
+_core:
+  default_config_hash: 6oyLwfpxW2w6M-yugm0fu5zcrGkD_cbL1JB4fZP8ZeE
+active_version: 18427a3ab0371947
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        input_checkbox_utility_classes:
+          required: false
+          field_type: string
+          cardinality: -1
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+          derived_schema_metadata:
+            string_shape: {  }
+        children:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+          derived_schema_metadata:
+            string_shape: {  }
+    fallback_metadata:
+      slot_definitions: {  }
+label: Checkbox
+id: sdc.vartheme_bs5.input-checkbox
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:input-checkbox'

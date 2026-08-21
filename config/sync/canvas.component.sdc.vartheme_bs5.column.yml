@@ -1,0 +1,23 @@
+uuid: 4e50a874-b129-42e4-8e0c-2e0205ecbd23
+langcode: en
+status: true
+dependencies:
+  theme:
+    - vartheme_bs5
+_core:
+  default_config_hash: Iq8hGAjLc1WlsBkBBZcPzLhXbbwSSp7mb8BAZW60tLw
+active_version: d54b181baa9953d9
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions: {  }
+    fallback_metadata:
+      slot_definitions:
+        content:
+          title: Content
+          description: 'Content placed inside the column.'
+label: Column
+id: sdc.vartheme_bs5.column
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:column'

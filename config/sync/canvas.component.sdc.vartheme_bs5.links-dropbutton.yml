@@ -1,0 +1,16 @@
+uuid: c89eef85-0d59-44ab-9caa-736fc246f213
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: VSafdTlMvSIoi4anfbERKBPRaAJ9VD9z6SH76KNzpX0
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: 'Links Drop button'
+id: sdc.vartheme_bs5.links-dropbutton
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:links-dropbutton'

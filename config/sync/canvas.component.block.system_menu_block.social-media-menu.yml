@@ -1,0 +1,39 @@
+uuid: 28d10b6c-3c60-40a6-bdfc-3c2245609dac
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social-media-menu
+  module:
+    - system
+active_version: 6cb2d7e3633bb60e
+versioned_properties:
+  active:
+    settings:
+      default_settings:
+        id: 'system_menu_block:social-media-menu'
+        label: 'Social media menu'
+        label_display: '0'
+        provider: system
+        level: 1
+        depth: null
+        expand_all_items: false
+    fallback_metadata:
+      slot_definitions: null
+  0fcdbc0a997e263a:
+    settings:
+      default_settings:
+        id: 'system_menu_block:social-media-menu'
+        label: 'Social media menu'
+        label_display: '0'
+        provider: system
+        level: 1
+        depth: null
+        expand_all_items: false
+    fallback_metadata:
+      slot_definitions: null
+label: 'Social media menu'
+id: block.system_menu_block.social-media-menu
+provider: system
+source: block
+source_local_id: 'system_menu_block:social-media-menu'

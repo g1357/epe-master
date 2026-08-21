@@ -1,0 +1,18 @@
+uuid: 420c7fc9-8bd8-4a17-97af-9b5c7dba4ab9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.research_asset
+id: node.research_asset.title
+field_name: title
+entity_type: node
+bundle: research_asset
+label: 'Asset name'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

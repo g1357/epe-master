@@ -1,0 +1,23 @@
+layout:
+  -
+    layout_settings:
+      label: Основная
+    components:
+      cf1f0dbb-11a0-45ed-8289-e0802c0cc29a:
+        configuration:
+          label: Установка
+      ded99303-3ac6-403e-b03c-c46812914b0c:
+        configuration:
+          label: Конфигурация
+      8a25f9d9-da87-4395-b350-3b3d303759a7:
+        configuration:
+          label: Расширения
+      69458115-683f-4417-8829-c194d2671ba3:
+        configuration:
+          label: Статус
+      ee6d85d7-4723-40ba-9129-2114bc44966c:
+        configuration:
+          label: Особенности
+      d611e7f6-9608-450a-9957-060da480a696:
+        configuration:
+          label: Документация

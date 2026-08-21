@@ -1,0 +1,16 @@
+uuid: 74ce0e33-69f0-4550-b266-ad1467004b3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.research_service
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.research_service
+target_entity_type_id: node
+target_bundle: research_service
+default_langcode: site_default
+language_alterable: true

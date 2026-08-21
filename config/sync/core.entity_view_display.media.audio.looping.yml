@@ -1,0 +1,34 @@
+uuid: 8f3995f3-f341-4350-bb19-a999862e48fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.looping
+    - field.field.media.audio.field_media_audio_file
+    - media.type.audio
+  module:
+    - file
+_core:
+  default_config_hash: ztLVPSqlSrkwg4JbjfC_XPO7g0B3Na2Wax_OY5G0-Mc
+id: media.audio.looping
+targetEntityType: media
+bundle: audio
+mode: looping
+content:
+  field_media_audio_file:
+    type: file_audio
+    label: visually_hidden
+    settings:
+      controls: true
+      autoplay: false
+      loop: true
+      multiple_file_display_type: tags
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

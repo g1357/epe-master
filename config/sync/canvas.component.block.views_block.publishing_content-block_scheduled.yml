@@ -1,0 +1,50 @@
+uuid: d4304685-7096-40e1-9adf-72d82c0fcd58
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.publishing_content
+  module:
+    - views
+active_version: f172273c56947b71
+versioned_properties:
+  active:
+    settings:
+      default_settings:
+        id: 'views_block:publishing_content-block_scheduled'
+        label: Scheduled
+        label_display: '0'
+        provider: views
+        views_label: ''
+        items_per_page: null
+        exposed: {  }
+    fallback_metadata:
+      slot_definitions: null
+  1269591f786fe48b:
+    settings:
+      default_settings:
+        id: 'views_block:publishing_content-block_scheduled'
+        label: Scheduled
+        label_display: '0'
+        provider: views
+        views_label: ''
+        items_per_page: null
+        exposed: {  }
+    fallback_metadata:
+      slot_definitions: null
+  3ddcc9429928c501:
+    settings:
+      default_settings:
+        id: 'views_block:publishing_content-block_scheduled'
+        label: Scheduled
+        label_display: '0'
+        provider: views
+        views_label: ''
+        items_per_page: null
+    fallback_metadata:
+      slot_definitions: null
+label: Scheduled
+id: block.views_block.publishing_content-block_scheduled
+provider: views
+source: block
+source_local_id: 'views_block:publishing_content-block_scheduled'

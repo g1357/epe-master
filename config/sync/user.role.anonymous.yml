@@ -1,0 +1,23 @@
+uuid: ee1fa8ec-2270-4056-9799-1f5b858f94bf
+langcode: en
+status: true
+dependencies:
+  module:
+    - access_unpublished
+    - klaro
+    - media
+    - system
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access_unpublished node blog'
+  - 'access_unpublished node page'
+  - 'access_unpublished taxonomy_term blog_categories'
+  - 'access_unpublished taxonomy_term tags'
+  - 'use klaro'
+  - 'view media'

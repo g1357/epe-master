@@ -1,0 +1,16 @@
+uuid: 8d67221c-fda3-468e-8189-69629f5a7993
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: LITSRAF_0OWlKuDPjOB2YbIFIjWWyRUgb7o2btd28s0
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: Select
+id: sdc.vartheme_bs5.select
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:select'

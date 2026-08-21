@@ -1,0 +1,16 @@
+uuid: f1edf394-9315-4d64-b4a3-bfb49c5fd34b
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: zB8K0uUlHfxIiCCmpIAQPkcSRQrYJpeY7feVARe4gHU
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: 'Views view unformatted'
+id: sdc.vartheme_bs5.views-view-unformatted
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:views-view-unformatted'

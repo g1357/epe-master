@@ -1,0 +1,16 @@
+uuid: 56bedd72-7ade-4772-9e1e-08abf1cd76e3
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: ltEuFO_gjHRPZrcrkEHCNpyfZ_YC4SG5i_LSDCVmUOQ
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: 'Views view'
+id: sdc.vartheme_bs5.views-view
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:views-view'

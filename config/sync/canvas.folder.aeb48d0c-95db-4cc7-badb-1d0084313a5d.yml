@@ -1,0 +1,23 @@
+uuid: aeb48d0c-95db-4cc7-badb-1d0084313a5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.sdc.vartheme_bs5.accordion-block
+    - canvas.component.sdc.vartheme_bs5.accordion-container
+    - canvas.component.sdc.vartheme_bs5.divider
+    - canvas.component.sdc.vartheme_bs5.group
+    - canvas.component.sdc.vartheme_bs5.navbar
+    - canvas.component.sdc.vartheme_bs5.section
+    - canvas.component.sdc.vartheme_bs5.spacer
+name: Layout
+configEntityTypeId: component
+weight: 0
+items:
+  - sdc.vartheme_bs5.accordion-block
+  - sdc.vartheme_bs5.accordion-container
+  - sdc.vartheme_bs5.divider
+  - sdc.vartheme_bs5.group
+  - sdc.vartheme_bs5.navbar
+  - sdc.vartheme_bs5.section
+  - sdc.vartheme_bs5.spacer

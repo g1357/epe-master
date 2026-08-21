@@ -1,0 +1,22 @@
+uuid: 91812ec4-5daa-4f12-a6b3-4f684e845774
+langcode: en
+status: true
+dependencies: {  }
+name: drimage_improved_focal_920_0
+label: drimage_improved_focal_920_0
+effects:
+  9cf59cf9-49ad-4ae4-b1cc-fd34037ba736:
+    uuid: 9cf59cf9-49ad-4ae4-b1cc-fd34037ba736
+    id: image_convert
+    weight: 0
+    data:
+      extension: webp
+  d0671682-a35a-45c1-96c1-8c93265bdcc1:
+    uuid: d0671682-a35a-45c1-96c1-8c93265bdcc1
+    id: image_scale
+    weight: 2
+    data:
+      width: 920
+      height: null
+      upscale: false
+pipeline: __default__

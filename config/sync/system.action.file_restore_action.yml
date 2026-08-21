@@ -1,0 +1,12 @@
+uuid: bcf13147-6811-4667-9cd5-9b7820e8285f
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - trash
+id: file_restore_action
+label: 'Restore file from trash'
+type: file
+plugin: 'entity:restore_action:file'
+configuration: {  }

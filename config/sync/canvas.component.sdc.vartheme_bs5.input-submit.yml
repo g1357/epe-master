@@ -1,0 +1,41 @@
+uuid: 69357c22-0443-4653-9141-131c78a8958a
+langcode: en
+status: false
+dependencies:
+  theme:
+    - vartheme_bs5
+_core:
+  default_config_hash: KpxPYUyqZH9QZwkru1TykdvfEmNQ4dExmHzUz1j4yic
+active_version: 841b0ce6473c0de8
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        input_submit_utility_classes:
+          required: false
+          field_type: string
+          cardinality: -1
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+          derived_schema_metadata:
+            string_shape: {  }
+        children:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+          derived_schema_metadata:
+            string_shape: {  }
+    fallback_metadata:
+      slot_definitions: {  }
+label: 'Input Submit'
+id: sdc.vartheme_bs5.input-submit
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:input-submit'

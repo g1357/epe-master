@@ -1,0 +1,47 @@
+uuid: d7212832-762b-4689-87ad-02981f5abeaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.media.image.field_media_image
+    - field.field.node.blog.field_description
+    - field.field.node.blog.field_featured_image
+    - image.style.canvas_parametrized_width
+    - media.type.image
+    - node.type.blog
+  module:
+    - file
+    - media
+    - node
+_core:
+  default_config_hash: RaZBAwrpAULHlZ38c2MfqSkFCudfM69ZlFKbm70fxoA
+id: node.blog.card
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: card
+component_tree:
+  '0:7358e3cc-7e74-4531-8931-531236ad67ce':
+    uuid: 7358e3cc-7e74-4531-8931-531236ad67ce
+    component_id: sdc.vartheme_bs5.card
+    component_version: 91ca18128c643751
+    inputs:
+      shadow: shadow
+      background: bg-light
+      orientation: image-top
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      media:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_featured_image␞␟entity␜␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}'
+      text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_description␞␟value'
+      button_label: 'Learn more'
+      button_variant: btn-primary
+      has_padding: false
+      url:
+        sourceType: host-entity-url
+        absolute: false
+exposed_slots: {  }

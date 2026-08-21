@@ -1,0 +1,16 @@
+uuid: 4142480d-ba77-4ec1-a33a-30f680370d01
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: W4Zfkdfqi9TyyzeNPHkZskJgElK1b4LeCYbAOSDoBck
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: List
+id: sdc.vartheme_bs5.list
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:list'

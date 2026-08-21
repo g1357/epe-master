@@ -1,0 +1,46 @@
+uuid: 1b3a7727-18d6-402d-97be-31ca07dd29d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_04_03
+    - field.field.media.video.field_media_cover_image
+    - field.field.media.video.field_media_video_file
+    - media.type.video
+  module:
+    - drimage_improved
+_core:
+  default_config_hash: WrBUm9KFRFvsEwL6eDbqpgkZ-NuQ5fAxU-wERHNHjc0
+id: media.video.media_04_03
+targetEntityType: media
+bundle: video
+mode: media_04_03
+content:
+  thumbnail:
+    type: drimage_improved
+    label: hidden
+    settings:
+      image_link: ''
+      image_handling: aspect_ratio
+      aspect_ratio:
+        width: '4'
+        height: '3'
+      background:
+        position: ''
+        attachment: null
+        size: null
+      image_loading:
+        attribute: lazy
+      iwc:
+        image_style: null
+      image_style: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_cover_image: true
+  field_media_video_file: true
+  name: true
+  search_api_excerpt: true
+  uid: true

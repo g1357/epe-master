@@ -1,0 +1,25 @@
+uuid: 6ad91874-50aa-4624-915a-a68c9cf5fd4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: drimage_improved_focal_2320_776
+label: drimage_improved_focal_2320_776
+effects:
+  cc4ee7eb-6915-46c6-80df-a06a8edcb6f1:
+    uuid: cc4ee7eb-6915-46c6-80df-a06a8edcb6f1
+    id: image_convert
+    weight: 0
+    data:
+      extension: webp
+  061ccdba-19c2-4118-8ba3-e6f5d29b9547:
+    uuid: 061ccdba-19c2-4118-8ba3-e6f5d29b9547
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 2320
+      height: 776
+      crop_type: focal_point
+      upscale: false
+pipeline: __default__

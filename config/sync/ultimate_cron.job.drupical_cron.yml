@@ -1,0 +1,17 @@
+uuid: 6fbcfb42-a160-4c10-b947-ee88402d7ab9
+langcode: en
+status: true
+dependencies:
+  module:
+    - drupical
+title: 'Default cron handler'
+id: drupical_cron
+weight: 0
+module: drupical
+callback: 'drupical#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

@@ -1,0 +1,13 @@
+uuid: 8bda6f51-42c7-437f-a5f4-4a6482df08b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: EaC0oH6OEhZ8mQUvl625rLXRGuMGCCFqXNtqZZVklOE
+id: node.overlay_card_large
+label: 'Overlay card - large'
+description: null
+targetEntityType: node
+cache: true

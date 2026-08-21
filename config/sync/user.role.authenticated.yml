@@ -1,0 +1,39 @@
+uuid: 4c0ce0de-b393-4493-ba0d-689856b8f377
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.webform_default
+  module:
+    - access_unpublished
+    - captcha
+    - editoria11y
+    - file
+    - filter
+    - honeypot
+    - klaro
+    - media
+    - node
+    - system
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access user profiles'
+  - 'access_unpublished node blog'
+  - 'access_unpublished node page'
+  - 'access_unpublished taxonomy_term blog_categories'
+  - 'access_unpublished taxonomy_term tags'
+  - 'bypass honeypot protection'
+  - 'delete own files'
+  - 'mark as hidden in editoria11y'
+  - 'skip CAPTCHA'
+  - 'use klaro'
+  - 'use text format webform_default'
+  - 'view editoria11y checker'
+  - 'view media'
+  - 'view own unpublished content'

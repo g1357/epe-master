@@ -1,0 +1,16 @@
+uuid: b8e0ab14-9218-46d0-9a2d-3c824c00c460
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: 0hkawj-pqsw_Lhk51q3VACFw0jswM2MevlIbTgFBUqk
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: Filed
+id: sdc.vartheme_bs5.field
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:field'

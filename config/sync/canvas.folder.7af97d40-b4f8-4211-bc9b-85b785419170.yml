@@ -1,0 +1,27 @@
+uuid: 7af97d40-b4f8-4211-bc9b-85b785419170
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.sdc.vartheme_bs5.card
+    - canvas.component.sdc.vartheme_bs5.card-featured
+    - canvas.component.sdc.vartheme_bs5.card-icon
+    - canvas.component.sdc.vartheme_bs5.card-impressed
+    - canvas.component.sdc.vartheme_bs5.card-logo
+    - canvas.component.sdc.vartheme_bs5.card-overlay
+    - canvas.component.sdc.vartheme_bs5.card-pricing
+    - canvas.component.sdc.vartheme_bs5.card-testimonial
+    - canvas.component.sdc.vartheme_bs5.card-text
+name: Card
+configEntityTypeId: component
+weight: 0
+items:
+  - sdc.vartheme_bs5.card
+  - sdc.vartheme_bs5.card-featured
+  - sdc.vartheme_bs5.card-icon
+  - sdc.vartheme_bs5.card-impressed
+  - sdc.vartheme_bs5.card-logo
+  - sdc.vartheme_bs5.card-overlay
+  - sdc.vartheme_bs5.card-pricing
+  - sdc.vartheme_bs5.card-testimonial
+  - sdc.vartheme_bs5.card-text

@@ -1,0 +1,13 @@
+uuid: ac15c23a-ed63-455d-8569-ea5ba1f088c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: llg-HsgeP5KfGrfPMdCRChi_RUzPJz_-AfjWBKY-i-4
+id: node.overlay_card_xlarge
+label: 'Overlay card - xlarge'
+description: null
+targetEntityType: node
+cache: true

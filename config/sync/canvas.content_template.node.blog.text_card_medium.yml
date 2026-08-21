@@ -1,0 +1,53 @@
+uuid: f07c2b79-c762-44f5-95e0-4b5b732f17e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.text_card_medium
+    - node.type.blog
+  module:
+    - node
+_core:
+  default_config_hash: 527CXRiTuqlc8f5pLu911P2TxHC_q730IdXJxBiV2X8
+id: node.blog.text_card_medium
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: text_card_medium
+component_tree:
+  '0:4614d99e-6597-408f-a24a-7eb7235c8c8b':
+    uuid: 4614d99e-6597-408f-a24a-7eb7235c8c8b
+    component_id: sdc.vartheme_bs5.card-text
+    component_version: e029fefa26d20f4f
+    inputs:
+      card_border: false
+      padded: false
+      corner_style: rounded-3
+      box_shadow: shadow-none
+      equal_height: true
+      stretched_link: true
+      link_url:
+        sourceType: host-entity-url
+        absolute: false
+  '0:content:0:001ce551-757c-4505-b343-0dafdd0e7eab':
+    parent_uuid: 4614d99e-6597-408f-a24a-7eb7235c8c8b
+    slot: content
+    uuid: 001ce551-757c-4505-b343-0dafdd0e7eab
+    component_id: sdc.vartheme_bs5.heading
+    component_version: 0889e2ce906c3164
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      level: 3
+  '0:content:1:a629756a-9e5f-4413-91ef-9120cb2f9ef1':
+    parent_uuid: 4614d99e-6597-408f-a24a-7eb7235c8c8b
+    slot: content
+    uuid: a629756a-9e5f-4413-91ef-9120cb2f9ef1
+    component_id: sdc.vartheme_bs5.date
+    component_version: 3eae6f5d223f6bda
+    inputs:
+      date:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝created␞␟value'
+        adapter: unix_to_date
+exposed_slots: {  }

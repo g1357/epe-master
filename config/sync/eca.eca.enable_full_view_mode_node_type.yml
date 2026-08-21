@@ -1,0 +1,86 @@
+uuid: b49c150c-d045-4320-9e37-17b3e787c399
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_base
+    - eca_config
+    - eca_user
+    - modeler_api
+third_party_settings:
+  modeler_api:
+    modeler_id: workflow_modeler
+    label: 'Activate Full content view mode for new node types'
+    documentation: 'When a new node type is created through the UI (not during config sync), automatically activates the Full content view mode and an empty Canvas content template for it.'
+    version: 1.0.0
+_core:
+  default_config_hash: CwTodh9v4E9d-Nfl-Zh-hSTKJh_YgP_eei7zNm72pFA
+id: enable_full_view_mode_node_type
+weight: 0
+template: null
+events:
+  config_save_node_type_new:
+    plugin: 'config:save'
+    label: 'Node type created'
+    configuration:
+      config_name: node.type.
+      sync_mode: 'no'
+      write_mode: new
+    successors:
+      -
+        id: eca_switch_account_admin
+        condition: ''
+conditions: {  }
+gateways: {  }
+actions:
+  eca_switch_account_admin:
+    label: 'Switch user'
+    plugin: eca_switch_account
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: eca_token_set_value_bundle
+        condition: ''
+  eca_token_set_value_bundle:
+    label: 'Remember bundle id'
+    plugin: eca_token_set_value
+    configuration:
+      token_name: bundle
+      token_value: '[config:type]'
+      use_yaml: false
+      validate_yaml: false
+    successors:
+      -
+        id: eca_config_action_create_full_display
+        condition: ''
+  eca_config_action_create_full_display:
+    label: 'Activate Full content view mode'
+    plugin: eca_config_action
+    configuration:
+      action_id: 'entity_create:createIfNotExists'
+      config_name: 'core.entity_view_display.node.[bundle].full'
+      data: |-
+        targetEntityType: node
+        bundle: "[bundle]"
+        mode: full
+        status: true
+    successors:
+      -
+        id: eca_config_action_create_canvas_template
+        condition: ''
+  eca_config_action_create_canvas_template:
+    label: 'Create empty Canvas content template'
+    plugin: eca_config_action
+    configuration:
+      action_id: 'entity_create:createIfNotExists'
+      config_name: 'canvas.content_template.node.[bundle].full'
+      data: |-
+        langcode: en
+        status: true
+        content_entity_type_id: node
+        content_entity_type_bundle: "[bundle]"
+        content_entity_type_view_mode: full
+        component_tree: []
+        exposed_slots: {}
+    successors: {  }

@@ -1,0 +1,22 @@
+uuid: 61c6da93-ba32-4782-8b3a-4a47bea59aa0
+langcode: en
+status: false
+dependencies:
+  module:
+    - social_auth
+active_version: 733664fcac97111d
+versioned_properties:
+  active:
+    settings:
+      default_settings:
+        id: social_auth_login
+        label: 'Social Auth Login'
+        label_display: '0'
+        provider: social_auth
+    fallback_metadata:
+      slot_definitions: null
+label: 'Social Auth Login'
+id: block.social_auth_login
+provider: social_auth
+source: block
+source_local_id: social_auth_login

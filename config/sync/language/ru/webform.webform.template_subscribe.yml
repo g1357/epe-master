@@ -1,0 +1,6 @@
+title: Подписаться
+settings:
+  confirmation_message: 'Спасибо за отправку.'
+handlers:
+  email_notification:
+    label: 'Уведомление по электронной почте'

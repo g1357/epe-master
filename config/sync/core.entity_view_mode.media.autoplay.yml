@@ -1,0 +1,13 @@
+uuid: 7a1cfca0-c70b-4d0c-b439-f9cd707a575f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: Ukh4jfb4iBAWLyeG5kHxQSLeZ4nU3J6FyvJfkpGslGs
+id: media.autoplay
+label: Autoplay
+description: null
+targetEntityType: media
+cache: true

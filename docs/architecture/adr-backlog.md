@@ -1,6 +1,6 @@
 # E+E Master: backlog архитектурных решений
 
-- Статус: proposed backlog; ADR не приняты этим review
+- Статус: active backlog; ADR-0002/0003/0004/0006 приняты
 - Дата: 2026-08-21
 
 ## Принцип
@@ -16,7 +16,7 @@ menu links, View displays и Webform handlers не требуют отдельн
 Статус: Accepted. Сохраняется. Перед production требуется не новый platform
 ADR, а review фактической стабильной версии Varbase.
 
-## Рекомендуемые объединённые ADR
+## Принятые объединённые ADR
 
 ### ADR-0002 — Content model, Canvas boundary и multilingual presentation
 
@@ -32,8 +32,7 @@ ADR, а review фактической стабильной версии Varbase.
 Почему один ADR: content identity, translation и presentation template должны
 изменяться согласованно. Отдельные ADR создали бы противоречивые boundaries.
 
-Owner decisions: Service Content Type, Asset Status representation,
-language-switcher missing-translation UX.
+Статус: Accepted; см. [ADR-0002](../adr/0002-content-model-canvas-multilingual.md).
 
 ### ADR-0003 — Search backend and retrieval policy
 
@@ -43,6 +42,8 @@ rendered content, current-language default и acceptance triggers for Solr.
 
 Не включать конкретный golden query set или View field weights в ADR — это
 testable configuration.
+
+Статус: Accepted; см. [ADR-0003](../adr/0003-search-backend-retrieval.md).
 
 ### ADR-0004 — Editorial access, feedback and public participation boundary
 
@@ -59,7 +60,7 @@ testable configuration.
 security/product boundary. Forum/community позже потребует новый ADR только
 при реальном проекте.
 
-Owner decisions: four-eyes split, MFA timing, privacy retention/IP policy.
+Статус: Accepted; см. [ADR-0004](../adr/0004-editorial-access-feedback.md).
 
 ### ADR-0005 — AI/API boundary and machine identity
 
@@ -92,8 +93,7 @@ business ROI.
 Почему объединить hosting/deployment/backup: выбор shared/VPS определяет
 release mechanics и recovery capability; раздельные ADR будут неполными.
 
-Owner decisions: shared qualification acceptance, RC/stable release risk,
-mail transport, RPO/RTO acceptance.
+Статус: Accepted; см. [ADR-0006](../adr/0006-config-hosting-deployment-recovery.md).
 
 ## Что не требует ADR сейчас
 
@@ -110,11 +110,5 @@ mail transport, RPO/RTO acceptance.
 
 ## Порядок
 
-1. Owner approvals из architecture review.
-2. ADR-0002 и ADR-0004 до production content model/permissions.
-3. ADR-0006 до production configuration/deployment.
-4. ADR-0003 до финальной search configuration; можно принять вместе с v1.
-5. ADR-0005 только когда AI входит в roadmap.
-
-Не создавать ADR автоматически из этого backlog. Каждый требует отдельного
-review и explicit acceptance владельца.
+ADR-0002, ADR-0003, ADR-0004 и ADR-0006 приняты. ADR-0005 остаётся deferred и
+создаётся только когда AI входит в roadmap после отдельного review.

@@ -1,0 +1,16 @@
+uuid: f439cde8-d193-4c25-ada0-8a2fa3e5d160
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: AdkRMlj6I5lVDFyM3Bb62WJ5MjUwq22cynibWkd5jNU
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: Form
+id: sdc.vartheme_bs5.form
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:form'

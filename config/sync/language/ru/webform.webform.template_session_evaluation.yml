@@ -1,0 +1,5 @@
+settings:
+  confirmation_message: 'Спасибо за ваш отзыв.'
+handlers:
+  email_notification:
+    label: 'Уведомление по электронной почте'

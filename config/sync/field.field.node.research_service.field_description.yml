@@ -1,0 +1,19 @@
+uuid: a0975068-a337-4ce3-90af-9e82da251b09
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.research_service
+id: node.research_service.field_description
+field_name: field_description
+entity_type: node
+bundle: research_service
+label: Description
+description: 'Describe the blog post content. This appears as the description in search engine results.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

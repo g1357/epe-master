@@ -1,0 +1,4 @@
+title: 'Профиль пользователя'
+handlers:
+  email_notification:
+    label: 'Уведомление по электронной почте'

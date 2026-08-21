@@ -1,0 +1,15 @@
+uuid: 72af6d3f-4c5b-4e2e-a548-a8aae5b2e67b
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: DgyEouQVP2DnTvtU81gHRFCRmdB65jQurWcMvzg9pcQ
+id: taxonomy_term
+label: 'Taxonomy term'
+tags:
+  canonical_url: '[term:url]'
+  og_image: '[site:origin-url]/[default-active-theme:path]/share-image.png'
+  og_image_secure_url: '[site:origin-url]/[default-active-theme:path]/share-image.png'
+  og_image_url: '[site:origin-url]/[default-active-theme:path]/share-image.png'
+  description: '[term:description]'
+  title: '[term:name] | [site:name]'

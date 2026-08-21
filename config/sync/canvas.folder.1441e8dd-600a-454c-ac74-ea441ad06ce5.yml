@@ -1,0 +1,11 @@
+uuid: 1441e8dd-600a-454c-ac74-ea441ad06ce5
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.social_auth_login
+name: 'Social Auth'
+configEntityTypeId: component
+weight: 0
+items:
+  - block.social_auth_login

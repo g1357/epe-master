@@ -1,0 +1,133 @@
+uuid: 95baac36-6191-4cef-9a14-3455e2dfc15c
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.system_breadcrumb_block
+    - core.entity_view_mode.node.full
+    - field.field.media.image.field_media_image
+    - field.field.node.blog.field_content
+    - field.field.node.blog.field_featured_image
+    - image.style.canvas_parametrized_width
+    - media.type.image
+    - node.type.blog
+  module:
+    - file
+    - media
+    - menu_link_content
+    - node
+_core:
+  default_config_hash: 0WtQwMA_SKoeeBgxposMray71sPJalZy6HTUjId8BN0
+id: node.blog.full
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: full
+component_tree:
+  '0:0f26dedc-d75e-4fc9-b942-726ad8431e86':
+    uuid: 0f26dedc-d75e-4fc9-b942-726ad8431e86
+    component_id: block.system_breadcrumb_block
+    component_version: 0d7e961dd03aa710
+    inputs:
+      label: Breadcrumbs
+      label_display: '0'
+  '1:12f585e3-f476-48b1-a7d2-16614ec08489':
+    uuid: 12f585e3-f476-48b1-a7d2-16614ec08489
+    component_id: sdc.vartheme_bs5.heading
+    component_version: 0889e2ce906c3164
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      level: 1
+  '2:61ee420f-a3c5-47da-87d1-8821baf57d7b':
+    uuid: 61ee420f-a3c5-47da-87d1-8821baf57d7b
+    component_id: sdc.vartheme_bs5.spacer
+    component_version: 80de1b3919d08f87
+    inputs:
+      size: py-1
+  '3:1a87765a-fb43-4623-b661-2c93b0a6d05d':
+    uuid: 1a87765a-fb43-4623-b661-2c93b0a6d05d
+    component_id: sdc.vartheme_bs5.date
+    component_version: 3eae6f5d223f6bda
+    inputs:
+      date:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝created␞␟value'
+        adapter: unix_to_date
+  '4:774714fd-ddd4-410f-9047-134d0ba86823':
+    uuid: 774714fd-ddd4-410f-9047-134d0ba86823
+    component_id: sdc.vartheme_bs5.spacer
+    component_version: 80de1b3919d08f87
+    inputs:
+      size: py-2
+  '5:02a93dcf-d3fa-4718-b7ef-5a019d0a66b9':
+    uuid: 02a93dcf-d3fa-4718-b7ef-5a019d0a66b9
+    component_id: sdc.vartheme_bs5.image
+    component_version: 20b07c548b4cf729
+    inputs:
+      media:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_featured_image␞␟entity␜␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}'
+      target: self
+      ratio: ratio-16x9
+      width: w-100
+      rounded: rounded-3
+      loading: lazy
+  '6:14cca4e1-08cd-455d-abfb-2f398e14a6a1':
+    uuid: 14cca4e1-08cd-455d-abfb-2f398e14a6a1
+    component_id: sdc.vartheme_bs5.spacer
+    component_version: 80de1b3919d08f87
+    inputs:
+      size: py-4
+  '7:7dff0181-d5ea-417e-a49d-9f4a2faa29b6':
+    uuid: 7dff0181-d5ea-417e-a49d-9f4a2faa29b6
+    component_id: sdc.vartheme_bs5.share
+    component_version: 64add9738be2892f
+    inputs:
+      heading: Share
+      display_title: true
+      alignment: end
+      orientation: vertical
+      native_share: false
+      placement: rail-end
+      url:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝menu_link␞␟entity␜␜entity:menu_link_content␝link␞␟title'
+      share_title:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+  '8:cf1edb93-6c5a-4233-ba1a-a6f7ca0558dc':
+    uuid: cf1edb93-6c5a-4233-ba1a-a6f7ca0558dc
+    component_id: sdc.vartheme_bs5.section
+    component_version: 4171719f53c41b9d
+    inputs:
+      bg_edge2edge: false
+      columns: '100'
+      padding_inline_start: ps-5
+      padding_inline_end: pe-5
+      margin_inline_start: ms-5
+      margin_inline_end: me-5
+      radius: none
+      section_header: false
+      section_footer: false
+      aos_once: true
+  '8:col_1:0:3cd84d95-0b0c-4fa1-bc29-a1a5a941f076':
+    parent_uuid: cf1edb93-6c5a-4233-ba1a-a6f7ca0558dc
+    slot: col_1
+    uuid: 3cd84d95-0b0c-4fa1-bc29-a1a5a941f076
+    component_id: sdc.vartheme_bs5.spacer
+    component_version: 80de1b3919d08f87
+    inputs:
+      size: py-4
+  '8:col_1:1:eb3e968b-08ca-456a-853f-7a62ca1abee3':
+    parent_uuid: cf1edb93-6c5a-4233-ba1a-a6f7ca0558dc
+    slot: col_1
+    uuid: eb3e968b-08ca-456a-853f-7a62ca1abee3
+    component_id: sdc.vartheme_bs5.rich-text
+    component_version: 82cd1f087fd469f4
+    inputs:
+      text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_content␞␟processed'
+      trim: false
+exposed_slots: {  }

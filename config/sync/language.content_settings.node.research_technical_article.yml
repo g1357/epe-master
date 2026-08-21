@@ -1,0 +1,16 @@
+uuid: 3fee2830-3016-489e-86a5-082ad21a3e4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.research_technical_article
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.research_technical_article
+target_entity_type_id: node
+target_bundle: research_technical_article
+default_langcode: site_default
+language_alterable: true

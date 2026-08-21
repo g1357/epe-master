@@ -1,0 +1,21 @@
+uuid: a6ded4c1-9310-4d55-901d-67f29c325f1b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.ai_automator_status
+field_name: ai_automator_status
+entity_type: node
+type: list_string
+settings:
+  allowed_values: {  }
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

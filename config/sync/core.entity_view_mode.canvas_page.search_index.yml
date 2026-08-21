@@ -1,0 +1,13 @@
+uuid: 38c3194e-7d8c-4f31-85ac-dc23667a3131
+langcode: en
+status: false
+dependencies:
+  module:
+    - canvas
+_core:
+  default_config_hash: CLIIS39n37CInIPighvxjj8UyOBrywXDqwcA_lzBpDw
+id: canvas_page.search_index
+label: 'Search index'
+description: ''
+targetEntityType: canvas_page
+cache: true

@@ -1,0 +1,17 @@
+uuid: 0534bc59-de30-4233-ac75-dcc9e0d971ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - admin_audit_trail
+title: 'Default cron handler'
+id: admin_audit_trail_cron
+weight: 0
+module: admin_audit_trail
+callback: 'admin_audit_trail#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

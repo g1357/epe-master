@@ -1,0 +1,13 @@
+uuid: 4647f096-f397-4365-bfd1-8bf061886c7b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: pZQVT2geVC8MuIC1RhrlV7rXQGblAb9XsZPJPkSkRig
+id: media.looping
+label: Looping
+description: null
+targetEntityType: media
+cache: true

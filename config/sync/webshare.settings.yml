@@ -1,0 +1,122 @@
+buttons:
+  linkedin:
+    name: LinkedIn
+    title: 'Share on LinkedIn'
+    enabled: 1
+    image: linkedin.svg
+    weight: 0
+  facebook_share:
+    name: 'Facebook share'
+    title: 'Share on Facebook'
+    enabled: 1
+    image: facebook-share.svg
+    weight: 1
+  x:
+    name: X
+    title: 'Share on X'
+    enabled: 1
+    image: x.svg
+    weight: 2
+  whatsapp:
+    name: WhatsApp
+    title: 'Share via WhatsApp'
+    enabled: 0
+    image: whatsapp.svg
+    weight: 3
+  copy:
+    name: 'Copy URL'
+    title: 'Copy site URL'
+    enabled: 0
+    image: copy-url.svg
+    weight: 4
+  email:
+    name: Email
+    title: 'Share via Email'
+    enabled: 0
+    image: email.svg
+    weight: 5
+  telegram:
+    name: Telegram
+    title: 'Share on Telegram'
+    enabled: 0
+    image: telegram.svg
+    weight: 6
+  reddit:
+    name: Reddit
+    title: 'Share on Reddit'
+    enabled: 0
+    image: reddit.svg
+    weight: 7
+  pinterest:
+    name: Pinterest
+    title: 'Pin on Pinterest'
+    enabled: 0
+    image: pinterest.svg
+    weight: 8
+  threads:
+    name: Threads
+    title: 'Share on Threads'
+    enabled: 0
+    image: threads.svg
+    weight: 9
+  bluesky:
+    name: Bluesky
+    title: 'Share on Bluesky'
+    enabled: 0
+    image: bluesky.svg
+    weight: 10
+  tumblr:
+    name: Tumblr
+    title: 'Share on Tumblr'
+    enabled: 0
+    image: tumblr.svg
+    weight: 11
+  mastodon:
+    name: Mastodon
+    title: 'Share on Mastodon'
+    enabled: 0
+    image: mastodon.svg
+    weight: 12
+icon_map:
+  linkedin:
+    pack: vartheme_social
+    icon: linkedin
+  facebook_share:
+    pack: vartheme_social
+    icon: facebook
+  x:
+    pack: vartheme_social
+    icon: x
+  whatsapp:
+    pack: vartheme_social
+    icon: whatsapp
+  copy:
+    pack: vartheme_social
+    icon: clipboard
+  email:
+    pack: vartheme_social
+    icon: email
+  telegram:
+    pack: vartheme_social
+    icon: telegram
+  reddit:
+    pack: vartheme_social
+    icon: reddit
+  pinterest:
+    pack: vartheme_social
+    icon: pinterest
+  threads:
+    pack: vartheme_social
+    icon: threads
+  bluesky:
+    pack: vartheme_social
+    icon: bluesky
+  tumblr:
+    pack: vartheme_social
+    icon: tumblr
+  mastodon:
+    pack: vartheme_social
+    icon: mastodon
+native_share_icon:
+  pack: vartheme_social
+  icon: share-fill

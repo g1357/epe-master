@@ -1,6 +1,6 @@
 # E+E Master v1: целевая архитектура
 
-- Статус: Architecture review complete; owner approvals pending
+- Статус: Approved implementation baseline
 - Дата: 2026-08-21
 - Реализация: не начата
 - Baseline: Varbase 11.0.0-rc1 / Drupal 11.4.5 / PHP 8.4
@@ -134,13 +134,14 @@ Production model описан в
 
 - Technical Article — обязателен;
 - Asset — обязателен;
-- Service — только после owner confirmation повторяемой серии;
+- Service — отдельный Content Type в v1;
 - News — исключён из v1;
 - Canvas Page — уникальные pages;
 - Page — только простые legal/evergreen pages при явном UX преимуществе.
 
-Taxonomy ограничена Topics, Technologies, условной Service Categories и
-Asset Status/Options. Media — Image, Remote Video и Document; SVG trusted-only.
+Taxonomy ограничена Topics, Technologies и Service Categories. Asset Status —
+фиксированный Options enum, не Taxonomy. Media — Image, Remote Video и
+Document; SVG trusted-only.
 
 ## 7. Multilingual architecture
 
@@ -160,8 +161,9 @@ Asset Status/Options. Media — Image, Remote Video и Document; SVG trusted-onl
 Не поддерживать разный RU/EN Canvas layout как норму. Если campaigns реально
 различаются, это отдельные Canvas Pages, а не обход symmetric translation.
 
-Unresolved owner/UX items: switcher destination при отсутствии перевода,
-outdated-translation editorial procedure и финальные Pathauto patterns.
+Если перевода текущей страницы нет, language switcher ведёт на главную
+выбранного языка. Устаревшие переводы в v1 отслеживаются редакционно вручную.
+Финальные Pathauto patterns утверждаются при реализации content model.
 
 ## 8. Search architecture
 
@@ -187,7 +189,7 @@ Search API/Solr.
 
 ```text
 Anonymous → published content/search/forms
-Content editor → authoring + Review (и Publish только если owner допускает)
+Content editor → authoring + Review + Publish для trusted launch team
 Content admin → content/workflow/taxonomy/pattern/submission owner
 SEO admin → trusted content/SEO role
 Site admin → users/operations/Canvas governance
@@ -200,9 +202,10 @@ live, пока следующая Draft/In review не опубликована.
 lock и audit сохраняются.
 
 Не создавать business роли Member/Internal и не считать core Authenticated
-закрытым access tier. Registration `admin_only`, no personal cabinet. При
-обязательном four-eyes rule убрать Publish/Archive у Content editor штатной
-permission configuration.
+закрытым access tier. Registration `admin_only`, no personal cabinet.
+Обязательного four-eyes разделения на launch нет; trusted Content editor может
+публиковать. Переходы workflow остаются Draft → In review → Published →
+Archived, а ужесточение permissions возможно позже без смены архитектуры.
 
 ## 10. Feedback, forms and privacy boundary
 
@@ -214,11 +217,13 @@ permission configuration.
 - no attachments in v1;
 - comments off;
 - submissions private and excluded from Search/JSON:API/AI;
-- domain From, visitor Reply-To, production transport/delivery test;
+- authenticated SMTP, domain From, visitor email only Reply-To;
 - access to Results/Exports only Content Admin/Site Admin.
 
-Privacy text, legal basis, IP collection and exact retention require owner/legal
-approval. No PII is sent to external AI.
+PII минимизируется. Contact: name, email и organization optional, message и
+consent required; Article Feedback email optional. IP не хранится, если этого
+не потребует anti-abuse. Retention baseline — 180 дней, предварительно и до
+отдельной legal review. No PII is sent to external AI.
 
 ## 11. SEO architecture
 
@@ -233,8 +238,8 @@ approval. No PII is sent to external AI.
 | Editorial hints | Yoast/Realtime SEO |
 
 Schema graph: Organization/WebSite globally; BreadcrumbList; TechArticle;
-RealEstateListing; Service only if bundle is approved and installed
-`schema_service` is explicitly enabled. Fix `/home` canonical, 404 canonical,
+RealEstateListing; Service после проверки и явного включения установленного
+`schema_service`. Fix `/home` canonical, 404 canonical,
 sitemap bundles and rendered JSON-LD before launch.
 
 ## 12. AI and API boundary
@@ -288,7 +293,7 @@ update hooks, не повторным Recipe apply.
 
 ### Hosting
 
-Рекомендация C: Beget shared-first после qualification. Обязательно подтвердить
+Принято: Beget shared-first после qualification. Обязательно подтвердить
 PHP 8.4 web/CLI и extensions, MySQL 8 (не 5.7), Composer 2/build strategy, SSH,
 cron, symlink/DocumentRoot `web`, private path, 256 МБ+ memory, ImageMagick,
 SSL/mail/backups. Если обязательный пункт не проходит — небольшой Beget VPS.
@@ -312,7 +317,8 @@ traffic/SLO failure.
 - page/dynamic/render/Views caches and aggregation;
 - cron every 5–15 minutes, queues monitored;
 - no Redis/Memcached/CDN/reverse proxy/Solr by default;
-- domain mail transport with SPF/DKIM/DMARC and delivery test;
+- authenticated SMTP with domain From, visitor Reply-To only,
+  SPF/DKIM/DMARC and delivery test;
 - verbose errors/assertions/dev services off;
 - trusted hosts, hash salt, private/temp paths and permissions;
 - secrets outside Git/config export.
@@ -336,23 +342,24 @@ Target: RPO 24h, RTO 4–8h. Local DB restore experiment passed.
    review; `drush cim` сейчас validation-fails.
 4. **Canvas config convergence.** Восемь patterns/template показывают drift
    после export; найти штатную normalization/serialization cause.
-5. Зафиксировать owner approvals, влияющие на content model/access.
+5. Owner approvals зафиксированы ADR-0002, ADR-0003, ADR-0004 и ADR-0006.
 
 Эти пункты нужны до production entities: иначе config нельзя безопасно
 review/deploy и две рабочие копии будут расходиться.
 
 ### Must fix before production
 
-- обновить/проверить Varbase RC versus доступную stable release;
+- продолжать на текущем Varbase 11 RC baseline; перед production проверить
+  доступный stable и обновиться, если это совместимо и оправдано;
 - устранить Composer advisory `paragonie/sodium_compat` и оценить abandoned
   package; `composer audit` должен быть clean/accepted;
 - production settings/secrets/trusted hosts/private files/permissions;
 - qualify конкретный Beget shared account или выбрать VPS;
-- permissions review каждого final bundle; решить author/publisher split;
-- решить MFA risk для administrative roles;
+- permissions review каждого final bundle;
+- внедрить обязательную MFA для Site Admin / Super Admin;
 - финальная RU/EN negotiation, Views/Search filters и switcher UX;
 - SEO fixes: `/home`, 404, sitemap, Schema, domain robots;
-- privacy/retention/IP/consent and mail transport/delivery;
+- legal review предварительного retention 180 дней и production SMTP test;
 - cron/queue/logging/backup/restore/smoke;
 - minimal CI.
 
@@ -385,29 +392,9 @@ review/deploy и две рабочие копии будут расходить�
   test actual pages; Canvas editor stability requires smoke coverage;
 - **Auditability:** revisions, moderation, named users and Admin Audit Trail.
 
-## 18. Decisions requiring owner approval
+## 18. Owner decisions accepted
 
-Only these decisions remain owner-dependent; recommendations are not accepted
-until confirmed:
-
-1. **Service model:** create Service Content Type at launch only if there is a
-   repeatable published service catalogue; otherwise Canvas Pages.
-2. **Editorial separation:** require four-eyes author/publisher split or allow
-   trusted Content editor to publish in the small launch team.
-3. **Varbase release risk:** wait for/upgrade to stable before launch versus
-   explicitly accept tested RC baseline temporarily.
-4. **MFA timing:** make MFA a launch requirement for admins (recommended) or
-   accept Phase 2 risk with compensating controls.
-5. **Privacy/data ownership:** legal text, Webform purposes, IP collection,
-   retention and responsible owner.
-6. **Production mail:** Beget sendmail versus authenticated SMTP, with domain
-   DNS ownership for SPF/DKIM/DMARC.
-7. **Hosting acceptance:** approve shared-first after qualification or choose
-   VPS when the concrete account fails requirements.
-8. **Language UX:** language switcher behavior when current page lacks a
-   translation and process for outdated translations.
-9. **Asset Status representation:** small Options enum versus managed Taxonomy,
-   based on final states and editorial ownership.
-
-Все остальные v1 recommendations являются platform-aligned defaults, но этот
-review сам по себе не авторизует runtime implementation.
+Девять owner decisions приняты 2026-08-21 и отражены в ADR-0002, ADR-0003,
+ADR-0004 и ADR-0006. Единственный оставшийся внешний gate среди них — legal
+review предварительного retention baseline 180 дней. Эти решения разрешают
+implementation baseline, но не расширяют утверждённый scope v1.

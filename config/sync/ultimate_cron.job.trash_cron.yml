@@ -1,0 +1,17 @@
+uuid: fcd065cd-9a53-40b2-ad11-0e20a4a858bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - trash
+title: 'Default cron handler'
+id: trash_cron
+weight: 0
+module: trash
+callback: 'trash#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

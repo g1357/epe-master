@@ -1,0 +1,16 @@
+uuid: 32c914a3-d4f9-4b99-b67c-0b6c7129fc5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.research_asset_statuses
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.research_asset_statuses
+target_entity_type_id: taxonomy_term
+target_bundle: research_asset_statuses
+default_langcode: site_default
+language_alterable: true

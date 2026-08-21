@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: HlN7eAN2N4JIHsYv56V4E7sqC9bS609KwvGFjyD_mgk
+langcode: en
+uuid: 7a4d9775-bf69-46a6-b865-004ec59e6bc5
+name: ee-master
+mail: webmaster@vardot.com
+slogan: ''
+page:
+  403: /user/login
+  404: ''
+  front: /page/2
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: null

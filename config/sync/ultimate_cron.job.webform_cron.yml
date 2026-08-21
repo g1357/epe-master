@@ -1,0 +1,17 @@
+uuid: d75c68af-8348-4888-aaa2-03a907204f72
+langcode: en
+status: true
+dependencies:
+  module:
+    - webform
+title: 'Purge old submissions'
+id: webform_cron
+weight: 0
+module: webform
+callback: 'webform#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

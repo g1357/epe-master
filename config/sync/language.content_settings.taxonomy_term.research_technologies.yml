@@ -1,0 +1,16 @@
+uuid: 9d1c03e6-5582-4fc1-9d1f-cefd505456ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.research_technologies
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.research_technologies
+target_entity_type_id: taxonomy_term
+target_bundle: research_technologies
+default_langcode: site_default
+language_alterable: true

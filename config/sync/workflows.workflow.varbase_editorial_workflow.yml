@@ -1,0 +1,84 @@
+uuid: 9cd9cf88-7b49-40cc-a20f-b015495e9827
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.blog
+    - node.type.page
+    - node.type.research_asset
+    - node.type.research_service
+    - node.type.research_technical_article
+  module:
+    - content_moderation
+_core:
+  default_config_hash: NBZLvPK5TCY_u0OSSS2PGLBhS_oseL79glVJEUVMB4U
+id: varbase_editorial_workflow
+label: Editorial
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: 'Archived / Unpublished'
+      weight: 0
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: -3
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: -1
+      published: true
+      default_revision: true
+    review:
+      label: 'In review'
+      weight: -2
+      published: false
+      default_revision: false
+  transitions:
+    archive:
+      label: 'Archive / Unpublish'
+      from:
+        - published
+      to: archived
+      weight: 1
+    archived_published:
+      label: 'Restore from archive'
+      from:
+        - archived
+      to: published
+      weight: 2
+    create_new_draft:
+      label: 'Create new draft'
+      from:
+        - archived
+        - draft
+        - review
+        - published
+      to: draft
+      weight: -3
+    publish:
+      label: Publish
+      from:
+        - draft
+        - review
+        - published
+      to: published
+      weight: -1
+    review:
+      label: 'Send to review'
+      from:
+        - draft
+        - review
+      to: review
+      weight: -2
+  entity_types:
+    node:
+      - blog
+      - page
+      - research_asset
+      - research_service
+      - research_technical_article
+  default_moderation_state: draft

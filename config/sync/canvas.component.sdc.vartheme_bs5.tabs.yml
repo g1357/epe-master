@@ -1,0 +1,47 @@
+uuid: b2eaedcc-5bac-4f49-b88c-c7ea5d6b668a
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+  theme:
+    - vartheme_bs5
+_core:
+  default_config_hash: kltcxULUKaVtnW9JUKTY-QQt7kZ_PT0uebj9eVTqHDQ
+active_version: ead44d287f956a39
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        shape:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+          derived_schema_metadata: {  }
+    fallback_metadata:
+      slot_definitions: {  }
+  a672799ea76aabd6:
+    settings:
+      prop_field_definitions:
+        shape:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: null
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+          derived_schema_metadata: {  }
+    fallback_metadata:
+      slot_definitions: {  }
+label: Tabs
+id: sdc.vartheme_bs5.tabs
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:tabs'

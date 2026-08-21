@@ -1,0 +1,16 @@
+uuid: c5c1646b-91c0-4ff4-bc21-e52e2ce531a2
+langcode: en
+status: false
+dependencies: {  }
+_core:
+  default_config_hash: HhEWs7KOqAwbmbxF2OfUmHqP01cJ7Wj1EDiOYYxzmGE
+active_version: fallback
+versioned_properties:
+  active:
+    settings:
+      last_active_version: ''
+label: 'Social Auth'
+id: sdc.vartheme_bs5.social-auth
+provider: vartheme_bs5
+source: sdc
+source_local_id: 'vartheme_bs5:social-auth'

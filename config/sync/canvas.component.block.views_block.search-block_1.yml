@@ -1,0 +1,39 @@
+uuid: c8f09bca-ed72-48a4-8c03-e9ab332bfad2
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.search
+  module:
+    - views
+active_version: 3924993c5bf05809
+versioned_properties:
+  active:
+    settings:
+      default_settings:
+        id: 'views_block:search-block_1'
+        label: 'Search: Header search form'
+        label_display: '0'
+        provider: views
+        views_label: ''
+        items_per_page: null
+        exposed: {  }
+    fallback_metadata:
+      slot_definitions: null
+  94b4854b319e858f:
+    settings:
+      default_settings:
+        id: 'views_block:search-block_1'
+        label: 'Search: Header search form'
+        label_display: '0'
+        provider: views
+        views_label: ''
+        items_per_page: null
+        exposed: {  }
+    fallback_metadata:
+      slot_definitions: null
+label: 'Search: Header search form'
+id: block.views_block.search-block_1
+provider: views
+source: block
+source_local_id: 'views_block:search-block_1'

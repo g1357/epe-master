@@ -1,0 +1,54 @@
+uuid: 952f99eb-d0d1-44af-be51-8d7da03badd1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured_card_xsmall
+    - field.field.media.image.field_media_image
+    - field.field.node.blog.field_featured_image
+    - image.style.canvas_parametrized_width
+    - media.type.image
+    - node.type.blog
+  module:
+    - file
+    - media
+    - node
+_core:
+  default_config_hash: fSezlVMWke-saHVBehGS9sCjLHs8S2QvbghWGavFwaM
+id: node.blog.featured_card_xsmall
+content_entity_type_id: node
+content_entity_type_bundle: blog
+content_entity_type_view_mode: featured_card_xsmall
+component_tree:
+  '0:2f6d376d-79da-4bdf-a7be-82a0420883cc':
+    uuid: 2f6d376d-79da-4bdf-a7be-82a0420883cc
+    component_id: sdc.vartheme_bs5.card-featured
+    component_version: 760a4a6c1117384e
+    inputs:
+      media_position: no-media
+      media_image:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝field_featured_image␞␟entity␜␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}'
+      ratio: ratio-16x9
+      fit: object-fit-cover
+      card_border: false
+      padded: false
+      corner_style: rounded-3
+      equal_height: true
+      stretched_link: true
+      link_url:
+        sourceType: host-entity-url
+        absolute: false
+      content_vertical_alignment: justify-content-center
+  '0:content:0:02cdd656-d77a-4728-ac56-dd9a7d7d224b':
+    parent_uuid: 2f6d376d-79da-4bdf-a7be-82a0420883cc
+    slot: content
+    uuid: 02cdd656-d77a-4728-ac56-dd9a7d7d224b
+    component_id: sdc.vartheme_bs5.heading
+    component_version: 0889e2ce906c3164
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:blog␝title␞␟value'
+      level: 3
+exposed_slots: {  }

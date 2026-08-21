@@ -1,0 +1,28 @@
+uuid: 965ac80e-93a1-4372-a1e6-52a96da0b5e3
+langcode: en
+status: true
+dependencies:
+  module:
+    - social_auth
+    - system
+  theme:
+    - gin
+_core:
+  default_config_hash: zix1y8oS39AwWWI7UDjcqJ253l0_I6-3CUAtzIEG2vI
+id: gin_socialauthlogin
+theme: gin
+region: content
+weight: -7
+provider: null
+plugin: social_auth_login
+settings:
+  id: social_auth_login
+  label: 'Login with'
+  label_display: '0'
+  provider: social_auth
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    context_mapping: {  }
+    pages: "/user/login\r\n/user/register"

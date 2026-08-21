@@ -1,0 +1,29 @@
+uuid: 54a9f71c-dc1c-4b9c-9132-bba3d146b4c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_topics
+    - node.type.research_technical_article
+    - taxonomy.vocabulary.research_topics
+id: node.research_technical_article.field_research_topics
+field_name: field_research_topics
+entity_type: node
+bundle: research_technical_article
+label: 'Research topics'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:filter_existing_terms'
+  handler_settings:
+    target_bundles:
+      research_topics: research_topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

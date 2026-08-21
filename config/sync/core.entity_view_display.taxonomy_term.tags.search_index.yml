@@ -1,0 +1,25 @@
+uuid: be6e23a0-29cc-4087-9a90-5446d4760045
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.search_index
+    - taxonomy.vocabulary.tags
+  module:
+    - text
+_core:
+  default_config_hash: PRAyVyJY4Yt0XVCOvWSW_HzZ5acjDZcUOnCBZqElGdw
+id: taxonomy_term.tags.search_index
+targetEntityType: taxonomy_term
+bundle: tags
+mode: search_index
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -53,13 +53,12 @@ jobs:
           dependency-versions: locked
       - name: Install Drupal from exported configuration
         run: >-
-          vendor/bin/drush site:install
+          bin/drush site:install
           --existing-config
           --db-url=mysql://drupal:drupal@127.0.0.1:3306/drupal
           --yes
-      - run: vendor/bin/drush updatedb --yes
-      - run: vendor/bin/drush config:import --yes
-      - run: vendor/bin/drush config:status --state=Only-in-DB,Different,Only-in-sync-dir --format=list | tee /tmp/config-status && test ! -s /tmp/config-status
-      - run: vendor/bin/drush status --fields=bootstrap,db-status --format=list
-      - run: vendor/bin/drush cache:rebuild
-
+      - run: bin/drush updatedb --yes
+      - run: bin/drush config:import --yes
+      - run: bin/drush config:status --state=Only-in-DB,Different,Only-in-sync-dir --format=list | tee /tmp/config-status && test ! -s /tmp/config-status
+      - run: bin/drush status --fields=bootstrap,db-status --format=list
+      - run: bin/drush cache:rebuild

@@ -18,7 +18,7 @@ jobs:
           php-version: '8.4'
           extensions: gd, intl, mbstring, pdo_mysql, sodium
           coverage: none
-      - uses: ramsey/composer-install@v3
+      - uses: ramsey/composer-install@v4
         with:
           dependency-versions: locked
           composer-options: --no-dev --optimize-autoloader
@@ -48,7 +48,7 @@ jobs:
           php-version: '8.4'
           extensions: gd, intl, mbstring, pdo_mysql, sodium
           coverage: none
-      - uses: ramsey/composer-install@v3
+      - uses: ramsey/composer-install@v4
         with:
           dependency-versions: locked
       - name: Install Drupal from exported configuration
